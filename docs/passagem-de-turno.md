@@ -42,5 +42,11 @@ Prévia em `docs/previas/sigilos-v1.png` (alfabeto A–Z, 0–9, 5 elementos, 5 
 Tudo sai de `ferramentas/previas/sigilos_v1.py` (`--conferir` prova os md5); PNGs em `arte/sigilos-v1/` (fora do jar).
 **Não aprovada**: nada no jogo, nenhum ID novo. A regra do alfabeto está no topo do script.
 
+## Pacote 1, etapa 1: texturas (Modelador, 15/11/2026)
+Folha única em `docs/previas/pacote-1.png`: 4 espadas, 12 artefatos, giz e os sigilos v1. Texturas 16x16 em
+`assets/odteste/textures/item/` (nomes iguais aos IDs propostos), todas saem de `ferramentas/previas/pacote_1.py`
+(`--conferir` prova os md5). **Não aprovada.** Sem item registrado, sem modelo JSON, sem ID novo: a textura sozinha
+não aparece no jogo. Máscaras ficam fora (o Nikolas manda depois).
+
 ## Próximo passo
 Lore: o chamado na mata e a travessia. Primeiro conteúdo novo só com prévia aprovada.
