@@ -99,8 +99,9 @@ jobs:
 
       - name: Ligar o servidor (falha se crashar)
         env:
-          # Endereço do pack.toml: variável do repositório (Settings > Secrets and variables > Actions > Variables).
-          PACK_URL: ${{ vars.PACK_URL }}
+          # Endereço do pack.toml. O certo é o Secret PACK_URL (o log esconde); a variável PACK_URL é só reserva
+          # até o Nikolas criar o Secret (Settings > Secrets and variables > Actions) e apagar a variável.
+          PACK_URL: ${{ secrets.PACK_URL || vars.PACK_URL }}
         run: |
           JAR=$(ls jar/*.jar | grep -v -- '-sources' | head -1)
           bash ferramentas/teste_servidor.sh "$JAR" servidor-teste

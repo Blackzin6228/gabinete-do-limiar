@@ -29,8 +29,10 @@ antigos), grupos e mestre. Mod id `odteste` e pacote `com.nikolas.odteste` iguai
 8. `cor_horror` roda pela `FxTela` com um passe só (`cliente/FxHorror`). Fora da vila, mesma força de antes.
 9. `Tela` só com o que os sustos usam. Config `minimapa_canto/tamanho` saiu (a falha do minimapa saiu).
 10. `odteste:dedal_coracao` (−1 coração do Dedal) é tirado ao entrar: sem o Dedal, ninguém mais tirava.
-11. O endereço do pack (tem o usuário do e-mail do Nikolas) saiu do script: vem da variável `PACK_URL` do repositório
-    (já criada com `gh variable set`). Não é segredo, mas o repo é público.
+11. O endereço do pack (tem o usuário do e-mail do Nikolas) saiu do script. O workflow usa o Secret `PACK_URL`
+    (o Nikolas cola) e, enquanto ele não existir, a variável `PACK_URL` (criada com `gh variable set`). A variável
+    aparece no log público: os logs e o artefato de log da run 1 foram apagados. Quando o Secret existir, apagar a
+    variável e os logs das runs antigas.
 
 ## Ordem
 1. [x] Criar repo público e clonar.
@@ -40,7 +42,8 @@ antigos), grupos e mestre. Mod id `odteste` e pacote `com.nikolas.odteste` iguai
 5. [x] Reescrever/cortar as classes.
 6. [x] Recursos (lang, shaders, tags) e testes.
 7. [x] Docs (CLAUDE.md, passagem de turno, ids.md).
-8. [ ] Commit, push do branch, PR, esperar Actions; corrigir até verde.
+8. [x] Commit, push do branch, PR #1, Actions verde na 1ª tentativa (compilar 1m25s; servidor com 505 mods 6m43s,
+   "odteste carregado", nenhum erro citando odteste). Depois: workflow prefere o Secret PACK_URL.
 9. [ ] Merge na main; `git pull` no clone oficial; resultado para o Nikolas.
 
 ## Riscos
