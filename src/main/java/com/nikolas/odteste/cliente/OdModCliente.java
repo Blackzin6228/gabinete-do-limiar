@@ -1,6 +1,7 @@
 package com.nikolas.odteste.cliente;
 
 import com.nikolas.odteste.OdMod;
+import com.nikolas.odteste.cracha.CrachaItem;
 import com.nikolas.odteste.horror.IdsHorror;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -32,6 +33,9 @@ public final class OdModCliente {
         NeoForge.EVENT_BUS.addListener((ClientTickEvent.Post e) -> Tela.aoTick());
         NeoForge.EVENT_BUS.addListener(Tela::aoCalcularCamera);
         NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut e) -> Tela.limpar());
+
+        // Crachá: o item (código comum) abre a tela por este gancho.
+        CrachaItem.abrirTela = CrachaCliente::abrir;
 
         // Camada de horror: céu cinza e névoa de dia, noite escura, música cortada e sustos grandes.
         CamadaHorrorCliente.iniciar(barramento);

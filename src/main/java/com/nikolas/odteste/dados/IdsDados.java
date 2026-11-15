@@ -21,10 +21,13 @@ public final class IdsDados {
     /** Se a história já revelou o elemento ao jogador. Nunca vai para o cliente. */
     public static final String ELEMENTO_REVELADO = "elemento_revelado";
 
+    /** O jogador já recebeu o kit (crachá e dossiê) na primeira entrada? */
+    public static final String RECEBEU_KIT = "recebeu_kit";
+
     /** Dados em uso. */
     public static final List<String> TODOS = List.of(
             EXPOSICAO, LUCIDEZ, LUCIDEZ_MAX, EXPOSICAO_RESTO, CONTATO_ELEMENTO, EXPOSICAO_REPETICAO,
-            ELEMENTO, ELEMENTO_REVELADO);
+            ELEMENTO, ELEMENTO_REVELADO, RECEBEU_KIT);
 
     // ---------- guardados do mod antigo (DadosGuardados: registrados só para não apagar) ----------
 
@@ -54,9 +57,16 @@ public final class IdsDados {
     /** Arquivo de dados do mundo com os grupos (data/odteste_historia.dat). Sem "odteste:". */
     public static final String ARQUIVO_HISTORIA = "odteste_historia";
 
+    /** Item Crachá do Gabinete e o componente de dados que guarda o dono dele. */
+    public static final String ITEM_CRACHA = "cracha";
+    public static final String COMPONENTE_CRACHA = "cracha_dados";
+    /** Livro de história entregue no kit (data/odteste/odteste_livros/dossie.json). */
+    public static final String LIVRO_DOSSIE = "dossie";
+
     /** Todos os IDs que não são dado do jogador, mas também precisam estar em docs/ids.md. */
     public static final List<String> OUTROS = List.of(
-            MODIFICADOR_DEDAL, MODIFICADOR_LENTIDAO, TAG_PARANORMAL, TAG_COMIDA_QUENTE, ARQUIVO_HISTORIA);
+            MODIFICADOR_DEDAL, MODIFICADOR_LENTIDAO, TAG_PARANORMAL, TAG_COMIDA_QUENTE, ARQUIVO_HISTORIA,
+            ITEM_CRACHA, COMPONENTE_CRACHA, LIVRO_DOSSIE);
 
     private IdsDados() {}
 }

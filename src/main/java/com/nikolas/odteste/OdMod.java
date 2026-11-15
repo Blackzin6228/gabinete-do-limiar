@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.nikolas.odteste.comandos.ComandosAdmin;
 import com.nikolas.odteste.comandos.ComandosHistoria;
 import com.nikolas.odteste.compat.Compat;
+import com.nikolas.odteste.cracha.Kit;
 import com.nikolas.odteste.dados.DadosGuardados;
 import com.nikolas.odteste.dados.DadosJogador;
 import com.nikolas.odteste.historia.mestre.Mestre;
@@ -34,6 +35,7 @@ public final class OdMod {
         ComandosAdmin.iniciar();
         ComandosHistoria.iniciar();
         Mestre.iniciar();
+        Kit.iniciar();
         Vigia.iniciar();
         CamadaHorror.iniciar();
         Compat.iniciar(barramento);

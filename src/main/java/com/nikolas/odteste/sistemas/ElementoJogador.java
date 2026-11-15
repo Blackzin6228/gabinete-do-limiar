@@ -1,5 +1,6 @@
 package com.nikolas.odteste.sistemas;
 
+import com.nikolas.odteste.cracha.Cracha;
 import com.nikolas.odteste.dados.DadosJogador;
 import com.nikolas.odteste.elementos.Elemento;
 import com.nikolas.odteste.elementos.RegrasElemento;
@@ -50,6 +51,7 @@ public final class ElementoJogador {
         Elemento novo = e == null ? Elemento.NENHUM : e;
         boolean manter = novo == de(p) && revelado(p);
         DadosJogador.gravarElemento(p, novo, manter);
+        Cracha.atualizarDoDono(p);
     }
 
     /**
@@ -61,6 +63,7 @@ public final class ElementoJogador {
         if (e == Elemento.NENHUM) return false;
         boolean jaEra = revelado(p);
         DadosJogador.gravarElemento(p, e, true);
+        Cracha.atualizarDoDono(p);
         if (!jaEra) {
             p.sendSystemMessage(Component.translatable("odteste.elemento.revelado",
                             Component.translatable(e.chaveTraducao()).withStyle(s -> s.withColor(e.cor()).withItalic(false)))

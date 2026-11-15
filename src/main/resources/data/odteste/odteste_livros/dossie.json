@@ -1,0 +1,32 @@
+{
+  "_status": "Aprovado pelo Nikolas em 15/11/2026. Dossiê de campo do Gabinete do Limiar.",
+  "titulo": "Dossiê de campo",
+  "autor": "Gabinete do Limiar",
+  "geracao": 1,
+  "paginas": [
+    {
+      "texto": "GABINETE DO LIMIAR\nDossiê de campo\n\nAgente: {jogador}\nEquipe: {grupo}\n\n\nAtende. Anota.\nNão comenta."
+    },
+    {
+      "texto": "ORDEM DE SERVIÇO\n\nMoradores da serra ouvem um som dentro da mata. Grave e lento, como um sino debaixo d'água.\n\nNinguém acha o sino. Quem foi procurar sozinho não voltou."
+    },
+    {
+      "texto": "A MISSÃO\n\nIr em equipe. Ouvir. Anotar. Desenhar o que virem.\n\nNão entrar na mata depois que escurecer.\n\nNinguém leva arma. Não é esse tipo de chamado."
+    },
+    {
+      "texto": "REGRAS DE CAMPO\n\n- Fique perto da equipe.\n- Não responda quando chamarem seu nome do escuro.\n- Se a luz falhar, não corra.\n- Anote tudo. O que não se anota, o lugar apaga."
+    },
+    {
+      "texto": "ANTES DE VOCÊS\n\nEste chamado já foi atendido. Uma equipe mandou um relatório pela metade. Outra não mandou nada.\n\nSe acharem o que deixaram, tragam. Crachás também.",
+      "escondidos": [
+        {
+          "texto": "Eles também tinham dossiê.",
+          "exposicao_minima": "marcado"
+        }
+      ]
+    },
+    {
+      "texto": "\n\n\nBoa sorte, agente.\nVolte para o jantar.\n\n\n- a Chefia"
+    }
+  ]
+}
