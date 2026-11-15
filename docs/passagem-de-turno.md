@@ -1,0 +1,25 @@
+# Passagem de turno
+
+Atualize ao fim de cada etapa. Curto.
+
+## Estado (15/11/2026, Etapa 1 do recomeço, mesa Dev)
+Mod novo montado a partir do Od-Teste `b488cc6` (o jar que está no servidor). Ainda **não** foi para o servidor.
+
+**Funciona igual ao servidor hoje (fora da Vila Calada):**
+- Camada de horror no overworld, de dia e de noite: céu cinza, névoa, luz do dia mais baixa, noite escura com brilho
+  travado (tocha clareia), música cortada, sons graves raros, véu de reserva com shader pack ou céu de outro mod,
+  shader `cor_horror` (com e sem Iris). Sustos grandes de noite (1 ou 2 por noite) e `/odteste susto`.
+- Config do cliente `efeitos_fortes` e `intensidade`.
+- Exposição e Lucidez (dano, descanso, luz, grupo, comida quente, dormir, surto, lentidão) e `/exposicao`, `/lucidez`.
+- Elemento do jogador (`/odteste elemento`, `revelar`), sem Marca e sem magia.
+- Livros de dados (`data/odteste/odteste_livros/`, `/odteste livro`), com `{jogador}`, `{grupo}`, `{marcado}` e
+  trechos escondidos. **Nenhum livro ainda** (os antigos ficaram no Od-Teste).
+- Grupos (`/odteste grupo`) e mestre (`/odteste mestre ouvir|status`, config `odteste-mestre-server.toml`).
+
+**Cuidados para quando for ao servidor (pedir ao Nikolas, com backup):**
+- Itens, blocos e criaturas do mod antigo somem do mundo (lista em `docs/ids.md`).
+- Dados dos jogadores ficam (inclusive Marca etc., guardados sem uso). O arquivo `odteste_historia` é preservado.
+- Livros do Sineiro que já existem viram livro comum com o texto salvo.
+
+## Próximo passo
+Lore: o chamado na mata e a travessia. Primeiro conteúdo novo só com prévia aprovada.

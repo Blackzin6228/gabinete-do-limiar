@@ -1,0 +1,14 @@
+build/
+.gradle/
+run/
+*.iml
+.idea/
+out/
+libs/
+
+# cópias de trabalho das mesas (git worktree)
+.mesas/
+
+# cache do graphify (o grafo em graphify-out/ vai no git)
+graphify-out/cache/
+__pycache__/
