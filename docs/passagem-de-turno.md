@@ -37,5 +37,10 @@ as respostas do Nikolas; nenhum código nem ID novo ainda.
 Plano técnico em `docs/rituais.md`. **Não aprovado**: espera as 5 perguntas do Nikolas e a arte dos sigilos
 (Mesa Modelador). Nenhum código nem ID novo ainda. Máquinas marcadas "a confirmar".
 
+## Sigilos de giz (Modelador, 15/11/2026)
+Prévia em `docs/previas/sigilos-v1.png` (alfabeto A–Z, 0–9, 5 elementos, 5 tipos de ritual, círculo de exemplo).
+Tudo sai de `ferramentas/previas/sigilos_v1.py` (`--conferir` prova os md5); PNGs em `arte/sigilos-v1/` (fora do jar).
+**Não aprovada**: nada no jogo, nenhum ID novo. A regra do alfabeto está no topo do script.
+
 ## Próximo passo
 Lore: o chamado na mata e a travessia. Primeiro conteúdo novo só com prévia aprovada.
