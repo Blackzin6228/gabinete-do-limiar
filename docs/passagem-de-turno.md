@@ -30,7 +30,7 @@ Mod novo montado a partir do Od-Teste `b488cc6` (o jar que está no servidor). A
 - Falta: print da tela do crachá aberto, feito pelo Nikolas no jogo.
 
 ## Relíquias (lore, 15/11/2026)
-Proposta das 8 relíquias, materiais, máquinas que falham e armadura em `docs/reliquias-v1.md`. **Não aprovada**: espera
+Proposta das 4 relíquias (as 4 espadas únicas), 12 artefatos de afinidade, materiais, máquinas que falham e armadura em `docs/reliquias-v1.md`. **Não aprovada**: espera
 as respostas do Nikolas; nenhum código nem ID novo ainda.
 
 ## Próximo passo
