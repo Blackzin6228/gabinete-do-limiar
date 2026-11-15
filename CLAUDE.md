@@ -17,8 +17,8 @@ criaturas, magias, artefatos, sinais, cenas e estruturas ficaram **arquivados** 
 3. **`efeitos_fortes` sempre respeitado**: todo efeito de tela diminui com ele (diminui, não desliga).
 4. **Tem de funcionar com shader do Iris**: efeito de tela passa pela `cliente/FxTela`; testar com e sem shader pack.
 5. **Nenhum número na tela do jogador.** Números só para admin/mestre.
-6. Elementos de Ordem Paranormal (Sangue, Morte, Conhecimento, Energia, Medo) podem; arte, símbolos, personagens e
-   textos da obra não. Arte própria.
+6. Entidades, elementos e casos de Ordem Paranormal podem ser usados pelo nome (decisão do Nikolas, 15/11/2026).
+   Texto, arte e símbolos do livro não: tudo é escrito e desenhado por nós.
 7. Integração sem dependência dura: código de outro mod só em `compat/<mod>/`, atrás de `Compat.Integracao.X.ligada()`.
 8. **IDs são para sempre**: todo ID novo entra em `docs/ids.md` no mesmo PR. Dado salvo que sai do código continua
    registrado (ver `dados/DadosGuardados`), senão o NeoForge apaga do jogador.
