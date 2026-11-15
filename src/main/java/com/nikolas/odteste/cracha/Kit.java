@@ -4,7 +4,9 @@ import com.nikolas.odteste.dados.DadosJogador;
 import com.nikolas.odteste.dados.IdsDados;
 import com.nikolas.odteste.historia.livros.LivrosHistoria;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
@@ -30,6 +32,11 @@ public final class Kit {
     }
 
     private static void entregar(ServerPlayer p, ItemStack item) {
-        if (!p.getInventory().add(item)) p.drop(item, false);
+        if (p.getInventory().add(item)) return;
+        // Cheio: cai no pé do jogador, parado (nada de jogar para a frente na altura dos olhos).
+        ItemEntity solto = new ItemEntity(p.level(), p.getX(), p.getY(), p.getZ(), item);
+        solto.setDeltaMovement(Vec3.ZERO);
+        solto.setDefaultPickUpDelay();
+        p.level().addFreshEntity(solto);
     }
 }

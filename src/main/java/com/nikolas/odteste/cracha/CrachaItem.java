@@ -1,8 +1,8 @@
 package com.nikolas.odteste.cracha;
 
-import com.nikolas.odteste.cliente.CrachaCliente;
 import com.nikolas.odteste.registro.Registro;
 import java.util.List;
+import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -15,6 +15,9 @@ import net.minecraft.world.level.Level;
 
 /** Crachá do Gabinete: guarda o dono e, ao usar, abre o cartão na tela (só no cliente). */
 public class CrachaItem extends Item {
+    /** Gancho da tela. Fica vazio no servidor; o {@code OdModCliente} troca por quem abre a tela. */
+    public static volatile Consumer<CrachaDados> abrirTela = dados -> {};
+
     public CrachaItem(Properties propriedades) {
         super(propriedades);
     }
@@ -24,8 +27,8 @@ public class CrachaItem extends Item {
         ItemStack item = jogador.getItemInHand(mao);
         CrachaDados dados = item.get(Registro.CRACHA_DADOS);
         if (dados == null) return InteractionResultHolder.pass(item);
-        // A tela mora em cliente/ e só é tocada no lado do cliente: o servidor dedicado nunca a carrega.
-        if (mundo.isClientSide) CrachaCliente.abrir(dados);
+        // Código comum não conhece cliente/: quem abre a tela é o gancho que o cliente registra ao iniciar.
+        if (mundo.isClientSide) abrirTela.accept(dados);
         return InteractionResultHolder.sidedSuccess(item, mundo.isClientSide);
     }
 
