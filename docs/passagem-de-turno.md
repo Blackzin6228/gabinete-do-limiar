@@ -21,5 +21,13 @@ Mod novo montado a partir do Od-Teste `b488cc6` (o jar que está no servidor). A
 - Dados dos jogadores ficam (inclusive Marca etc., guardados sem uso). O arquivo `odteste_historia` é preservado.
 - Livros do Sineiro que já existem viram livro comum com o texto salvo.
 
+## Etapa 2 (15/11/2026): crachá e dossiê
+- Item `odteste:cracha` (dono no componente `cracha_dados`); botão direito abre o cartão na tela (`cliente/TelaCracha`).
+  Cartão: mestre (lista da config) > elemento revelado (limpo) > lotação borrada. Atualiza no login e quando o
+  elemento é definido ou revelado.
+- Kit na primeira entrada (flag `recebeu_kit`): crachá + livro `dossie`. Quem já joga recebe no próximo login.
+  `/odteste kit dar|esquecer <jogadores>`.
+- Falta: print da tela do crachá aberto, feito pelo Nikolas no jogo.
+
 ## Próximo passo
 Lore: o chamado na mata e a travessia. Primeiro conteúdo novo só com prévia aprovada.

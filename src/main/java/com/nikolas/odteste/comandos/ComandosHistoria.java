@@ -54,6 +54,7 @@ public final class ComandosHistoria {
         d.register(Commands.literal("odteste").requires(s -> s.hasPermission(2))
                 .then(grupo())
                 .then(ComandosLivros.livro())
+                .then(ComandosKit.kit())
                 .then(ComandosElemento.elemento()));
     }
 

@@ -16,6 +16,9 @@ Os testes conferem esta lista.
 | `odteste:exposicao_repeticao` | dado do jogador (mapa `fonte/elemento` → [início, vezes]) | freio de repetição; fontes: `criatura_vista`, `criatura_luta`, `criatura_morta`, `reliquia_pegar`, `reliquia_usar`, `ritual`, `dimensao`, `aparicao` |
 | `odteste:elemento` | dado do jogador (`nenhum`, `sangue`, `conhecimento`, `morte`, `energia`) | definido pelo admin; **nunca vai para o cliente** |
 | `odteste:elemento_revelado` | dado do jogador (sim/não) | trocar o elemento volta para "não"; nunca vai para o cliente |
+| `odteste:recebeu_kit` | dado do jogador (sim/não) | já recebeu crachá e dossiê na primeira entrada; `/odteste kit esquecer` zera; sobrevive à morte |
+| `odteste:cracha` | item (pilha de 1) | Crachá do Gabinete; abre o cartão na tela ao usar; sem aba criativa (precisa de dono) |
+| `odteste:cracha_dados` | componente de dados do item (dono UUID, nome, mestre, elemento só se revelado) | sincroniza com o cliente; o elemento só entra depois de revelado |
 | `odteste:lucidez_lentidao` | modificador de velocidade (temporário, não salvo) | Lucidez Quebrando com luz 7 ou menos: −8% |
 | `odteste:paranormal` | tag de tipo de dano e tag de criatura (hoje vazias) | dano paranormal pesa mais na Lucidez |
 | `odteste:comida_quente` | tag de item (`"replace": false`) | comer na luz com o grupo devolve Lucidez |
@@ -28,7 +31,7 @@ Os testes conferem esta lista.
 | `odteste_mestre` | tag vanilla do jogador | quem tem nunca leva susto sozinho |
 | `odteste_historia` | dado do mundo (`data/odteste_historia.dat`) | o mod usa só `grupos` (`nome`, `membros`, `marcos`); **o resto do arquivo é guardado e escrito de volta igual** (vilas, âncoras, colocações com backup da Vila Calada etc.) |
 | `odteste_livros_lidos` | dado do mundo (`data/odteste_livros_lidos.dat`) | quem já abriu cada livro |
-| `odteste:livro` | chave do custom_data do livro de história (`minecraft:written_book`) | o valor é o id do livro = nome do arquivo em `data/odteste/odteste_livros/` (hoje nenhum) |
+| `odteste:livro` | chave do custom_data do livro de história (`minecraft:written_book`) | o valor é o id do livro = nome do arquivo em `data/odteste/odteste_livros/` (hoje `dossie`, entregue no kit) |
 | `efeitos_fortes` | config do cliente (`config/odteste-client.toml`: `LIGADO`, `SUAVE`, `DESLIGADO`) | diminui, não desliga (`DESLIGADO` vale como Mínimo) |
 | `intensidade` | config do cliente (mesmo arquivo; 50–100, padrão 100) | intensidade da camada de horror |
 | `mestre.mestres` | config do servidor (`serverconfig/odteste-mestre-server.toml`, seção `[mestre]`) | nomes separados por vírgula; vazio = todo op |

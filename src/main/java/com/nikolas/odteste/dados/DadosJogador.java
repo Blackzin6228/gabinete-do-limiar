@@ -72,7 +72,23 @@ public final class DadosJogador {
                     .copyOnDeath()
                     .build());
 
+    /** Já recebeu o kit (crachá e dossiê)? Fica salvo; morrer não devolve nem tira. */
+    public static final Supplier<AttachmentType<Boolean>> RECEBEU_KIT = Registro.DADOS.register(
+            IdsDados.RECEBEU_KIT,
+            () -> AttachmentType.builder(() -> false)
+                    .serialize(Codec.BOOL)
+                    .copyOnDeath()
+                    .build());
+
     private DadosJogador() {}
+
+    public static boolean recebeuKit(Player p) {
+        return p.getData(RECEBEU_KIT);
+    }
+
+    public static void marcarKit(Player p, boolean recebeu) {
+        p.setData(RECEBEU_KIT, recebeu);
+    }
 
     /** Força o carregamento da classe, para os registros entrarem antes do evento de registro. */
     public static void iniciar() {}
