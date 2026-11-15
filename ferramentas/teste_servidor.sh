@@ -7,8 +7,17 @@ set -euo pipefail
 JAR="$(realpath "$1")"
 PASTA="$(realpath -m "${2:-servidor-teste}")"
 NEO="${NEO_VERSION:-21.1.262}"
-# Endereço do pack.toml do Conguitos ATM10: vem de fora (variável PACK_URL do repositório no GitHub), não do arquivo.
-PACK_URL="${PACK_URL:?Defina PACK_URL com o endereço do pack.toml (no Actions: variável PACK_URL do repositório)}"
+# Endereço do pack.toml do Conguitos ATM10: vem de fora (Secret PACK_URL do repositório no GitHub), não do arquivo.
+# Nunca é impresso: o log do packwiz passa por esconder_pack antes de aparecer ou virar artefato.
+PACK_URL="${PACK_URL:?Defina PACK_URL com o endereço do pack.toml (no Actions: Secret PACK_URL do repositório)}"
+PACK_PASTA="${PACK_URL%/*}"
+esconder_pack() {  # troca o endereço do pack por <pack> no arquivo
+  local texto
+  texto="$(<"$1")"
+  texto="${texto//"$PACK_URL"/<pack>}"
+  texto="${texto//"$PACK_PASTA"/<pack>}"
+  printf '%s\n' "$texto" > "$1"
+}
 BOOT_URL="https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
 LIMITE_SEG="${LIMITE_SEG:-1500}"    # 25 minutos para ligar (ATM10 é grande)
 MEMORIA="${MEMORIA:-10G}"
@@ -33,7 +42,10 @@ curl -fsSL --retry 3 -o packwiz-installer-bootstrap.jar "$BOOT_URL"
 curl -fsSL --retry 3 -o packwiz-installer.jar https://github.com/packwiz/packwiz-installer/releases/latest/download/packwiz-installer.jar
 baixou=0
 for tentativa in 1 2 3; do
-  if java -jar packwiz-installer-bootstrap.jar -g -s server --bootstrap-no-update --bootstrap-main-jar packwiz-installer.jar "$PACK_URL" > packwiz.log 2>&1; then baixou=1; break; fi
+  ok=0
+  java -jar packwiz-installer-bootstrap.jar -g -s server --bootstrap-no-update --bootstrap-main-jar packwiz-installer.jar "$PACK_URL" > packwiz.log 2>&1 && ok=1
+  esconder_pack packwiz.log
+  if [[ $ok == 1 ]]; then baixou=1; break; fi
   echo "packwiz falhou (tentativa $tentativa):"; grep -m5 -i "error\|failed\|excluded" packwiz.log || tail -5 packwiz.log
   sleep 10
 done

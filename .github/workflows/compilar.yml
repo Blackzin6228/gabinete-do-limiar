@@ -99,10 +99,13 @@ jobs:
 
       - name: Ligar o servidor (falha se crashar)
         env:
-          # Endereço do pack.toml. O certo é o Secret PACK_URL (o log esconde); a variável PACK_URL é só reserva
-          # até o Nikolas criar o Secret (Settings > Secrets and variables > Actions) e apagar a variável.
-          PACK_URL: ${{ secrets.PACK_URL || vars.PACK_URL }}
+          # Endereço do pack.toml: só do Secret PACK_URL (Settings > Secrets and variables > Actions > Secrets).
+          # Nunca imprimir o valor; a máscara abaixo também esconde a pasta do pack nos logs.
+          PACK_URL: ${{ secrets.PACK_URL }}
         run: |
+          if [ -z "$PACK_URL" ]; then echo "::error::Falta o Secret PACK_URL no repositório."; exit 1; fi
+          echo "::add-mask::$PACK_URL"
+          echo "::add-mask::${PACK_URL%/*}"
           JAR=$(ls jar/*.jar | grep -v -- '-sources' | head -1)
           bash ferramentas/teste_servidor.sh "$JAR" servidor-teste
 
