@@ -43,6 +43,7 @@ Documento só quando ajudar a próxima mesa. Nada de documento gigante. O estado
   (precisa de ~12 GB de RAM e da variável `PACK_URL`).
 - Commits em português, curtos, dizendo o que mudou para quem joga.
 - Grafo do código (se existir `graphify-out/`): `graphify query` antes de buscar; `graphify update .` depois de mexer.
+- As skills de Minecraft em .claude/skills foram escritas para Minecraft 26.x; este mod é NeoForge 1.21.1. Quando a skill e o código do projeto discordarem, vale o código do projeto e a API do NeoForge 1.21.1.
 
 ## Onde está cada coisa (`src/main/java/com/nikolas/odteste/`)
 - `horror/` camada de horror (servidor: áreas e sustos) · `cliente/` névoa, céu, luz, música, sustos, shader.

@@ -6,3 +6,4 @@ Os jogadores são agentes do Gabinete do Limiar: atenderam um chamado na mata e 
 
 - Mod id: `odteste` (fica igual ao mod antigo, para o mundo do servidor continuar funcionando).
 - Regras para quem mexe: `CLAUDE.md`. Estado atual: `docs/passagem-de-turno.md`.
+- Skills de Minecraft em `.claude/skills/`: de Jahrome907, [minecraft-agent-skills](https://github.com/Jahrome907/minecraft-agent-skills), licença MIT (`.claude/skills/LICENSE-minecraft-agent-skills`).
