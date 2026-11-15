@@ -8,6 +8,10 @@ libs/
 
 # cópias de trabalho das mesas (git worktree)
 .mesas/
+.worktrees/
+
+# anotações de trabalho de cada mesa (nunca vão para o git)
+NOTAS-DA-TAREFA.md
 
 # cache do graphify (o grafo em graphify-out/ vai no git)
 graphify-out/cache/

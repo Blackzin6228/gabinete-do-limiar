@@ -25,10 +25,12 @@ criaturas, magias, artefatos, sinais, cenas e estruturas ficaram **arquivados** 
 9. Nada de lag: nada pesado por tick, nenhum laço sem teto em jogadores ou entidades.
 10. Lado cliente só em `cliente/` (nunca carregado no servidor). Traduções em `pt_br.json` **e** `en_us.json`.
 11. Venda só de cosmético. Se uma ideia depende de venda, marcar no PR.
+12. **Estruturas sem geração de mundo.** O terreno já existe. Estrutura da história entra por evento ou comando
+    de admin, sem destruir construção de jogador.
 
 ## Segurança
 - **Nunca** pôr senha, token, e-mail ou endereço do servidor em arquivo do repositório. Segredos só em *Secrets*,
-  e quem cola é o Nikolas. O endereço do pack fica na variável `PACK_URL` do repositório, não em arquivo.
+  e quem cola é o Nikolas. O endereço do pack fica no Secret `PACK_URL` do repositório, nunca em arquivo nem em log.
 - **Nada vai para o servidor sem backup e sem o Nikolas pedir.**
 - Nunca remover mods do pack. WATERMeDIA e o plugin do YouTube nunca vão para o servidor.
 
@@ -40,7 +42,7 @@ Documento só quando ajudar a próxima mesa. Nada de documento gigante. O estado
 - Branch `mesa-<mesa>/<assunto>`, PR para o `main`. O PR só entra com o Actions verde (compila, testa e liga um
   servidor com o pack inteiro).
 - `./gradlew build` compila e testa. `bash ferramentas/teste_servidor.sh build/libs/<jar>` liga o servidor com o pack
-  (precisa de ~12 GB de RAM e da variável `PACK_URL`).
+  (precisa de ~12 GB de RAM e de `PACK_URL` no ambiente; no Actions vem do Secret).
 - Commits em português, curtos, dizendo o que mudou para quem joga.
 - Grafo do código (se existir `graphify-out/`): `graphify query` antes de buscar; `graphify update .` depois de mexer.
 - As skills de Minecraft em .claude/skills foram escritas para Minecraft 26.x; este mod é NeoForge 1.21.1. Quando a skill e o código do projeto discordarem, vale o código do projeto e a API do NeoForge 1.21.1.
