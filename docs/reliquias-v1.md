@@ -1,6 +1,6 @@
 # Relíquias v1
 
-Lore e regras, já com as respostas do Nikolas de 15/11/2026 (19h40). **Ainda não virou código.** Os IDs são sugestão e
+Lore e regras, já com as respostas do Nikolas de 15/11/2026 (19h40 e 20h10). **Ainda não virou código.** Os IDs são sugestão e
 só entram em `docs/ids.md` quando alguém for implementar. Nomes de entidades e casos de Ordem Paranormal podem ser
 usados; texto, arte, símbolos e **nomes de personagens** do livro não. Onde não tenho certeza do que o livro diz, está
 marcado [conferir no livro] e a ficha usa só a nossa versão.
@@ -88,38 +88,39 @@ modelagem e depois decide como funcionam. Nada definido aqui: nem lista, nem efe
 ---
 
 ## 12 artefatos
-**Qualquer jogador pega e usa.** Não há trava nem penalidade por elemento. Cada artefato tem um **buff** e um
+**Qualquer jogador pega e usa.** Todos são **achados em baús** de dungeons e estruturas (loot): não saem de ritual,
+máquina, entidade nem de lugar fixo. A coluna "Onde se acha" só diz que tipo de lugar combina; **não cria
+estrutura nem ID**. Não há trava nem penalidade por elemento. Cada artefato tem um **buff** e um
 **debuff**. Ficam no **slot de acessório do Curios**: Curios a confirmar no pack (a lista base do Conguitos-ATM10 só
 aponta o zip do ATM10 8.5 e não deixa ver os mods). "Afinidade" aumenta a força das magias daquele elemento (escola
 própria no Iron's Spells [conferir na versão do Iron's do pack], decisão de 14/11). Dois artefatos do mesmo elemento
 somam com freio (o terceiro rende pouco). Nenhum tem nome de personagem.
 
-| # | Nome | Elemento | Objeto (16x16) | Buff | Debuff | Onde se acha |
+| # | Nome | Elemento | Objeto (16x16) | Buff | Debuff | Onde se acha (baú) |
 |---|------|----------|----------------|------|--------|--------------|
-| 1 | Seringa Velha | Sangue | seringa de vidro, êmbolo marrom, líquido escuro | afinidade; usar sacrifica 1 coração para dar Força por 30 s | vida; Exposição | banco de sangue do hospital do Outro Lado |
-| 2 | Luva de Açougueiro | Sangue | luva de borracha amarela, dedos manchados | afinidade; golpes comuns também sangram | fome em cada acerto | ritual de Sangue; mochila de açougue |
-| 3 | Medalha de Doador | Sangue | medalha com gota vermelha, fita gasta | afinidade; abaixo de 3 corações regenera aos poucos | Lucidez sobe de custo quando regenera | recompensa de entidade de Sangue vencida |
-| 4 | Óculos de Velório | Morte | óculos de grau, aro preto, lente rachada | afinidade; vê o paranormal (contorno só no cliente, invisíveis aparecem) | Exposição enquanto usa; visões | cemitério da história |
-| 5 | Moeda de Defunto | Morte | moeda escura sobre dois pixels de olho | afinidade; 1x por noite, golpe fatal deixa meio coração e monstros esquecem você 5 s | Lucidez; esfria até a noite seguinte | corpo achado no Outro Lado |
-| 6 | Vela de Sétimo Dia | Morte | toco de vela branca, chama azul | afinidade; acesa, enfraquece mortos-vivos perto | vela gasta durabilidade; Lucidez em cova | ritual de Morte com Sal de Velório |
-| 7 | Lupa do Arquivo Morto | Conhecimento | lupa de latão, vidro embaçado | afinidade; revela trechos escondidos de livros | Lucidez por revelação | arquivo da história |
-| 8 | Caneta Sem Tinta | Conhecimento | caneta esferográfica seca, tampa mordida | afinidade; magias de Conhecimento recarregam mais rápido | esquece uma coisa: perde uma marcação de mapa ao usar | mesa de escola do Outro Lado |
-| 9 | Fita Sem Etiqueta | Conhecimento | fita cassete emendada com durex | afinidade; tocar com livro ou peça na mão revela uma verdade, 1 por noite | resposta traz uma frase a mais; Lucidez | gravador em sala de aula do Outro Lado |
-| 10 | Uma Barra de Sinal | Energia | celular de tela rachada, capinha amarela | afinidade; recarrega itens com energia; pulso atordoa criaturas perto | durabilidade; toca sozinho de noite | torre de celular do Outro Lado |
-| 11 | Fusível Queimado | Energia | fusível de vidro, fio preto | afinidade; máquinas de Avaritia e Mekanism por perto falham menos | Exposição quando uma máquina falha | a decidir (ver "Em aberto") |
-| 12 | Radinho de Pilha | Energia | rádio pequeno, antena torta | afinidade; chiado mais alto perto de perigo (só som) | Lucidez em silêncio; vozes no chiado | casa abandonada do Outro Lado |
+| 1 | Seringa Velha | Sangue | seringa de vidro, êmbolo marrom, líquido escuro | afinidade; usar sacrifica 1 coração para dar Força por 30 s | vida; Exposição | baú de dungeon/estrutura (combina: hospital ou clínica abandonada) |
+| 2 | Luva de Açougueiro | Sangue | luva de borracha amarela, dedos manchados | afinidade; golpes comuns também sangram | fome em cada acerto | baú de dungeon/estrutura (combina: açougue ou frigorífico abandonado) |
+| 3 | Medalha de Doador | Sangue | medalha com gota vermelha, fita gasta | afinidade; abaixo de 3 corações regenera aos poucos | Lucidez sobe de custo quando regenera | baú de dungeon/estrutura (combina: posto de coleta, abrigo) |
+| 4 | Óculos de Velório | Morte | óculos de grau, aro preto, lente rachada | afinidade; vê o paranormal (contorno só no cliente, invisíveis aparecem) | Exposição enquanto usa; visões | baú de dungeon/estrutura (combina: cemitério, capela) |
+| 5 | Moeda de Defunto | Morte | moeda escura sobre dois pixels de olho | afinidade; 1x por noite, golpe fatal deixa meio coração e monstros esquecem você 5 s | Lucidez; esfria até a noite seguinte | baú de dungeon/estrutura (combina: ruína, vala, casa de velório) |
+| 6 | Vela de Sétimo Dia | Morte | toco de vela branca, chama azul | afinidade; acesa, enfraquece mortos-vivos perto | vela gasta durabilidade; Lucidez em cova | baú de dungeon/estrutura (combina: capela, casa de velório) |
+| 7 | Lupa do Arquivo Morto | Conhecimento | lupa de latão, vidro embaçado | afinidade; revela trechos escondidos de livros | Lucidez por revelação | baú de dungeon/estrutura (combina: arquivo, biblioteca) |
+| 8 | Caneta Sem Tinta | Conhecimento | caneta esferográfica seca, tampa mordida | afinidade; magias de Conhecimento recarregam mais rápido | esquece uma coisa: perde uma marcação de mapa ao usar | baú de dungeon/estrutura (combina: escola abandonada) |
+| 9 | Fita Sem Etiqueta | Conhecimento | fita cassete emendada com durex | afinidade; tocar com livro ou peça na mão revela uma verdade, 1 por noite | resposta traz uma frase a mais; Lucidez | baú de dungeon/estrutura (combina: escola, rádio) |
+| 10 | Uma Barra de Sinal | Energia | celular de tela rachada, capinha amarela | afinidade; recarrega itens com energia; pulso atordoa criaturas perto | durabilidade; toca sozinho de noite | baú de dungeon/estrutura (combina: torre, subestação) |
+| 11 | Fusível Queimado | Energia | fusível de vidro, fio preto | afinidade; máquinas de Avaritia e Mekanism por perto falham menos | Exposição quando uma máquina falha | baú de dungeon/estrutura (combina: oficina, subestação) |
+| 12 | Radinho de Pilha | Energia | rádio pequeno, antena torta | afinidade; chiado mais alto perto de perigo (só som) | Lucidez em silêncio; vozes no chiado | baú de dungeon/estrutura (combina: casa abandonada) |
 
 ---
 
 ## Materiais paranormais
 1. **Estilhaço do Limiar** (`odteste:estilhaco_do_limiar`): vai no Catalisador do Infinito (Re:Avaritia; custo decidido:
-   1 ATM Star + singularidades + este material). Origem: a decidir (ver "Em aberto").
-2. **Cinza de Relíquia** (`odteste:cinza_de_reliquia`): nascia do selamento de uma espada, que saiu desta versão. Uso a
-   decidir.
-3. **Sal de Velório** (`odteste:sal_de_velorio`): sal de lugares onde alguém foi velado. Círculo de proteção (impede
-   susto grande por uma noite). Achado em casas de apoio do Outro Lado.
+   1 ATM Star + singularidades + este material). Origem: **a decidir** (ver "Em aberto").
+2. **Cinza de Relíquia** (`odteste:cinza_de_reliquia`): nascia do selamento de uma espada, que saiu desta versão. **Sem uso por
+   enquanto** (fica registrada).
+3. **Sal de Velório** (`odteste:sal_de_velorio`): sal de lugares onde alguém foi velado. Reduz o risco das máquinas (sem ritual). Achado em casas de apoio do Outro Lado.
 4. **Cera Negra** (`odteste:cera_negra`): vela derretida de entidade vencida. Era o lacre das espadas, que saiu desta
-   versão. Uso a decidir.
+   versão. **Sem uso por enquanto** (fica registrada).
 
 ## Máquinas que falham (Re:Avaritia e Mekanism)
 - Por enquanto elas **só falham**, como evento do paranormal influenciando a máquina: pausam um ciclo e geram um susto ou
@@ -128,11 +129,12 @@ somam com freio (o terceiro rende pouco). Nenhum tem nome de personagem.
 - Sem lag: a falha é decidida **quando a máquina termina um ciclo** (evento), com sorteio barato e **uma checagem por
   máquina a cada 60 s**, no máximo. Teto: 1 falha por jogador a cada 10 min e no máximo 4 máquinas arriscadas por
   jogador na conta (as outras são seguras). Código de outro mod só em `compat/mekanism` e `compat/reavaritia`.
-- Mais energia movida, mais risco. Sal de Velório e o Fusível Queimado reduzem o risco.
+- Mais energia movida, mais risco. Sal de Velório e o Fusível Queimado (artefato achado em baú: buff nas máquinas,
+  debuff quando uma falha acontece) reduzem o risco. A falha da máquina não gera item.
 
 ## Giz e sigilos
-Giz único. Os sigilos são aprendidos aos poucos, achando coisas de eventos espalhados pelo mundo. Detalhes em
-`docs/rituais.md`.
+Giz único. O ritual com giz serve **só para magias**: não faz craft e não gera item. Os sigilos são aprendidos aos
+poucos, achando coisas de eventos espalhados pelo mundo. Detalhes em `docs/rituais.md`.
 
 ## Armadura do Limiar (só ideia)
 - Protege do paranormal (menos Exposição, Lucidez cai mais devagar), **não do dano comum**. Peças vêm da história.
@@ -142,5 +144,4 @@ Giz único. Os sigilos são aprendidos aos poucos, achando coisas de eventos esp
   do jogador e custa peso (lentidão).
 
 ## Em aberto
-De onde saem o **Estilhaço do Limiar** e o **Fusível Queimado**, já que nasciam da falha das máquinas e agora elas não
-soltam material? **A decidir.**
+De onde sai o **Estilhaço do Limiar**? Ele nascia da falha das máquinas, que agora não soltam material. **A decidir.**

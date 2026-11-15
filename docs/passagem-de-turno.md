@@ -37,7 +37,8 @@ Em `docs/reliquias-v1.md`. Nenhum código nem ID novo ainda.
 - **Artefatos (12):** qualquer jogador usa, cada um com buff e debuff, no slot de acessório do Curios (Curios a
   confirmar no pack).
 - **Máquinas** (Re:Avaritia, Mekanism): só falham (pausa e susto/visão), sem soltar material.
-- **Em aberto:** de onde saem o Estilhaço do Limiar e o Fusível Queimado.
+- Artefatos em baú; ritual só magia.
+- **Em aberto:** de onde sai o Estilhaço do Limiar.
 
 ## Rituais e sigilos
 - Plano técnico em `docs/rituais.md` (mesa Dev). O PR #8 está sendo atualizado pela mesa Dev. Giz único; sigilos
