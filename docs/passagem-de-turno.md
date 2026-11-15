@@ -33,5 +33,9 @@ Mod novo montado a partir do Od-Teste `b488cc6` (o jar que está no servidor). A
 Proposta das 4 relíquias (as 4 espadas únicas), 12 artefatos de afinidade, materiais, máquinas que falham e armadura em `docs/reliquias-v1.md`. **Não aprovada**: espera
 as respostas do Nikolas; nenhum código nem ID novo ainda.
 
+## Rituais com giz (plano, 15/11/2026, mesa Dev)
+Plano técnico em `docs/rituais.md`. **Não aprovado**: espera as 5 perguntas do Nikolas e a arte dos sigilos
+(Mesa Modelador). Nenhum código nem ID novo ainda. Máquinas marcadas "a confirmar".
+
 ## Próximo passo
 Lore: o chamado na mata e a travessia. Primeiro conteúdo novo só com prévia aprovada.
