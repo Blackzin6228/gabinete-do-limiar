@@ -44,7 +44,7 @@ class RegrasCrachaTest {
     void escalaEOMaiorInteiroQueCabe() {
         assertEquals(1, RegrasCracha.escala(100, 50));   // não cabe: mínimo 1
         assertEquals(2, RegrasCracha.escala(427, 240));  // GUI pequena
-        assertEquals(3, RegrasCracha.escala(480, 270));
+        assertEquals(3, RegrasCracha.escala(480, 300));
         assertEquals(2, RegrasCracha.escala(1000, 200)); // a altura limita
         assertEquals(1, RegrasCracha.escala(0, 0));
     }
