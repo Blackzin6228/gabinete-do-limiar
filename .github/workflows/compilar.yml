@@ -49,8 +49,12 @@ jobs:
       - name: Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Conferir o baixar_libs.sh
+        run: bash -n ferramentas/baixar_libs.sh && shellcheck ferramentas/baixar_libs.sh
+
+      # Mesma ordem do Actions do Conguitos-ATM10: baixar_libs.sh e depois o build.
       - name: Compilar e testar
-        run: ./gradlew build --no-daemon
+        run: bash ferramentas/baixar_libs.sh && ./gradlew build --no-daemon
 
       - name: Guardar o jar
         uses: actions/upload-artifact@v4
