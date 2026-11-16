@@ -1,0 +1,6 @@
+{
+  "parent": "odteste:block/sigilo_base",
+  "textures": {
+    "sigilo": "odteste:block/sigilo/sigilo_de_morte"
+  }
+}

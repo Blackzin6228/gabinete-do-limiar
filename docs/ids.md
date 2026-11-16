@@ -52,12 +52,13 @@ Os testes conferem esta lista.
 |---|---|---|
 | `odteste:giz` | item (durabilidade 64) | giz único; sem aba criativa; botão direito no chão abre a tela dos sigilos aprendidos |
 | `odteste:sigilo` | bloco (sem item, sem drop) | desenho riscado no chão, fino, sem colisão, quebra num golpe, luz 3; sem block entity |
-| `simbolo` | propriedade do bloco `odteste:sigilo` | **42 nomes, para sempre**: `letra_a` a `letra_z`, `digito_0` a `digito_9`, `elemento_sangue`, `elemento_morte`, `elemento_conhecimento`, `elemento_energia`, `elemento_medo`, `ritual_poder` (arte v1 da Modelador) |
+| `simbolo` | propriedade do bloco `odteste:sigilo` | **46 nomes, para sempre** (os da tabela `docs/nomes-pacote-1.md`): `sigilo_a` a `sigilo_z`, `sigilo_0` a `sigilo_9`, `sigilo_de_sangue`, `sigilo_de_morte`, `sigilo_de_conhecimento`, `sigilo_de_energia`, `sigilo_de_medo`, `sigilo_de_invocacao`, `sigilo_de_protecao`, `sigilo_de_banimento`, `sigilo_de_passagem`, `sigilo_de_revelacao`. Os 5 de elemento têm efeito; os outros só aparecem. Textura 32x32 em `textures/block/sigilo/<nome>.png` (hoje placeholder da arte v1). Troca de 15/11/2026: os nomes antigos (`letra_a`, `elemento_sangue`, `ritual_poder`...) saíram antes de qualquer envio ao servidor |
 | `giro` | propriedade do bloco `odteste:sigilo` | 0 a 3 (quartos de volta) |
 | `odteste:sigilos_conhecidos` | dado do jogador (lista de nomes de `simbolo`) | sigilos aprendidos; sobrevive à morte; nome desconhecido ou repetido some ao ler; **nunca vai para o cliente** (a tela recebe só a lista ao abrir) |
 | `odteste:abrir_tela_sigilo` | pacote servidor → jogador | posição do bloco clicado e os sigilos aprendidos |
 | `odteste:desenhar_sigilo` | pacote jogador → servidor | posição, sigilo e giro; o servidor confere giz, sigilo aprendido, distância (6 blocos), espaço livre e 1 pedido por segundo |
 | `/odteste sigilo ensinar\|esquecer <jogador> <sigilo\|todos>` · `lista <jogador>` | comando de admin (permissão 2) | ensina/tira sigilo; método para eventos do mundo: `Sigilos.aprender(jogador, nome)` |
+| `odteste-sigilos-server.toml` · seção `[sigilos]` | config do servidor | efeito dos sigilos de elemento (clique com a mão vazia): `raio` (5), `duracao_s` (10), `custo_sanidade`, `espera_s`, `max_alvos`; valem para os cinco sigilos |
 
 ### Máquinas que falham (pacote 1)
 

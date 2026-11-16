@@ -1,6 +1,0 @@
-{
-  "parent": "odteste:block/sigilo_base",
-  "textures": {
-    "sigilo": "odteste:block/sigilo/letra_y"
-  }
-}

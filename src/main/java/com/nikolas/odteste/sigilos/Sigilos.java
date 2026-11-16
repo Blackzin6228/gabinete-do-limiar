@@ -35,6 +35,7 @@ public final class Sigilos {
     private Sigilos() {}
 
     public static void iniciar() {
+        AtivacaoSigilo.iniciar();
         NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedOutEvent e) -> ULTIMO_RISCO.remove(e.getEntity().getUUID()));
         NeoForge.EVENT_BUS.addListener((ServerStoppedEvent e) -> ULTIMO_RISCO.clear());
     }

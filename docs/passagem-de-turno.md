@@ -46,6 +46,20 @@ Em `docs/reliquias-v1.md`. Nenhum código nem ID novo ainda.
 - Em breve (TODO): afinidade (magias), Caneta, Fita, Fusível, mapa da Sentença, visões na tela (precisam de prévia).
 - Não testado no jogo: os efeitos, o contorno e o slot do Curios.
 
+## Pacote 1, sistemas (mesa Dev 2, branch `pacote-1/sistemas`, sem PR: o Integrador junta)
+- **Etapa 1:** máquinas que falham (Mekanism e Re:Avaritia), giz + tela só com sigilos aprendidos, `/odteste sigilo`.
+- **Etapa 2 (15/11/2026, 22h18, decisão do Nikolas):** os sigilos de elemento agora têm EFEITO (isso troca a decisão
+  "o sigilo só brilha"). Mão vazia no sigilo: efeito uma vez, raio 5, 10 s, cobra Sanidade e o desenho se apaga.
+  Sangue (Sangramento nos monstros + Força), Morte (Definhamento), Conhecimento (brilho em tudo + Visão Noturna),
+  Energia (Lentidão forte + Fraqueza por 3 s + Velocidade), Medo (Cegueira + Lentidão em todos, até em quem ativou).
+  Jogador do mesmo grupo é poupado (menos no Medo). Config `odteste-sigilos-server.toml`.
+- Nomes e IDs dos 46 sigilos vêm de `docs/nomes-pacote-1.md` (`sigilo_a`, `sigilo_de_sangue`...). Textura 32x32
+  (placeholder: arte v1 ampliada por `ferramentas/gerar_sigilos.py`; a Modelador entrega os arquivos finais).
+- Na tela, Lucidez virou "Sanidade" (só texto; ID, dado e comando iguais).
+- **Pendente:** o Nikolas confirmar os 5 tipos de ritual (invocação, proteção, banimento, passagem, revelação); eles
+  ainda não fazem nada. Os tooltips da tabela falam de custo de vida/Exposição; o código só cobra Sanidade (como pedido).
+  Não testado no jogo (efeitos, partículas e sons).
+
 ## Rituais e sigilos
 - Plano técnico em `docs/rituais.md` (mesa Dev). O PR #8 está sendo atualizado pela mesa Dev. Giz único; sigilos
   aprendidos aos poucos em eventos pelo mundo.

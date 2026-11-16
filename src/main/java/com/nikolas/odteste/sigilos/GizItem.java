@@ -1,6 +1,11 @@
 package com.nikolas.odteste.sigilos;
 
+import java.util.List;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
@@ -14,6 +19,12 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class GizItem extends Item {
     public GizItem(Properties propriedades) {
         super(propriedades);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack item, TooltipContext contexto, List<Component> linhas, TooltipFlag flag) {
+        linhas.add(Component.translatable("item.odteste.giz.desc").withStyle(ChatFormatting.GRAY));
+        linhas.add(Component.translatable("item.odteste.giz.preco").withStyle(ChatFormatting.DARK_GRAY));
     }
 
     @Override

@@ -4,7 +4,9 @@ import com.nikolas.odteste.OdMod;
 import com.nikolas.odteste.rede.DesenharSigilo;
 import com.nikolas.odteste.sigilos.RegrasSigilos;
 import java.util.List;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -78,11 +80,18 @@ public final class TelaSigilo extends Screen {
             g.fill(x + 1, y + 1, x + CELULA - 1, y + CELULA - 1, dentro ? 0x80806040 : 0x60000000);
             ResourceLocation tex = ResourceLocation.fromNamespaceAndPath(OdMod.MODID,
                     "textures/block/sigilo/" + sigilos.get(i) + ".png");
-            g.blit(tex, x + (CELULA - ICONE) / 2, y + (CELULA - ICONE) / 2, ICONE, ICONE, 0, 0, 16, 16, 16, 16);
+            g.blit(tex, x + (CELULA - ICONE) / 2, y + (CELULA - ICONE) / 2, ICONE, ICONE, 0, 0, 32, 32, 32, 32);
             if (dentro) sobre = sigilos.get(i);
         }
         if (sobre != null) {
-            g.renderTooltip(font, Component.translatable("odteste.sigilo." + sobre), mouseX, mouseY);
+            List<Component> dica = new java.util.ArrayList<>();
+            dica.add(Component.translatable("odteste.sigilo." + sobre));
+            String chaveEfeito = "odteste.sigilo." + sobre + ".efeito";
+            if (I18n.exists(chaveEfeito)) {
+                dica.add(Component.translatable(chaveEfeito).withStyle(ChatFormatting.GRAY));
+                dica.add(Component.translatable("odteste.sigilo.dica_ativar").withStyle(ChatFormatting.DARK_GRAY));
+            }
+            g.renderComponentTooltip(font, dica, mouseX, mouseY);
         }
     }
 

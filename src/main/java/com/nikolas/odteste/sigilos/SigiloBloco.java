@@ -2,7 +2,13 @@ package com.nikolas.odteste.sigilos;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -18,7 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 /**
  * Sigilo riscado de giz no chão: fino como um tapete de 1 px, sem colisão, quebra num golpe, brilha de leve e não
  * solta item. Sem block entity: o desenho e o giro são do estado do bloco (custo zero por quadro). Só sobrevive
- * sobre um bloco firme por cima. Por enquanto só aparece (as magias vêm depois).
+ * sobre um bloco firme por cima. Os cinco sigilos de elemento ativam com a mão vazia (ver AtivacaoSigilo); os outros só aparecem.
  */
 public class SigiloBloco extends Block {
     public static final EnumProperty<Simbolo> SIMBOLO = EnumProperty.create(IdsSigilos.PROPRIEDADE_SIMBOLO, Simbolo.class);
@@ -27,7 +33,7 @@ public class SigiloBloco extends Block {
 
     public SigiloBloco(Properties propriedades) {
         super(propriedades);
-        registerDefaultState(stateDefinition.any().setValue(SIMBOLO, Simbolo.ELEMENTO_MEDO).setValue(GIRO, 0));
+        registerDefaultState(stateDefinition.any().setValue(SIMBOLO, Simbolo.SIGILO_DE_MEDO).setValue(GIRO, 0));
     }
 
     public BlockState estado(Simbolo simbolo, int giro) {
@@ -55,6 +61,23 @@ public class SigiloBloco extends Block {
             BlockPos pos, BlockPos posVizinho) {
         if (direcao == Direction.DOWN && !estado.canSurvive(mundo, pos)) return Blocks.AIR.defaultBlockState();
         return super.updateShape(estado, direcao, vizinho, mundo, pos, posVizinho);
+    }
+
+    /**
+     * Clique com a mão vazia num sigilo de elemento: ativa (ver {@link AtivacaoSigilo}). Com algo na mão o clique passa
+     * adiante (o giz abre a tela). Letras, dígitos e tipos de ritual não fazem nada sozinhos.
+     */
+    @Override
+    protected InteractionResult useWithoutItem(BlockState estado, Level mundo, BlockPos pos, Player jogador, BlockHitResult mira) {
+        if (!jogador.getMainHandItem().isEmpty()) return InteractionResult.PASS;
+        Simbolo simbolo = estado.getValue(SIMBOLO);
+        if (mundo.isClientSide) {
+            return RegrasEfeitoSigilo.Efeito.deSimbolo(simbolo.id()).isPresent() ? InteractionResult.SUCCESS : InteractionResult.PASS;
+        }
+        if (jogador instanceof ServerPlayer servidor && AtivacaoSigilo.ativar((ServerLevel) mundo, pos, simbolo, servidor)) {
+            return InteractionResult.CONSUME;
+        }
+        return InteractionResult.PASS;
     }
 
     @Override

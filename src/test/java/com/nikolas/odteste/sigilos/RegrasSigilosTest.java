@@ -16,33 +16,33 @@ class RegrasSigilosTest {
     private static final Path ASSETS = Path.of("src/main/resources/assets/odteste");
 
     @Test
-    void quarentaEDoisNomesSemRepetir() {
-        assertEquals(42, IdsSigilos.SIMBOLOS.size());
-        assertEquals(42, new HashSet<>(IdsSigilos.SIMBOLOS).size());
+    void quarentaESeisNomesSemRepetir() {
+        assertEquals(46, IdsSigilos.SIMBOLOS.size());
+        assertEquals(46, new HashSet<>(IdsSigilos.SIMBOLOS).size());
     }
 
     @Test
     void ensinarEEsquecer() {
         List<String> vazia = List.of();
-        List<String> um = RegrasSigilos.com(vazia, "letra_a");
-        assertEquals(List.of("letra_a"), um);
-        assertSame(um, RegrasSigilos.com(um, "letra_a"), "ensinar de novo não muda nada");
+        List<String> um = RegrasSigilos.com(vazia, "sigilo_a");
+        assertEquals(List.of("sigilo_a"), um);
+        assertSame(um, RegrasSigilos.com(um, "sigilo_a"), "ensinar de novo não muda nada");
         assertSame(vazia, RegrasSigilos.com(vazia, "nao_existe"), "nome inexistente é ignorado");
-        assertEquals(List.of("letra_a", "elemento_medo"), RegrasSigilos.com(um, "elemento_medo"));
-        assertEquals(List.of(), RegrasSigilos.sem(um, "letra_a"));
-        assertSame(um, RegrasSigilos.sem(um, "letra_b"));
+        assertEquals(List.of("sigilo_a", "sigilo_de_medo"), RegrasSigilos.com(um, "sigilo_de_medo"));
+        assertEquals(List.of(), RegrasSigilos.sem(um, "sigilo_a"));
+        assertSame(um, RegrasSigilos.sem(um, "sigilo_b"));
     }
 
     @Test
     void limparTiraDesconhecidoERepetido() {
-        assertEquals(List.of("letra_b", "digito_3"),
-                RegrasSigilos.limpar(List.of("letra_b", "velho_do_mod_antigo", "letra_b", "digito_3")));
+        assertEquals(List.of("sigilo_b", "sigilo_3"),
+                RegrasSigilos.limpar(List.of("sigilo_b", "velho_do_mod_antigo", "sigilo_b", "sigilo_3")));
     }
 
     @Test
     void telaMostraNaOrdemOficial() {
-        assertEquals(List.of("letra_a", "elemento_medo"),
-                RegrasSigilos.naOrdemOficial(List.of("elemento_medo", "letra_a", "inexistente")));
+        assertEquals(List.of("sigilo_a", "sigilo_de_medo"),
+                RegrasSigilos.naOrdemOficial(List.of("sigilo_de_medo", "sigilo_a", "inexistente")));
         assertEquals(List.of(), RegrasSigilos.naOrdemOficial(List.of()));
     }
 
@@ -74,7 +74,13 @@ class RegrasSigilosTest {
         String en = Files.readString(ASSETS.resolve("lang/en_us.json"));
         String estados = Files.readString(ASSETS.resolve("blockstates/sigilo.json"));
         for (String s : IdsSigilos.SIMBOLOS) {
-            assertTrue(Files.exists(ASSETS.resolve("textures/block/sigilo/" + s + ".png")), "falta a textura de " + s);
+            Path textura = ASSETS.resolve("textures/block/sigilo/" + s + ".png");
+            assertTrue(Files.exists(textura), "falta a textura de " + s);
+            byte[] cab = Files.readAllBytes(textura);
+            int largura = ((cab[16] & 255) << 24) | ((cab[17] & 255) << 16) | ((cab[18] & 255) << 8) | (cab[19] & 255);
+            int altura = ((cab[20] & 255) << 24) | ((cab[21] & 255) << 16) | ((cab[22] & 255) << 8) | (cab[23] & 255);
+            assertEquals(32, largura, "textura de sigilo é 32x32: " + s);
+            assertEquals(32, altura, "textura de sigilo é 32x32: " + s);
             assertTrue(Files.exists(ASSETS.resolve("models/block/sigilo_" + s + ".json")), "falta o modelo de " + s);
             for (int g = 0; g < RegrasSigilos.GIROS; g++) {
                 assertTrue(estados.contains("\"simbolo=" + s + ",giro=" + g + "\""), "falta o estado " + s + " giro " + g);
@@ -94,7 +100,9 @@ class RegrasSigilosTest {
     void nenhumNomeDeSigiloMostraNumeroNaTela() throws Exception {
         String pt = Files.readString(ASSETS.resolve("lang/pt_br.json"));
         for (String linha : pt.split("\n")) {
-            if (linha.contains("\"odteste.sigilo.") && !linha.contains("odteste.comando")) {
+            // Os nomes dos sigilos de dígito ("Sigilo 7") são nome de desenho, não estatística: ficam de fora.
+            if (linha.contains("\"odteste.sigilo.") && !linha.contains("odteste.comando")
+                    && !linha.matches(".*\"odteste\\.sigilo\\.sigilo_[0-9]\".*")) {
                 String valor = linha.substring(linha.indexOf(':') + 1);
                 assertFalse(valor.matches(".*[0-9].*"), "texto do jogador com número: " + linha);
             }

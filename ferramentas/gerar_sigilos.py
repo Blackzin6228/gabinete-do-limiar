@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera os assets do bloco odteste:sigilo e do giz a partir da arte v1 dos sigilos (Modelador, PR #10).
+"""Gera os assets do bloco odteste:sigilo e do giz a partir da arte v1 dos sigilos (Modelador, PR #10), em 32x32.
 
 Uso (na raiz do repo, com a pasta arte/sigilos-v1/16 da branch mesa-modelador/sigilos-v1):
     python3 -I ferramentas/gerar_sigilos.py
@@ -10,7 +10,6 @@ blockstate (simbolo x giro) e o modelo do giz. Cria um giz placeholder se textur
 """
 import json
 import re
-import shutil
 import struct
 import sys
 import zlib
@@ -25,6 +24,35 @@ def sigilos():
     texto = (RAIZ / "src/main/java/com/nikolas/odteste/sigilos/IdsSigilos.java").read_text(encoding="utf-8")
     bloco = texto.split("SIMBOLOS = List.of(")[1].split(");")[0]
     return re.findall(r'"([a-z_0-9]+)"', bloco)
+
+
+# Placeholder até a Modelador entregar a arte 32x32 (branch mesa-modelador/pacote-1-texturas): usa o desenho v1 mais
+# parecido. Os 4 últimos tipos de ritual não têm arte própria ainda.
+RITUAIS_V1 = {"invocacao": "ritual_invocar", "protecao": "ritual_selar", "banimento": "ritual_despertar",
+              "passagem": "ritual_criar", "revelacao": "ritual_poder"}
+
+
+def arte_v1(i):
+    """Nome do arquivo da arte v1 (16 px) que serve de placeholder para o ID novo."""
+    resto = i.removeprefix("sigilo_")
+    if resto.startswith("de_"):
+        resto = resto[3:]
+        return RITUAIS_V1.get(resto, f"elemento_{resto}")
+    return f"digito_{resto}" if resto.isdigit() else f"letra_{resto}"
+
+
+def ampliar_32(origem, destino):
+    """16x16 -> 32x32 sem suavizar (cada pixel vira 2x2). A textura do sigilo no chão passa a ser 32x32."""
+    from PIL import Image
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    img = Image.open(origem).convert("RGBA")
+    px = img.load()
+    grande = Image.new("RGBA", (32, 32))
+    gp = grande.load()
+    for y in range(32):
+        for x in range(32):
+            gp[x, y] = px[x // 2, y // 2]
+    grande.save(destino)
 
 
 def png(largura, altura, pixels):
@@ -59,8 +87,8 @@ def escrever(caminho, conteudo):
 
 def main():
     ids = sigilos()
-    if len(ids) != 42:
-        sys.exit(f"esperava 42 sigilos em IdsSigilos.java, achei {len(ids)}")
+    if len(ids) != 46:
+        sys.exit(f"esperava 46 sigilos em IdsSigilos.java, achei {len(ids)}")
     # modelo base: um quadro fino deitado no chão, com brilho leve
     escrever(ASSETS / "models/block/sigilo_base.json", {
         "render_type": "minecraft:cutout",
@@ -72,11 +100,10 @@ def main():
     })
     variantes = {}
     for i in ids:
-        origem = ARTE / f"{i}.png"
+        origem = ARTE / f"{arte_v1(i)}.png"
         destino = ASSETS / f"textures/block/sigilo/{i}.png"
         if origem.exists():
-            destino.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(origem, destino)
+            ampliar_32(origem, destino)
         elif not destino.exists():
             sys.exit(f"falta a arte de {i} (esperava {origem})")
         escrever(ASSETS / f"models/block/sigilo_{i}.json", {

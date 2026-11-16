@@ -12,6 +12,7 @@ import com.nikolas.odteste.historia.mestre.Mestre;
 import com.nikolas.odteste.horror.CamadaHorror;
 import com.nikolas.odteste.maquinas.ConfigMaquinas;
 import com.nikolas.odteste.rede.Rede;
+import com.nikolas.odteste.sigilos.ConfigSigilos;
 import com.nikolas.odteste.sigilos.Sigilos;
 import com.nikolas.odteste.registro.Registro;
 import com.nikolas.odteste.sistemas.Vigia;
@@ -43,6 +44,7 @@ public final class OdMod {
         Vigia.iniciar();
         CamadaHorror.iniciar();
         ConfigMaquinas.registrar(container);
+        ConfigSigilos.registrar(container);
         Sigilos.iniciar();
         Compat.iniciar(barramento);
         LOGGER.info("{} carregado. Integrações ligadas: {}", MODID, Compat.ligadas());
