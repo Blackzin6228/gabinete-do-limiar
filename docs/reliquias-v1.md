@@ -5,6 +5,8 @@ código no pacote 1** (branch `pacote-1/itens`; IDs em `docs/ids.md`). Os outros
 usados; texto, arte, símbolos e **nomes de personagens** do livro não. Onde não tenho certeza do que o livro diz, está
 marcado [conferir no livro] e a ficha usa só a nossa versão.
 
+**Nomes oficiais (reforma de estilo, 15/11/2026): `docs/nomes-pacote-1.md`.** Os nomes e IDs poéticos deste documento ficaram para trás.
+
 ## O que é cada coisa
 - **Relíquias** = as 4 **espadas** + as **máscaras** das entidades (seção "Máscaras"). Sem craft: só saem por comando
   ou pela aba do criativo.
