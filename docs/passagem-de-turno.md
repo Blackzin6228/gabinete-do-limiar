@@ -49,6 +49,18 @@ Em `docs/reliquias-v1.md`. Nenhum código nem ID novo ainda.
 PR #18 **sem merge** (merge só depois do backup): Re:Avaritia (Catalisador do Infinito pede 1 ATM Star a mais), Lithium,
 Subtle Effects e, só no PC do jogador, ETF, EMF e Fresh Animations.
 
+## Sigilos de giz (Modelador, 15/11/2026)
+Prévia em `docs/previas/sigilos-v1.png` (alfabeto A–Z, 0–9, 5 elementos, 5 tipos de ritual, círculo de exemplo).
+Tudo sai de `ferramentas/previas/sigilos_v1.py` (`--conferir` prova os md5); PNGs em `arte/sigilos-v1/` (fora do jar).
+**Não aprovada**: nada no jogo, nenhum ID novo. A regra do alfabeto está no topo do script.
+
+## Pacote 1: texturas e sigilos v2 (Modelador, 15/11/2026, reforma de estilo)
+Folha única em `docs/previas/pacote-1.png` (substitui a anterior; os sigilos v1 foram recusados: "fantasia clássica").
+Texturas 16x16 em `assets/odteste/textures/item/` já com os IDs de `docs/nomes-pacote-1.md` (`pacote_1.py`).
+Sigilos v2 em `arte/sigilos-v2/32/` (fora do jar; `sigilos_v2.py`): 32x32, riscados à mão; 5 de elemento (cor e
+`_giz`), letras e dígitos. Alfa parcial: o bloco precisa de render translucent. Faltam os 5 de tipo de ritual.
+**Não aprovada.** Sem item, modelo JSON ou ID no código: nada aparece no jogo. Máscaras ficam fora.
+
 ## Próximo passo
 1. Nikolas aprova sigilos e rituais.
 2. Depois, prévias de textura (espadas, artefatos, materiais).
