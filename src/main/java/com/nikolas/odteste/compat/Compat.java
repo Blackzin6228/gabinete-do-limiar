@@ -13,7 +13,9 @@ import net.neoforged.fml.ModList;
 public final class Compat {
     public enum Integracao {
         /** Shader pack. Só cliente: só perguntamos (por reflexão, em compat/iris/) se há um pack ligado. */
-        IRIS("iris");
+        IRIS("iris"),
+        /** Slot de acessório dos artefatos (compat/curios/). Sem ele, o artefato vale em qualquer lugar do inventário. */
+        CURIOS("curios");
 
         public final String modid;
 

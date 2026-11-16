@@ -32,6 +32,14 @@ Os testes conferem esta lista.
 | `odteste_historia` | dado do mundo (`data/odteste_historia.dat`) | o mod usa só `grupos` (`nome`, `membros`, `marcos`); **o resto do arquivo é guardado e escrito de volta igual** (vilas, âncoras, colocações com backup da Vila Calada etc.) |
 | `odteste_livros_lidos` | dado do mundo (`data/odteste_livros_lidos.dat`) | quem já abriu cada livro |
 | `odteste:livro` | chave do custom_data do livro de história (`minecraft:written_book`) | o valor é o id do livro = nome do arquivo em `data/odteste/odteste_livros/` (hoje `dossie`, entregue no kit) |
+| `odteste:sede_de_domingo`, `odteste:sabre_do_ultimo_adeus`, `odteste:sentenca_sem_recurso`, `odteste:espeto_da_casa_cheia` | itens (espadas, pilha de 1, inquebráveis) | sem receita: só aba do criativo e `/give`; só funcionam para quem é do elemento (Sangue, Morte, Conhecimento, Energia) |
+| `odteste:seringa_velha`, `odteste:luva_de_acougueiro`, `odteste:medalha_de_doador`, `odteste:oculos_de_velorio`, `odteste:moeda_de_defunto`, `odteste:vela_de_setimo_dia`, `odteste:lupa_do_arquivo_morto`, `odteste:caneta_sem_tinta`, `odteste:fita_sem_etiqueta`, `odteste:uma_barra_de_sinal`, `odteste:fusivel_queimado`, `odteste:radinho_de_pilha` | itens (artefatos) | qualquer jogador; slot `charm` do Curios (tag `curios:charm`, `data/odteste/curios/entities/artefatos.json`); Vela e Barra de Sinal têm durabilidade |
+| `odteste:gabinete` | aba do criativo | espadas e artefatos |
+| `odteste:sangramento` | efeito (volta do mod antigo) | dano leve por segundo; só em criaturas, nunca em jogador |
+| `odteste:noite_usada` | componente de dados do item (número da noite) | poder "1x por noite" da Moeda de Defunto e da Sentença Sem Recurso |
+| `odteste:artefato_no_bau` | tipo de loot modifier | arquivos `odteste:<artefato>` em `data/odteste/loot_modifiers/` (um por artefato, lista de baús vanilla), listados em `data/neoforge/loot_modifiers/global_loot_modifiers.json` |
+| `odteste:contorno` | pacote servidor → jogador | ids de criaturas + tempo: contorno só na tela dele (Óculos, Sentença) |
+| `odteste-artefatos-server.toml` / `chance_bau` | config do servidor (`serverconfig/`, seção `[artefatos]`; 0–1, padrão 0.02) | chance de um artefato num baú que combina |
 | `efeitos_fortes` | config do cliente (`config/odteste-client.toml`: `LIGADO`, `SUAVE`, `DESLIGADO`) | diminui, não desliga (`DESLIGADO` vale como Mínimo) |
 | `intensidade` | config do cliente (mesmo arquivo; 50–100, padrão 100) | intensidade da camada de horror |
 | `mestre.mestres` | config do servidor (`serverconfig/odteste-mestre-server.toml`, seção `[mestre]`) | nomes separados por vírgula; vazio = todo op |
@@ -52,6 +60,6 @@ Dado de jogador sem registro some no primeiro save. Estes ficam em `dados/DadosG
 
 Itens `rubra`, `agulha_de_cerzir_carne`, `dedal_dentado`, `sino_de_matadouro`, `materia_sangue_bruta`,
 `martelo_do_ferreiro`; blocos `vela_da_capela`, `poca_de_sangue`, `analisador_sinal`; criaturas `retalhado`,
-`sanguessuga_mae`; efeito `sangramento`. Arquivos do mundo `odteste_vila_calada`, `odteste_gatilhos`,
+`sanguessuga_mae` (o efeito `sangramento` voltou no pacote 1). Arquivos do mundo `odteste_vila_calada`, `odteste_gatilhos`,
 `odteste_sinais` e as configs `odteste-server.toml` e `odteste-gatilhos-server.toml` ficam no disco sem uso.
 Lista completa: `docs/ids.md` do Od-Teste, commit `b488cc6`.

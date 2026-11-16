@@ -40,6 +40,12 @@ Em `docs/reliquias-v1.md`. Nenhum código nem ID novo ainda.
 - Artefatos em baú; ritual só magia.
 - **Em aberto:** de onde sai o Estilhaço do Limiar.
 
+## Pacote 1, etapa 1 (mesa Dev, branch `pacote-1/itens`, sem PR: o Integrador junta)
+- Código das 4 espadas e dos 12 artefatos, loot em baús vanilla (`chance_bau`, padrão 2%) e Curios opcional
+  (`compat/curios/`). Texturas: placeholders com o nome final; vale a da mesa Modelador (PR #13) em conflito.
+- Em breve (TODO): afinidade (magias), Caneta, Fita, Fusível, mapa da Sentença, visões na tela (precisam de prévia).
+- Não testado no jogo: os efeitos, o contorno e o slot do Curios.
+
 ## Rituais e sigilos
 - Plano técnico em `docs/rituais.md` (mesa Dev). O PR #8 está sendo atualizado pela mesa Dev. Giz único; sigilos
   aprendidos aos poucos em eventos pelo mundo.

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "odteste:item/vela_de_setimo_dia"
+  }
+}

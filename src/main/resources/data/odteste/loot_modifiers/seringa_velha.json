@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:seringa_velha",
+  "baus": [
+    "minecraft:chests/simple_dungeon",
+    "minecraft:chests/abandoned_mineshaft",
+    "minecraft:chests/village/village_temple"
+  ]
+}

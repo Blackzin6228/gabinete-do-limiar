@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "odteste:item/sabre_do_ultimo_adeus"
+  }
+}

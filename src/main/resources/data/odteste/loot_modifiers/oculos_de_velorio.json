@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:oculos_de_velorio",
+  "baus": [
+    "minecraft:chests/stronghold_crossing",
+    "minecraft:chests/ancient_city",
+    "minecraft:chests/simple_dungeon"
+  ]
+}

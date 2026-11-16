@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:vela_de_setimo_dia",
+  "baus": [
+    "minecraft:chests/village/village_temple",
+    "minecraft:chests/ancient_city",
+    "minecraft:chests/stronghold_corridor"
+  ]
+}

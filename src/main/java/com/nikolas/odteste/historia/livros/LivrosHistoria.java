@@ -3,6 +3,7 @@ package com.nikolas.odteste.historia.livros;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.nikolas.odteste.OdMod;
+import com.nikolas.odteste.artefatos.Artefatos;
 import com.nikolas.odteste.dados.DadosJogador;
 import com.nikolas.odteste.historia.DadosHistoria;
 import com.nikolas.odteste.historia.Grupos;
@@ -117,7 +118,16 @@ public final class LivrosHistoria {
     private static void montar(ItemStack item, Livro l, ServerPlayer leitor) {
         Set<String> marcos = DadosHistoria.de(leitor.server).grupos.grupoDe(leitor.getUUID())
                 .map(g -> (Set<String>) new HashSet<>(g.marcos())).orElse(Set.of());
-        escrever(item, l, DadosJogador.exposicao(leitor), marcos, marcadores(leitor));
+        int exposicao = DadosJogador.exposicao(leitor);
+        Map<String, String> marcadores = marcadores(leitor);
+        // Lupa do Arquivo Morto / Sentença com livro: um degrau a mais. Só cobra se mostrou algo que ele não veria.
+        int bonus = Artefatos.bonusLeitura(leitor);
+        if (bonus > 0 && !RegrasLivros.montar(l, exposicao, marcos, marcadores, LeitorLivros.MAX_PAGINA)
+                .equals(RegrasLivros.montar(l, exposicao + bonus, marcos, marcadores, LeitorLivros.MAX_PAGINA))) {
+            Artefatos.revelou(leitor);
+            exposicao += bonus;
+        }
+        escrever(item, l, exposicao, marcos, marcadores);
     }
 
     /** A versão que fica guardada no item: só o que todo mundo lê (Exposição 0), sem nome de ninguém. */

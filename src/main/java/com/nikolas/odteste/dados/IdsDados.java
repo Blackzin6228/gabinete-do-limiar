@@ -63,10 +63,28 @@ public final class IdsDados {
     /** Livro de história entregue no kit (data/odteste/odteste_livros/dossie.json). */
     public static final String LIVRO_DOSSIE = "dossie";
 
+    // ---------- pacote 1: espadas e artefatos (os IDs dos itens vêm de reliquias/TipoEspada e artefatos/TipoArtefato) ----------
+
+    /** Aba do criativo do mod (espadas e artefatos). */
+    public static final String ABA_CRIATIVA = "gabinete";
+    /** Efeito de sangramento (só em criaturas, nunca em jogador). O ID do mod antigo volta. */
+    public static final String EFEITO_SANGRAMENTO = "sangramento";
+    /** Componente do item: número da noite em que o poder "1x por noite" foi usado (Moeda, Sentença). */
+    public static final String COMPONENTE_NOITE_USADA = "noite_usada";
+    /** Tipo de loot modifier que põe um artefato em baús (data/odteste/loot_modifiers/<artefato>.json). */
+    public static final String LOOT_ARTEFATO_NO_BAU = "artefato_no_bau";
+    /** Pacote servidor → jogador: contorno de criaturas só na tela dele. */
+    public static final String PACOTE_CONTORNO = "contorno";
+    /** Arquivo de config do servidor com a chance dos artefatos nos baús. */
+    public static final String ARQUIVO_CONFIG_ARTEFATOS = "odteste-artefatos-server.toml";
+    public static final String CONFIG_CHANCE_BAU = "chance_bau";
+
     /** Todos os IDs que não são dado do jogador, mas também precisam estar em docs/ids.md. */
     public static final List<String> OUTROS = List.of(
             MODIFICADOR_DEDAL, MODIFICADOR_LENTIDAO, TAG_PARANORMAL, TAG_COMIDA_QUENTE, ARQUIVO_HISTORIA,
-            ITEM_CRACHA, COMPONENTE_CRACHA, LIVRO_DOSSIE);
+            ITEM_CRACHA, COMPONENTE_CRACHA, LIVRO_DOSSIE,
+            ABA_CRIATIVA, EFEITO_SANGRAMENTO, COMPONENTE_NOITE_USADA, LOOT_ARTEFATO_NO_BAU, PACOTE_CONTORNO,
+            ARQUIVO_CONFIG_ARTEFATOS, CONFIG_CHANCE_BAU);
 
     private IdsDados() {}
 }

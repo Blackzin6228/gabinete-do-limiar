@@ -1,7 +1,7 @@
 # Relíquias v1
 
-Lore e regras, já com as respostas do Nikolas de 15/11/2026 (19h40 e 20h10). **Ainda não virou código.** Os IDs são sugestão e
-só entram em `docs/ids.md` quando alguém for implementar. Nomes de entidades e casos de Ordem Paranormal podem ser
+Lore e regras, já com as respostas do Nikolas de 15/11/2026 (19h40 e 20h10). **As 4 espadas e os 12 artefatos viraram
+código no pacote 1** (branch `pacote-1/itens`; IDs em `docs/ids.md`). Os outros IDs daqui ainda são sugestão. Nomes de entidades e casos de Ordem Paranormal podem ser
 usados; texto, arte, símbolos e **nomes de personagens** do livro não. Onde não tenho certeza do que o livro diz, está
 marcado [conferir no livro] e a ficha usa só a nossa versão.
 
@@ -114,6 +114,8 @@ somam com freio (o terceiro rende pouco). Nenhum tem nome de personagem.
 ---
 
 ## Materiais paranormais
+Ligas paranormais: um passo acima da ATM Star, com crafts paranormais, sem craft definido por enquanto. O Estilhaço fica sem receita.
+
 1. **Estilhaço do Limiar** (`odteste:estilhaco_do_limiar`): vai no Catalisador do Infinito (Re:Avaritia; custo decidido:
    1 ATM Star + singularidades + este material). Origem: **a decidir** (ver "Em aberto").
 2. **Cinza de Relíquia** (`odteste:cinza_de_reliquia`): nascia do selamento de uma espada, que saiu desta versão. **Sem uso por

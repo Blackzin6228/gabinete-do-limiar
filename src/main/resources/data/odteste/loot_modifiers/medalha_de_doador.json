@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:medalha_de_doador",
+  "baus": [
+    "minecraft:chests/village/village_temple",
+    "minecraft:chests/igloo_chest",
+    "minecraft:chests/shipwreck_supply"
+  ]
+}
