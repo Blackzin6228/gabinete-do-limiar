@@ -1,6 +1,8 @@
 """Pacote 1 do Gabinete do Limiar: texturas 16x16 das 4 espadas, dos 12 artefatos e do giz (PRÉVIA).
 
-Aparência tirada de `docs/reliquias-v1.md` ("Aparência" das espadas e coluna "Objeto (16x16)" dos artefatos).
+Nomes e IDs: `docs/nomes-pacote-1.md` (reforma de estilo de 15/11/2026). O objeto de cada peça continua o de
+`docs/reliquias-v1.md`; mudou o nome, o ID e o nome do arquivo. Cada peça guarda o nome antigo só como semente do
+desgaste: assim quem não mudou de desenho sai igual, pixel a pixel, ao que já estava na prévia anterior.
 Arte própria: cada peça é uma grade de 16 linhas de texto, pintada com a paleta abaixo. Nada vem de Ordem Paranormal
 nem de textura da Mojang (pedra, slots e hotbar da folha também são desenhados aqui).
 
@@ -10,8 +12,8 @@ Uso:
   python3 ferramentas/previas/pacote_1.py --saida DIR  gera tudo dentro de DIR (para comparar rodadas)
   python3 ferramentas/previas/pacote_1.py --conferir   gera duas vezes em pastas temporárias e compara os md5
 
-Precisa de Pillow e numpy, e do `sigilos_v1.py` ao lado (a folha traz os sigilos v1 embaixo, para aprovar junto).
-Determinístico: o desgaste de cada peça usa seed fixa por nome (crc32, igual aos sigilos). O md5 das texturas não
+Precisa de Pillow e numpy, e do `sigilos_v1.py` e do `sigilos_v2.py` ao lado (a folha mostra os sigilos v2; os
+arquivos deles saem do `sigilos_v2.py`). Determinístico: seed fixa por nome (crc32). O md5 das texturas não
 depende de fonte; o da folha depende da fonte embutida do Pillow (feito com Pillow 12.1.1).
 Formato: PNG RGBA 8 bits, 16x16. Luz de cima à esquerda, contorno escuro, um acento de cor por peça.
 """
@@ -26,6 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw  # noqa: E402
 
 import sigilos_v1 as sig  # noqa: E402
+import sigilos_v2 as s2  # noqa: E402
 
 RAIZ = sig.RAIZ
 PASTA_ITEM = os.path.join("src", "main", "resources", "assets", "odteste", "textures", "item")
@@ -45,10 +48,10 @@ PALETA = {
     "k": (44, 42, 46), "K": (24, 22, 26),  # preto
     "c": (228, 223, 208), "C": (190, 184, 166), "e": (140, 134, 120),  # branco sujo
     "u": (232, 206, 98), "y": (210, 172, 50), "Y": (160, 124, 34),  # borracha / plástico amarelo
-    "x": (176, 228, 240), "z": (92, 170, 222), "Z": (48, 104, 186),  # chama azul
+    "x": (172, 198, 206), "z": (100, 140, 170), "Z": (62, 88, 130),  # chama azul, fraca (era um azul de magia)
     "a": (178, 198, 192), "A": (124, 148, 148),  # vidro
     "n": (216, 122, 42),  # fio laranja
-    "q": (96, 214, 226),  # ciano elétrico
+    "q": (140, 132, 214),  # roxo-azulado elétrico, apagado (era ciano vivo)
     "l": (198, 208, 218), "s": (150, 164, 182), "S": (106, 120, 142), "d": (66, 78, 98),  # aço azulado
     "m": (72, 28, 26),  # líquido escuro
     "i": (158, 152, 140), "f": (118, 112, 104), "F": (80, 76, 72),  # plástico cinza
@@ -56,9 +59,9 @@ PALETA = {
 }
 SEM_DESGASTE = set("o.pqxzZ")  # contorno, pó e luz não sujam
 
-# (arquivo, nome, elemento, o que é, grade)
+# (ID novo = nome do arquivo, nome novo, elemento, o que é, nome antigo = semente do desgaste, grade)
 PECAS = [
-    ("sede_de_domingo", "Sede de Domingo", "sangue", "facão de desossa", [
+    ("facao_de_ritual_de_sangue", "Facão de Ritual de Sangue", "sangue", "facão de desossa", "sede_de_domingo", [
         "................",
         "...........oooo.",
         ".........oo1122o",
@@ -76,7 +79,8 @@ PECAS = [
         ".ooo............",
         "................",
     ]),
-    ("sabre_do_ultimo_adeus", "Sabre do Último Adeus", "morte", "sabre de cerimônia", [
+    # reforma de estilo: a guarda dourada virou latão escurecido (era a peça mais "espada de fantasia")
+    ("sabre_de_ritual_de_morte", "Sabre de Ritual de Morte", "morte", "sabre de cerimônia", "sabre_do_ultimo_adeus", [
         "................",
         ".............oo.",
         "............oKKo",
@@ -86,33 +90,36 @@ PECAS = [
         "........o12o....",
         ".......o13o.....",
         "..oo..o12o......",
-        ".oghoo12o.......",
-        "..oGg23o........",
-        "...oghGo........",
-        "..oboGgho.......",
-        ".obBo.oGo.......",
+        ".oGgoo12o.......",
+        "..oBG23o........",
+        "...oGgBo........",
+        "..oboBGGo.......",
+        ".obBo.oBo.......",
         "obBo...o........",
         ".oo.............",
     ]),
-    ("sentenca_sem_recurso", "Sentença Sem Recurso", "conhecimento", "espada de fórum", [
+    # reforma de estilo: a lâmina azulada e brilhante virou aço comum, sujo
+    ("espada_de_ritual_de_conhecimento", "Espada de Ritual de Conhecimento", "conhecimento", "espada de fórum",
+     "sentenca_sem_recurso", [
         "................",
         ".............oo.",
-        "...........oolso",
-        "..........olsSo.",
-        ".........oldSo..",
-        "........olsSo...",
-        ".......oldSo....",
-        "......olsSo.....",
-        "..oo.oldSo......",
-        ".ohbolsSo.......",
-        "..obBbSo........",
+        "...........oo12o",
+        "..........o123o.",
+        ".........o143o..",
+        "........o123o...",
+        ".......o143o....",
+        "......o123o.....",
+        "..oo.o143o......",
+        ".ohbo123o.......",
+        "..obBb3o........",
         "...oBbBo........",
         "..oboBbho.......",
         ".obBo.oo........",
         "obBo............",
         ".oo.............",
     ]),
-    ("espeto_da_casa_cheia", "Espeto da Casa Cheia", "energia", "espeto de churrasco", [
+    ("espeto_de_ritual_de_energia", "Espeto de Ritual de Energia", "energia", "espeto de churrasco",
+     "espeto_da_casa_cheia", [
         "..............o.",
         ".............oqo",
         "............o1o.",
@@ -130,7 +137,7 @@ PECAS = [
         "oKvo............",
         ".oo.............",
     ]),
-    ("seringa_velha", "Seringa Velha", "sangue", "seringa de vidro", [
+    ("seringa_de_coleta_ritual", "Seringa de Coleta Ritual", "sangue", "seringa de vidro", "seringa_velha", [
         "................",
         "..........ooo...",
         ".........oWWWo..",
@@ -148,7 +155,7 @@ PECAS = [
         "2...............",
         "................",
     ]),
-    ("luva_de_acougueiro", "Luva de Açougueiro", "sangue", "luva de borracha", [
+    ("luva_de_abate_ritual", "Luva de Abate Ritual", "sangue", "luva de borracha", "luva_de_acougueiro", [
         "......oo.oo.....",
         "...oooRroRro....",
         "..oRroyRoyRooo..",
@@ -166,7 +173,7 @@ PECAS = [
         "...oYYYYYYYYo...",
         "....oooooooo....",
     ]),
-    ("medalha_de_doador", "Medalha de Doador", "sangue", "medalha com gota", [
+    ("medalha_do_sangue_doado", "Medalha do Sangue Doado", "sangue", "medalha com gota", "medalha_de_doador", [
         "..oooo....oooo..",
         "..oCeCo..oCeCo..",
         "...oCeCooCeCo...",
@@ -184,7 +191,7 @@ PECAS = [
         ".....o3444o.....",
         "......oooo......",
     ]),
-    ("oculos_de_velorio", "Óculos de Velório", "morte", "óculos de grau", [
+    ("oculos_de_visao_paranormal", "Óculos de Visão Paranormal", "morte", "óculos de grau", "oculos_de_velorio", [
         "................",
         "................",
         "................",
@@ -202,7 +209,7 @@ PECAS = [
         "................",
         "................",
     ]),
-    ("moeda_de_defunto", "Moeda de Defunto", "morte", "moeda sobre o olho", [
+    ("moeda_de_obito", "Moeda de Óbito", "morte", "moeda sobre o olho", "moeda_de_defunto", [
         "................",
         "......oooo......",
         "....oo2233oo....",
@@ -220,7 +227,7 @@ PECAS = [
         "................",
         "................",
     ]),
-    ("vela_de_setimo_dia", "Vela de Sétimo Dia", "morte", "toco de vela", [
+    ("vela_de_rito_funebre", "Vela de Rito Fúnebre", "morte", "toco de vela", "vela_de_setimo_dia", [
         "................",
         ".......o........",
         "......oxo.......",
@@ -238,7 +245,8 @@ PECAS = [
         "..occcCCCeeeo...",
         "..ooooooooooo...",
     ]),
-    ("lupa_do_arquivo_morto", "Lupa do Arquivo Morto", "conhecimento", "lupa de latão", [
+    ("lupa_de_investigacao_paranormal", "Lupa de Investigação Paranormal", "conhecimento", "lupa de latão",
+     "lupa_do_arquivo_morto", [
         "....oooo........",
         "..oohgggoo......",
         ".ohgaaaagGo.....",
@@ -256,7 +264,7 @@ PECAS = [
         "...........obBo.",
         "............ooo.",
     ]),
-    ("caneta_sem_tinta", "Caneta Sem Tinta", "conhecimento", "caneta seca", [
+    ("caneta_de_registro_apagado", "Caneta de Registro Apagado", "conhecimento", "caneta seca", "caneta_sem_tinta", [
         "................",
         "............o.o.",
         "...........oKoKo",
@@ -274,7 +282,7 @@ PECAS = [
         ".o..............",
         "................",
     ]),
-    ("fita_sem_etiqueta", "Fita Sem Etiqueta", "conhecimento", "fita cassete", [
+    ("fita_de_gravacao_anomala", "Fita de Gravação Anômala", "conhecimento", "fita cassete", "fita_sem_etiqueta", [
         "................",
         "................",
         "................",
@@ -292,7 +300,7 @@ PECAS = [
         "................",
         "................",
     ]),
-    ("uma_barra_de_sinal", "Uma Barra de Sinal", "energia", "celular rachado", [
+    ("celular_de_sinal_anomalo", "Celular de Sinal Anômalo", "energia", "celular rachado", "uma_barra_de_sinal", [
         "....oooooooo....",
         "...oyuuuuuuYo...",
         "...oukkkkkkYo...",
@@ -310,7 +318,7 @@ PECAS = [
         "...oYYYYYYYYo...",
         "....oooooooo....",
     ]),
-    ("fusivel_queimado", "Fusível Queimado", "energia", "fusível de vidro", [
+    ("fusivel_sobrecarregado", "Fusível Sobrecarregado", "energia", "fusível de vidro", "fusivel_queimado", [
         "................",
         "...........ooo..",
         "..........o122o.",
@@ -328,7 +336,7 @@ PECAS = [
         "................",
         "................",
     ]),
-    ("radinho_de_pilha", "Radinho de Pilha", "energia", "rádio pequeno", [
+    ("radio_de_interferencia", "Rádio de Interferência", "energia", "rádio pequeno", "radinho_de_pilha", [
         ".........2......",
         "..........3.....",
         "...........3....",
@@ -346,7 +354,7 @@ PECAS = [
         ".oooooooooooooo.",
         "................",
     ]),
-    ("giz", "Giz", None, "giz branco, gasto", [
+    ("giz", "Giz Ritualístico", None, "giz branco, gasto", "giz", [
         "................",
         "................",
         "................",
@@ -368,10 +376,11 @@ PECAS = [
 ROTULO_ELEMENTO = {"sangue": "Sangue", "morte": "Morte", "conhecimento": "Conhecimento", "energia": "Energia"}
 
 
-def textura(nome, grade):
-    """Pinta a grade. O desgaste (seed fixa por nome) mexe um pouco no tom e escurece alguns pixels: sujeira."""
+def textura(nome, grade, semente=None):
+    """Pinta a grade. O desgaste (seed fixa pelo nome ANTIGO da peça) mexe um pouco no tom e escurece alguns
+    pixels: sujeira."""
     assert len(grade) == 16 and all(len(l) == 16 for l in grade), "grade de %s não é 16x16" % nome
-    rng = random.Random(sig.semente("pacote1:" + nome))
+    rng = random.Random(sig.semente("pacote1:" + (semente or nome)))
     img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
     for y, linha in enumerate(grade):
         for x, ch in enumerate(linha):
@@ -425,72 +434,157 @@ def tira(texturas, nomes, slot, grupo=None):
     return img
 
 
-def folha(texturas, folha_sigilos):
-    M, CW, CH, AMP = 38, 268, 262, 10
-    larg = folha_sigilos.width
-    y_esp = 128
-    y_art = y_esp + CH + 44
-    y_real = y_art + 2 * CH + 60
-    alt_real = 40 + (18 + 20) * (1 + 2 + 3) + 3 * 44
-    y_sig = y_real + alt_real + 40
-    alt = y_sig + 60 + folha_sigilos.height
+def no_chao(tex, escala, margem):
+    """A textura 32x32 do sigilo num bloco de pedra, ampliada `escala` vezes sem borrar. O bloco de pedra tem 16
+    pixels de lado e o sigilo 32: cada pixel de pedra vale dois de sigilo, como vai ser no jogo. `margem` (em pixels
+    da folha) mostra um pedaço dos blocos vizinhos, com a divisa marcada de leve."""
+    bloco = 32 * escala
+    pedra = sig.amplia(s2.pedra_chao(), 2 * escala)
+    lado = bloco + 2 * margem
+    img = Image.new("RGBA", (lado, lado))
+    for by in (-1, 0, 1):
+        for bx in (-1, 0, 1):
+            img.paste(pedra, (margem + bx * bloco, margem + by * bloco))
+    img.alpha_composite(sig.amplia(tex, escala), (margem, margem))
+    if margem:
+        d = ImageDraw.Draw(img)
+        for v in (margem - 1, margem + bloco):
+            d.line([(v, 0), (v, lado - 1)], fill=(58, 58, 62, 255))
+            d.line([(0, v), (lado - 1, v)], fill=(58, 58, 62, 255))
+    return img
+
+
+def folha(texturas, sigs):
+    """`texturas`: {id: imagem 16x16}. `sigs`: {arquivo: imagem 32x32} do sigilos_v2."""
+    M, larg = 38, 1684
     pedra = sig.pedra_16()
-    img = sig.ladrilha(pedra, larg, alt, 4, brilho=0.62).convert("RGBA")
+    img = sig.ladrilha(pedra, larg, 4600, 4, brilho=0.62).convert("RGBA")
     d = ImageDraw.Draw(img)
     T = sig.texto
+    borda = (16, 16, 18)
 
-    T(d, (M, 18), "PACOTE 1 DO GABINETE DO LIMIAR  ·  PRÉVIA (nada disto está no jogo)", 26)
-    T(d, (M, 54), "4 espadas, 12 artefatos e o giz, em 16x16. Cada peça ampliada 10x sem borrar, com o nome. "
-      "Mais abaixo: todas em tamanho real, e os sigilos v1.", 15, sig.APAGADO)
+    def cola(peca, x, y):
+        img.paste(peca.convert("RGB"), (x, y))
+        d.rectangle([x - 1, y - 1, x + peca.width, y + peca.height], outline=borda)
 
-    def casa(x, y, peca):
-        arq, nome, elem, oque, _ = peca
-        px, lado = x + (CW - 176) // 2, 176
-        d.rectangle([px, y, px + lado - 1, y + lado - 1], fill=(139, 139, 139), outline=(16, 16, 18))
-        d.line([(px + 1, y + 1), (px + lado - 2, y + 1)], fill=(84, 84, 84))
-        d.line([(px + 1, y + 1), (px + 1, y + lado - 2)], fill=(84, 84, 84))
-        img.alpha_composite(sig.amplia(texturas[arq], AMP), (px + 8, y + 8))
-        T(d, (x + CW // 2, y + lado + 18), nome, 18, ancora="mm")
-        sub = (ROTULO_ELEMENTO[elem] + "  ·  " if elem else "") + oque
-        if elem:
-            tw = d.textlength(sub, font=sig.fonte(14))
-            x0 = x + CW / 2 - (tw + 16) / 2
-            d.rectangle([x0, y + lado + 35, x0 + 10, y + lado + 45], fill=sig.COR_ELEMENTO[elem],
-                        outline=(200, 196, 184))
-            T(d, (x0 + 16, y + lado + 40), sub, 14, sig.APAGADO, "lm")
-        else:
-            T(d, (x + CW // 2, y + lado + 40), sub, 14, sig.APAGADO, "mm")
+    def cabe(s, largura, tam, minimo=12):
+        while tam > minimo and d.textlength(s, font=sig.fonte(tam)) > largura:
+            tam -= 1
+        return tam
 
-    T(d, (M, y_esp - 30), "ESPADAS (relíquias)", 17)
-    T(d, (M + 4 * CW + 40, y_esp - 30), "GIZ", 17)
-    for i, p in enumerate(PECAS[:4]):
-        casa(M + i * CW, y_esp, p)
-    casa(M + 4 * CW + 40, y_esp, PECAS[16])
-    T(d, (M, y_art - 30), "ARTEFATOS  ·  três por elemento", 17)
-    for i, p in enumerate(PECAS[4:16]):
-        casa(M + (i % 6) * CW, y_art + (i // 6) * CH, p)
+    def divisa(y):
+        d.rectangle([0, y, larg, y + 3], fill=borda)
 
-    # tamanho real
+    T(d, (M, 18), "PACOTE 1 DO GABINETE DO LIMIAR  ·  REFORMA DE ESTILO  ·  PRÉVIA (nada disto está no jogo)", 26)
+    T(d, (M, 54), "Esta folha substitui a anterior. Nomes novos em tudo. Sigilos refeitos: riscados à mão, sujos, "
+      "com o círculo que não fecha. Nada de runa nem de régua.", 15, sig.APAGADO)
+
+    # 1. sigilos de elemento, grandes, no chão
+    y = 100
+    T(d, (M, y), "SIGILOS DE ELEMENTO  ·  a textura de verdade (32x32), ampliada sem borrar, riscada num bloco de "
+      "pedra  ·  um de cada cor", 17)
+    y += 34
+    PW, lado = (larg - 2 * M) // 5, 32 * 8 + 2 * 24
+    for i, el in enumerate(s2.ELEMENTOS):
+        x = M + i * PW
+        cola(no_chao(sigs["sigilo_de_" + el], 8, 24), x + (PW - lado) // 2, y)
+        T(d, (x + PW // 2, y + lado + 22), "Sigilo de " + s2.ROTULO[el], 20, ancora="mm")
+        rot = "sigilo_de_" + el
+        tw = d.textlength(rot, font=sig.fonte(14))
+        x0 = x + PW / 2 - (tw + 16) / 2
+        d.rectangle([x0, y + lado + 40, x0 + 10, y + lado + 50], fill=s2.COR_ELEMENTO[el], outline=(200, 196, 184))
+        T(d, (x0 + 16, y + lado + 45), rot, 14, sig.APAGADO, "lm")
+        # embaixo: a mesma forma em giz, e os dois sem ampliar
+        yy = y + lado + 70
+        giz, cor1, giz1 = (no_chao(sigs[rot + "_giz"], 3, 8), no_chao(sigs[rot], 1, 8),
+                           no_chao(sigs[rot + "_giz"], 1, 8))
+        xx = x + (PW - (giz.width + 20 + cor1.width + 8 + giz1.width)) // 2
+        cola(giz, xx, yy)
+        cola(cor1, xx + giz.width + 20, yy + giz.height - cor1.height)
+        cola(giz1, xx + giz.width + 20 + cor1.width + 8, yy + giz.height - giz1.height)
+        T(d, (xx + giz.width // 2, yy + giz.height + 14), "o mesmo, em giz", 14, sig.APAGADO, "mm")
+        T(d, (xx + giz.width + 20 + cor1.width + 4, yy + giz.height + 14), "sem ampliar", 14, sig.APAGADO, "mm")
+    y += lado + 70 + 112 + 44
+
+    # 2. itens em tamanho real
+    divisa(y)
+    y += 24
     nomes = [p[0] for p in PECAS]
-    T(d, (M, y_real), "TAMANHO REAL  ·  as 17 peças na ordem de cima, na hotbar e no inventário "
+    T(d, (M, y), "ITENS NA HOTBAR  ·  as 17 peças em tamanho real, na hotbar e no inventário "
       "(slots desenhados pelo script, não são a textura do Minecraft)", 17)
-    y = y_real + 40
+    y += 40
     legenda = {1: "escala 1 da interface: 1 pixel da peça = 1 pixel desta folha",
                2: "escala 2 da interface (cada pixel dobrado)",
                3: "escala 3 da interface (o mais comum em monitor Full HD)"}
-    for n in (1, 2, 3):
+    for n in (3, 2, 1):
         hot = sig.amplia(tira(texturas, nomes, slot_hotbar(), grupo=9), n)
         inv = sig.amplia(tira(texturas, nomes, slot_inventario()), n)
         img.alpha_composite(hot, (M, y))
         img.alpha_composite(inv, (M, y + hot.height + 4))
         T(d, (M + max(hot.width, inv.width) + 24, y + hot.height), legenda[n], 15, sig.APAGADO, "lm")
-        y += hot.height + inv.height + 44
+        y += hot.height + inv.height + 36
 
-    # sigilos v1 (a folha do PR #10, igual)
-    d.rectangle([0, y_sig, larg, y_sig + 3], fill=(16, 16, 18))
-    T(d, (M, y_sig + 18), "SIGILOS v1  ·  a mesma folha do PR #10, colada aqui para aprovar tudo junto", 20)
-    img.paste(folha_sigilos, (0, y_sig + 60))
-    return img.convert("RGB")
+    # 3. itens ampliados, com o nome novo
+    divisa(y)
+    y += 24
+    CW, CH, AMP = 268, 276, 10
+    T(d, (M, y), "ITENS AMPLIADOS 10x  ·  nome novo, ID novo (é o nome do arquivo) e o objeto", 17)
+    T(d, (M, y + 26), "Mesmo desenho de antes, com nome novo. Só mudaram: Sabre (guarda sem dourado), Espada (lâmina "
+      "sem azul brilhante), chama da Vela e luz de Energia (mais apagadas).", 15, sig.APAGADO)
+    y += 96
+
+    def casa(x, y, peca):
+        arq, nome, elem, oque = peca[:4]
+        px, lado = x + (CW - 176) // 2, 176
+        d.rectangle([px, y, px + lado - 1, y + lado - 1], fill=(139, 139, 139), outline=borda)
+        d.line([(px + 1, y + 1), (px + lado - 2, y + 1)], fill=(84, 84, 84))
+        d.line([(px + 1, y + 1), (px + 1, y + lado - 2)], fill=(84, 84, 84))
+        img.alpha_composite(sig.amplia(texturas[arq], AMP), (px + 8, y + 8))
+        T(d, (x + CW // 2, y + lado + 18), nome, cabe(nome, CW - 10, 18), ancora="mm")
+        T(d, (x + CW // 2, y + lado + 38), arq, cabe(arq, CW - 10, 13, 10), sig.APAGADO, "mm")
+        sub = (ROTULO_ELEMENTO[elem] + "  ·  " if elem else "") + oque
+        if elem:
+            tw = d.textlength(sub, font=sig.fonte(14))
+            x0 = x + CW / 2 - (tw + 16) / 2
+            d.rectangle([x0, y + lado + 51, x0 + 10, y + lado + 61], fill=s2.COR_ELEMENTO[elem],
+                        outline=(200, 196, 184))
+            T(d, (x0 + 16, y + lado + 56), sub, 14, sig.APAGADO, "lm")
+        else:
+            T(d, (x + CW // 2, y + lado + 56), sub, 14, sig.APAGADO, "mm")
+
+    T(d, (M, y - 30), "ESPADAS (relíquias)", 17)
+    T(d, (M + 4 * CW + 40, y - 30), "GIZ", 17)
+    for i, p in enumerate(PECAS[:4]):
+        casa(M + i * CW, y, p)
+    casa(M + 4 * CW + 40, y, PECAS[16])
+    y += CH + 40
+    T(d, (M, y - 30), "ARTEFATOS  ·  três por elemento", 17)
+    for i, p in enumerate(PECAS[4:16]):
+        casa(M + (i % 6) * CW, y + (i // 6) * CH, p)
+    y += 2 * CH + 16
+
+    # 4. alfabeto e dígitos
+    divisa(y)
+    y += 24
+    T(d, (M, y), "ALFABETO E DÍGITOS  ·  os mesmos três gestos (risco, farpa e ponto), agora riscados à mão  ·  "
+      "giz, 32x32, ampliado 3x num bloco de pedra", 17)
+    T(d, (M, y + 26), "A regra não mudou: as 5 vogais são os traços-base; cada consoante é a vogal anterior mais "
+      "marcas (farpa vale 1, ponto vale 3). Dígitos: a mesma conta pendurada na Trave.", 15, sig.APAGADO)
+    y += 62
+    glifos = [chr(65 + i) for i in range(26)] + [str(n) for n in range(10)]
+    CL, passo = (larg - 2 * M) // 13, 32 * 3 + 2 * 6 + 40
+    for i, ch in enumerate(glifos):
+        peca = no_chao(sigs["sigilo_" + ch.lower()], 3, 6)
+        x, yy = M + (i % 13) * CL, y + (i // 13) * passo
+        cola(peca, x + (CL - peca.width) // 2, yy)
+        T(d, (x + CL // 2, yy + peca.height + 16), ch, 18, ancora="mm")
+    for i, linha in enumerate(["Pedra desenhada pelo script (não é a textura",
+                               "do Minecraft). Arte própria: nenhum símbolo",
+                               "vem de Ordem Paranormal. Os 5 sigilos de tipo",
+                               "de ritual ficam para a próxima etapa."]):
+        T(d, (M + 10 * CL + 16, y + 2 * passo + 8 + i * 22), linha, 14, sig.APAGADO)
+    y += 3 * passo + 10
+    return img.crop((0, 0, larg, y)).convert("RGB")
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -506,21 +600,20 @@ def gera(saida_item, saida_folha):
             md5[rel] = hashlib.md5(f.read()).hexdigest()
 
     texturas = {}
-    for arq, _nome, _elem, _oque, grade in PECAS:
-        texturas[arq] = textura(arq, grade)
+    for arq, _nome, _elem, _oque, antigo, grade in PECAS:
+        texturas[arq] = textura(arq, grade, antigo)
         salva(texturas[arq], saida_item, arq + ".png")
-    g16, g128 = {}, {}
-    for nome, _rot, gestos in sig.todos_os_glifos():
-        g16[nome] = sig.glifo_16(nome, gestos)
-        g128[nome] = sig.giz_grande(gestos, 128, nome)
-    salva(folha(texturas, sig.folha(g16, g128)), saida_folha, "pacote-1.png")
+    sigs = {arquivo: im for arquivo, _rot, im in s2.sigilos()}
+    salva(folha(texturas, sigs), saida_folha, "pacote-1.png")
     return md5
 
 
 def main(argv):
     if "--conferir" in argv:
         with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
-            m1, m2 = gera(a, a), gera(b, b)
+            m1 = gera(a, a)
+            s2._cache.clear()  # a segunda rodada refaz os sigilos do zero
+            m2 = gera(b, b)
         dif = sorted(k for k in m1 if m1[k] != m2.get(k))
         print("%d arquivos, %d diferentes entre as duas rodadas" % (len(m1), len(dif)))
         print("md5 das 17 texturas: " + hashlib.md5(
