@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:caneta_sem_tinta",
+  "baus": [
+    "minecraft:chests/village/village_cartographer",
+    "minecraft:chests/stronghold_library",
+    "minecraft:chests/shipwreck_map"
+  ]
+}

@@ -41,6 +41,10 @@ public final class OdModCliente {
 
         // Giz: o servidor manda abrir a tela com os sigilos que o jogador aprendeu.
         AbrirTelaSigilo.definirReceptor(m -> Minecraft.getInstance().setScreen(new TelaSigilo(m.pos(), m.sigilos())));
+        // Contorno do paranormal (Óculos de Velório, Sentença): só nesta tela.
+        ContornoCliente.iniciar();
+        NeoForge.EVENT_BUS.addListener((ClientTickEvent.Post e) -> ContornoCliente.aoTick());
+        NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut e) -> ContornoCliente.limpar());
 
         // Camada de horror: céu cinza e névoa de dia, noite escura, música cortada e sustos grandes.
         CamadaHorrorCliente.iniciar(barramento);

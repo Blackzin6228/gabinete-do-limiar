@@ -46,11 +46,23 @@ neoForge {
     }
 }
 
-// Hoje o mod não compila contra nenhum outro mod (o Iris é só por reflexão, em compat/iris/).
-// Integração nova que precise da API de outro mod: traga a lista "libsDoPack" e o ferramentas/baixar_libs.sh
-// do Od-Teste (commit b488cc6) e use compileOnly, sempre atrás de Compat.Integracao.X.ligada().
+// Jars de outros mods do pack usados só para compilar (compileOnly: não vão dentro do nosso jar).
+// O ferramentas/baixar_libs.sh baixa esta lista do modpack para libs/. Código que usa a API de um deles mora
+// só em compat/<mod>/ e é chamado atrás de Compat.Integracao.X.ligada() (o Iris é por reflexão, fora da lista).
+def libsDoPack = [
+        'curios-neoforge-9.5.1+1.21.1.jar',            // slot de acessório dos artefatos (opcional)
+]
 
 dependencies {
+    def pastaLibs = "${projectDir}/libs"
+    libsDoPack.each { nome ->
+        def jar = file("${pastaLibs}/${nome}")
+        if (!jar.exists()) {
+            throw new GradleException("Falta ${pastaLibs}/${nome}. Rode: bash ferramentas/baixar_libs.sh")
+        }
+        compileOnly files(jar)
+    }
+
     testImplementation platform('org.junit:junit-bom:5.11.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

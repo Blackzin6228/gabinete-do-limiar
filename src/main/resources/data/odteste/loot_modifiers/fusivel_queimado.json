@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:fusivel_queimado",
+  "baus": [
+    "minecraft:chests/village/village_toolsmith",
+    "minecraft:chests/village/village_weaponsmith",
+    "minecraft:chests/abandoned_mineshaft"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:moeda_de_defunto",
+  "baus": [
+    "minecraft:chests/ruined_portal",
+    "minecraft:chests/desert_pyramid",
+    "minecraft:chests/underwater_ruin_small"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "odteste:artefato_no_bau",
+  "conditions": [],
+  "artefato": "odteste:lupa_do_arquivo_morto",
+  "baus": [
+    "minecraft:chests/stronghold_library",
+    "minecraft:chests/woodland_mansion",
+    "minecraft:chests/village/village_cartographer"
+  ]
+}

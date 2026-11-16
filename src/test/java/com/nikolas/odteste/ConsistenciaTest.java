@@ -42,15 +42,38 @@ class ConsistenciaTest {
         assertEquals(pt, en, "toda tradução em pt_br precisa existir em en_us (e vice-versa)");
     }
 
-    /** Toda tag nossa soma com as de outros mods ("replace": false) e não cita ID nosso que não existe mais. */
+    /** Toda tag nossa soma com as de outros mods ("replace": false) e só cita ID nosso que existe (está em docs/ids.md). */
     @Test
     void tagsSomamENaoCitamIdAntigo() throws Exception {
+        String ids = Files.readString(Path.of("docs/ids.md"));
         try (var arquivos = Files.walk(Path.of("src/main/resources/data"))) {
             for (Path p : arquivos.filter(f -> f.toString().contains("tags") && f.toString().endsWith(".json")).toList()) {
                 String json = Files.readString(p);
                 assertTrue(json.matches("(?s).*\"replace\"\\s*:\\s*false.*"), p + " precisa de \"replace\": false");
-                assertFalse(json.contains("\"odteste:"), p + " cita um ID odteste: (crie o ID antes de pôr na tag)");
+                var m = java.util.regex.Pattern.compile("\"(odteste:[a-z0-9_/]+)\"").matcher(json);
+                while (m.find()) {
+                    assertTrue(ids.contains("`" + m.group(1) + "`"), p + " cita " + m.group(1) + ", que não está em docs/ids.md");
+                }
             }
+        }
+    }
+
+    /** Toda espada e todo artefato tem modelo, textura (placeholder até a da prévia), nome e descrição nos dois idiomas. */
+    @Test
+    void itensDoPacote1TemModeloTexturaETraducao() throws Exception {
+        Path assets = Path.of("src/main/resources/assets/odteste");
+        var pt = chaves(Files.readString(assets.resolve("lang/pt_br.json")));
+        java.util.List<String> ids = new java.util.ArrayList<>();
+        for (var t : com.nikolas.odteste.reliquias.TipoEspada.values()) ids.add(t.id);
+        for (var t : com.nikolas.odteste.artefatos.TipoArtefato.values()) ids.add(t.id);
+        for (String id : ids) {
+            assertTrue(Files.exists(assets.resolve("models/item/" + id + ".json")), "falta o modelo de " + id);
+            assertTrue(Files.exists(assets.resolve("textures/item/" + id + ".png")), "falta a textura de " + id);
+            assertTrue(pt.contains("item.odteste." + id), "falta o nome de " + id);
+            assertTrue(pt.contains("item.odteste." + id + ".desc"), "falta a descrição de " + id);
+        }
+        for (var t : com.nikolas.odteste.artefatos.TipoArtefato.values()) {
+            assertTrue(pt.contains("item.odteste." + t.id + ".preco"), "falta o preço (debuff) de " + t.id);
         }
     }
 

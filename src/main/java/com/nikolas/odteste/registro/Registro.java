@@ -1,6 +1,22 @@
 package com.nikolas.odteste.registro;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.nikolas.odteste.OdMod;
+import com.nikolas.odteste.artefatos.ArtefatoItem;
+import com.nikolas.odteste.artefatos.ArtefatoNoBau;
+import com.nikolas.odteste.artefatos.Sangramento;
+import com.nikolas.odteste.artefatos.TipoArtefato;
+import com.nikolas.odteste.reliquias.EspadaReliquia;
+import com.nikolas.odteste.reliquias.TipoEspada;
+import java.util.EnumMap;
+import java.util.Map;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import com.nikolas.odteste.cracha.CrachaDados;
 import com.nikolas.odteste.cracha.CrachaItem;
 import com.nikolas.odteste.dados.IdsDados;
@@ -60,6 +76,43 @@ public final class Registro {
                     .lightLevel(estado -> 3)
                     .pushReaction(PushReaction.DESTROY)
                     .sound(SoundType.GRAVEL)));
+    // ---------- pacote 1: espadas e artefatos ----------
+
+    /** Número da noite em que o poder "1x por noite" foi usado (Moeda de Defunto). Persistente. */
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Long>> NOITE_USADA =
+            COMPONENTES.register(IdsDados.COMPONENTE_NOITE_USADA, () -> DataComponentType.<Long>builder()
+                    .persistent(Codec.LONG)
+                    .networkSynchronized(ByteBufCodecs.VAR_LONG)
+                    .build());
+
+    public static final Map<TipoEspada, DeferredHolder<Item, EspadaReliquia>> ESPADAS = new EnumMap<>(TipoEspada.class);
+    public static final Map<TipoArtefato, DeferredHolder<Item, ArtefatoItem>> ARTEFATOS = new EnumMap<>(TipoArtefato.class);
+
+    static {
+        for (TipoEspada t : TipoEspada.values()) ESPADAS.put(t, ITEMS.register(t.id, () -> new EspadaReliquia(t)));
+        for (TipoArtefato t : TipoArtefato.values()) ARTEFATOS.put(t, ITEMS.register(t.id, () -> new ArtefatoItem(t)));
+    }
+
+    public static final DeferredRegister<MobEffect> EFEITOS = DeferredRegister.create(Registries.MOB_EFFECT, OdMod.MODID);
+    public static final DeferredHolder<MobEffect, Sangramento> SANGRAMENTO =
+            EFEITOS.register(IdsDados.EFEITO_SANGRAMENTO, Sangramento::new);
+
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT =
+            DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, OdMod.MODID);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<ArtefatoNoBau>> ARTEFATO_NO_BAU =
+            LOOT.register(IdsDados.LOOT_ARTEFATO_NO_BAU, () -> ArtefatoNoBau.CODEC);
+
+    /** Aba do criativo: as 4 espadas e os 12 artefatos (com o /give, o único jeito de pegar as espadas). */
+    public static final DeferredRegister<CreativeModeTab> ABAS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, OdMod.MODID);
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ABA = ABAS.register(IdsDados.ABA_CRIATIVA,
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.odteste." + IdsDados.ABA_CRIATIVA))
+                    .icon(() -> new ItemStack(ESPADAS.get(TipoEspada.SENTENCA_SEM_RECURSO).get()))
+                    .displayItems((params, saida) -> {
+                        ESPADAS.values().forEach(h -> saida.accept(h.get()));
+                        ARTEFATOS.values().forEach(h -> saida.accept(h.get()));
+                    })
+                    .build());
 
     private Registro() {}
 
@@ -68,5 +121,8 @@ public final class Registro {
         COMPONENTES.register(barramento);
         BLOCOS.register(barramento);
         ITEMS.register(barramento);
+        EFEITOS.register(barramento);
+        LOOT.register(barramento);
+        ABAS.register(barramento);
     }
 }

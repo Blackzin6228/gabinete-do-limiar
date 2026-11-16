@@ -20,7 +20,9 @@ public final class Compat {
         /** Máquinas que falham (compat/mekanism/). Só por reflexão: não há dependência de compilação. */
         MEKANISM("mekanism"),
         /** Máquinas que falham (compat/reavaritia/). Mod id do Re:Avaritia: avaritia. Só por reflexão. */
-        REAVARITIA("avaritia");
+        REAVARITIA("avaritia"),
+        /** Slot de acessório dos artefatos (compat/curios/). Sem ele, o artefato vale em qualquer lugar do inventário. */
+        CURIOS("curios");
 
         public final String modid;
 

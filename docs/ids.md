@@ -32,6 +32,14 @@ Os testes conferem esta lista.
 | `odteste_historia` | dado do mundo (`data/odteste_historia.dat`) | o mod usa só `grupos` (`nome`, `membros`, `marcos`); **o resto do arquivo é guardado e escrito de volta igual** (vilas, âncoras, colocações com backup da Vila Calada etc.) |
 | `odteste_livros_lidos` | dado do mundo (`data/odteste_livros_lidos.dat`) | quem já abriu cada livro |
 | `odteste:livro` | chave do custom_data do livro de história (`minecraft:written_book`) | o valor é o id do livro = nome do arquivo em `data/odteste/odteste_livros/` (hoje `dossie`, entregue no kit) |
+| `odteste:facao_de_ritual_de_sangue`, `odteste:sabre_de_ritual_de_morte`, `odteste:espada_de_ritual_de_conhecimento`, `odteste:espeto_de_ritual_de_energia` | itens (espadas, pilha de 1, inquebráveis) | sem receita: só aba do criativo e `/give`; só funcionam para quem é do elemento (Sangue, Morte, Conhecimento, Energia). Antes: `sede_de_domingo`, `sabre_do_ultimo_adeus`, `sentenca_sem_recurso`, `espeto_da_casa_cheia` |
+| `odteste:seringa_de_coleta_ritual`, `odteste:luva_de_abate_ritual`, `odteste:medalha_do_sangue_doado`, `odteste:oculos_de_visao_paranormal`, `odteste:moeda_de_obito`, `odteste:vela_de_rito_funebre`, `odteste:lupa_de_investigacao_paranormal`, `odteste:caneta_de_registro_apagado`, `odteste:fita_de_gravacao_anomala`, `odteste:celular_de_sinal_anomalo`, `odteste:fusivel_sobrecarregado`, `odteste:radio_de_interferencia` | itens (artefatos) | qualquer jogador; slot `charm` do Curios (tag `curios:charm`, `data/odteste/curios/entities/artefatos.json`); Vela e Celular têm durabilidade. Antes: `seringa_velha`, `luva_de_acougueiro`, `medalha_de_doador`, `oculos_de_velorio`, `moeda_de_defunto`, `vela_de_setimo_dia`, `lupa_do_arquivo_morto`, `caneta_sem_tinta`, `fita_sem_etiqueta`, `uma_barra_de_sinal`, `fusivel_queimado`, `radinho_de_pilha` |
+| `odteste:gabinete` | aba do criativo | espadas e artefatos |
+| `odteste:sangramento` | efeito (volta do mod antigo) | dano leve por segundo; só em criaturas, nunca em jogador |
+| `odteste:noite_usada` | componente de dados do item (número da noite) | poder "1x por noite" da Moeda de Óbito e da Espada de Ritual de Conhecimento |
+| `odteste:artefato_no_bau` | tipo de loot modifier | arquivos `odteste:<artefato>` em `data/odteste/loot_modifiers/` (um por artefato, lista de baús vanilla), listados em `data/neoforge/loot_modifiers/global_loot_modifiers.json` |
+| `odteste:contorno` | pacote servidor → jogador | ids de criaturas + tempo: contorno só na tela dele (Óculos, Sentença) |
+| `odteste-artefatos-server.toml` / `chance_bau` | config do servidor (`serverconfig/`, seção `[artefatos]`; 0–1, padrão 0.02) | chance de um artefato num baú que combina |
 | `efeitos_fortes` | config do cliente (`config/odteste-client.toml`: `LIGADO`, `SUAVE`, `DESLIGADO`) | diminui, não desliga (`DESLIGADO` vale como Mínimo) |
 | `intensidade` | config do cliente (mesmo arquivo; 50–100, padrão 100) | intensidade da camada de horror |
 | `mestre.mestres` | config do servidor (`serverconfig/odteste-mestre-server.toml`, seção `[mestre]`) | nomes separados por vírgula; vazio = todo op |
@@ -73,6 +81,76 @@ Dado de jogador sem registro some no primeiro save. Estes ficam em `dados/DadosG
 
 Itens `rubra`, `agulha_de_cerzir_carne`, `dedal_dentado`, `sino_de_matadouro`, `materia_sangue_bruta`,
 `martelo_do_ferreiro`; blocos `vela_da_capela`, `poca_de_sangue`, `analisador_sinal`; criaturas `retalhado`,
-`sanguessuga_mae`; efeito `sangramento`. Arquivos do mundo `odteste_vila_calada`, `odteste_gatilhos`,
+`sanguessuga_mae` (o efeito `sangramento` voltou no pacote 1). Arquivos do mundo `odteste_vila_calada`, `odteste_gatilhos`,
 `odteste_sinais` e as configs `odteste-server.toml` e `odteste-gatilhos-server.toml` ficam no disco sem uso.
 Lista completa: `docs/ids.md` do Od-Teste, commit `b488cc6`.
+
+## Nomes oficiais do pacote 1 (reforma de estilo, 15/11/2026)
+
+Nomes técnicos no lugar dos poéticos; tooltips completos em `docs/nomes-pacote-1.md`. Os IDs de giz e sigilos abaixo são **planejados** (ainda sem código); entram no jogo pelo PR do ritual. Na tela, Lucidez se chama Sanidade (só o texto).
+
+| ID novo | pt_br | en_us |
+|---|---|---|
+| `facao_de_ritual_de_sangue` | Facão de Ritual de Sangue | Ritual Blood Cleaver |
+| `sabre_de_ritual_de_morte` | Sabre de Ritual de Morte | Ritual Death Saber |
+| `espada_de_ritual_de_conhecimento` | Espada de Ritual de Conhecimento | Ritual Sword of Knowledge |
+| `espeto_de_ritual_de_energia` | Espeto de Ritual de Energia | Ritual Spit of Energy |
+| `seringa_de_coleta_ritual` | Seringa de Coleta Ritual | Ritual Collection Syringe |
+| `luva_de_abate_ritual` | Luva de Abate Ritual | Ritual Slaughter Glove |
+| `medalha_do_sangue_doado` | Medalha do Sangue Doado | Medal of Given Blood |
+| `oculos_de_visao_paranormal` | Óculos de Visão Paranormal | Paranormal Vision Glasses |
+| `moeda_de_obito` | Moeda de Óbito | Death Certificate Coin |
+| `vela_de_rito_funebre` | Vela de Rito Fúnebre | Funeral Rite Candle |
+| `lupa_de_investigacao_paranormal` | Lupa de Investigação Paranormal | Paranormal Investigation Magnifier |
+| `caneta_de_registro_apagado` | Caneta de Registro Apagado | Erased Record Pen |
+| `fita_de_gravacao_anomala` | Fita de Gravação Anômala | Anomalous Recording Tape |
+| `celular_de_sinal_anomalo` | Celular de Sinal Anômalo | Anomalous Signal Phone |
+| `fusivel_sobrecarregado` | Fusível Sobrecarregado | Overloaded Fuse |
+| `radio_de_interferencia` | Rádio de Interferência | Interference Radio |
+| `giz` | Giz Ritualístico | Ritual Chalk |
+| `sigilo_de_sangue` | Sigilo de Sangue | Blood Sigil |
+| `sigilo_de_morte` | Sigilo de Morte | Death Sigil |
+| `sigilo_de_conhecimento` | Sigilo de Conhecimento | Knowledge Sigil |
+| `sigilo_de_energia` | Sigilo de Energia | Energy Sigil |
+| `sigilo_de_medo` | Sigilo de Medo | Fear Sigil |
+| `sigilo_de_invocacao` | Sigilo de Invocação | Summoning Sigil |
+| `sigilo_de_protecao` | Sigilo de Proteção | Protection Sigil |
+| `sigilo_de_banimento` | Sigilo de Banimento | Banishment Sigil |
+| `sigilo_de_passagem` | Sigilo de Passagem | Passage Sigil |
+| `sigilo_de_revelacao` | Sigilo de Revelação | Revelation Sigil |
+| `sigilo_a` | Sigilo A | Sigil A |
+| `sigilo_b` | Sigilo B | Sigil B |
+| `sigilo_c` | Sigilo C | Sigil C |
+| `sigilo_d` | Sigilo D | Sigil D |
+| `sigilo_e` | Sigilo E | Sigil E |
+| `sigilo_f` | Sigilo F | Sigil F |
+| `sigilo_g` | Sigilo G | Sigil G |
+| `sigilo_h` | Sigilo H | Sigil H |
+| `sigilo_i` | Sigilo I | Sigil I |
+| `sigilo_j` | Sigilo J | Sigil J |
+| `sigilo_k` | Sigilo K | Sigil K |
+| `sigilo_l` | Sigilo L | Sigil L |
+| `sigilo_m` | Sigilo M | Sigil M |
+| `sigilo_n` | Sigilo N | Sigil N |
+| `sigilo_o` | Sigilo O | Sigil O |
+| `sigilo_p` | Sigilo P | Sigil P |
+| `sigilo_q` | Sigilo Q | Sigil Q |
+| `sigilo_r` | Sigilo R | Sigil R |
+| `sigilo_s` | Sigilo S | Sigil S |
+| `sigilo_t` | Sigilo T | Sigil T |
+| `sigilo_u` | Sigilo U | Sigil U |
+| `sigilo_v` | Sigilo V | Sigil V |
+| `sigilo_w` | Sigilo W | Sigil W |
+| `sigilo_x` | Sigilo X | Sigil X |
+| `sigilo_y` | Sigilo Y | Sigil Y |
+| `sigilo_z` | Sigilo Z | Sigil Z |
+| `sigilo_0` | Sigilo 0 | Sigil 0 |
+| `sigilo_1` | Sigilo 1 | Sigil 1 |
+| `sigilo_2` | Sigilo 2 | Sigil 2 |
+| `sigilo_3` | Sigilo 3 | Sigil 3 |
+| `sigilo_4` | Sigilo 4 | Sigil 4 |
+| `sigilo_5` | Sigilo 5 | Sigil 5 |
+| `sigilo_6` | Sigilo 6 | Sigil 6 |
+| `sigilo_7` | Sigilo 7 | Sigil 7 |
+| `sigilo_8` | Sigilo 8 | Sigil 8 |
+| `sigilo_9` | Sigilo 9 | Sigil 9 |
