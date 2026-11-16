@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:seringa_velha",
+  "artefato": "odteste:seringa_de_coleta_ritual",
   "baus": [
     "minecraft:chests/simple_dungeon",
     "minecraft:chests/abandoned_mineshaft",

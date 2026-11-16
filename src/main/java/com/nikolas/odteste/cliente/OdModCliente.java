@@ -37,7 +37,7 @@ public final class OdModCliente {
         // Crachá: o item (código comum) abre a tela por este gancho.
         CrachaItem.abrirTela = CrachaCliente::abrir;
 
-        // Contorno do paranormal (Óculos de Velório, Sentença): só nesta tela.
+        // Contorno do paranormal (Óculos de Visão Paranormal, Espada de Conhecimento): só nesta tela.
         ContornoCliente.iniciar();
         NeoForge.EVENT_BUS.addListener((ClientTickEvent.Post e) -> ContornoCliente.aoTick());
         NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut e) -> ContornoCliente.limpar());

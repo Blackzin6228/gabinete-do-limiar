@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/uma_barra_de_sinal"
+    "layer0": "odteste:item/radio_de_interferencia"
   }
 }

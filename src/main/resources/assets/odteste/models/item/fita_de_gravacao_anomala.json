@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/medalha_de_doador"
+    "layer0": "odteste:item/fita_de_gravacao_anomala"
   }
 }

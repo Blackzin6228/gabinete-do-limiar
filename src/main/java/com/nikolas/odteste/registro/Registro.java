@@ -55,7 +55,7 @@ public final class Registro {
 
     // ---------- pacote 1: espadas e artefatos ----------
 
-    /** Número da noite em que o poder "1x por noite" foi usado (Moeda de Defunto). Persistente. */
+    /** Número da noite em que o poder "1x por noite" foi usado (Moeda de Óbito, Espada de Conhecimento). Persistente. */
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Long>> NOITE_USADA =
             COMPONENTES.register(IdsDados.COMPONENTE_NOITE_USADA, () -> DataComponentType.<Long>builder()
                     .persistent(Codec.LONG)
@@ -84,7 +84,7 @@ public final class Registro {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ABA = ABAS.register(IdsDados.ABA_CRIATIVA,
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.odteste." + IdsDados.ABA_CRIATIVA))
-                    .icon(() -> new ItemStack(ESPADAS.get(TipoEspada.SENTENCA_SEM_RECURSO).get()))
+                    .icon(() -> new ItemStack(ESPADAS.get(TipoEspada.ESPADA_DE_RITUAL_DE_CONHECIMENTO).get()))
                     .displayItems((params, saida) -> {
                         ESPADAS.values().forEach(h -> saida.accept(h.get()));
                         ARTEFATOS.values().forEach(h -> saida.accept(h.get()));

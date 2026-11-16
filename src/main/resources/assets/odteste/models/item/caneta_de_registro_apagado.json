@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/caneta_sem_tinta"
+    "layer0": "odteste:item/caneta_de_registro_apagado"
   }
 }

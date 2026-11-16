@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/oculos_de_velorio"
+    "layer0": "odteste:item/lupa_de_investigacao_paranormal"
   }
 }

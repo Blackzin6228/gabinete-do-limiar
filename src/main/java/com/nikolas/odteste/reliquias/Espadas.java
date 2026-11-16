@@ -79,10 +79,10 @@ public final class Espadas {
         LivingEntity alvo = e.getEntity();
         if (alvo instanceof Player || alvo == p) return; // espada boa e comum contra jogador; nenhum poder
         switch (tipo) {
-            case SEDE_DE_DOMINGO -> sede(p, alvo);
-            case SABRE_DO_ULTIMO_ADEUS -> sabre(p, alvo, e);
-            case SENTENCA_SEM_RECURSO -> sentenca(p, alvo, e);
-            case ESPETO_DA_CASA_CHEIA -> espeto(p, alvo);
+            case FACAO_DE_RITUAL_DE_SANGUE -> sede(p, alvo);
+            case SABRE_DE_RITUAL_DE_MORTE -> sabre(p, alvo, e);
+            case ESPADA_DE_RITUAL_DE_CONHECIMENTO -> sentenca(p, alvo, e);
+            case ESPETO_DE_RITUAL_DE_ENERGIA -> espeto(p, alvo);
         }
     }
 
@@ -175,28 +175,29 @@ public final class Espadas {
 
     /** Checagem do portador (a cada 5 s): o Espeto na mão recarrega aos poucos as baterias do inventário. */
     public static void checar(ServerPlayer p) {
-        if (espadaNaMao(p) != TipoEspada.ESPETO_DA_CASA_CHEIA) return;
-        if (!RegrasEspadas.funciona(ElementoJogador.de(p), TipoEspada.ESPETO_DA_CASA_CHEIA)) return;
+        if (espadaNaMao(p) != TipoEspada.ESPETO_DE_RITUAL_DE_ENERGIA) return;
+        if (!RegrasEspadas.funciona(ElementoJogador.de(p), TipoEspada.ESPETO_DE_RITUAL_DE_ENERGIA)) return;
         Artefatos.recarregarEnergia(p, RegrasEspadas.ESPETO_ENERGIA, RegrasEspadas.ESPETO_ITENS_MAX);
     }
 
-    // ------------------------------------------------------------------ Sentença com livro ou mapa
+    // ------------------------------------------------------------------ Espada de Conhecimento com livro ou mapa
 
     /**
-     * A Sentença na mão principal, de quem é de Conhecimento, com livro na outra mão, ainda sem ter revelado nesta
-     * noite? Então o livro mostra um trecho escondido. TODO(mapa): com mapa na outra mão, "em breve".
+     * A Espada de Ritual de Conhecimento na mão principal, de quem é de Conhecimento, com livro na outra mão, ainda
+     * sem ter revelado nesta noite? Então o livro mostra um trecho escondido. TODO(mapa): com mapa na outra mão,
+     * "em breve".
      */
     public static boolean sentencaLe(ServerPlayer p) {
         ItemStack espada = p.getMainHandItem();
-        if (espadaNaMao(p) != TipoEspada.SENTENCA_SEM_RECURSO) return false;
-        if (!RegrasEspadas.funciona(ElementoJogador.de(p), TipoEspada.SENTENCA_SEM_RECURSO)) return false;
+        if (espadaNaMao(p) != TipoEspada.ESPADA_DE_RITUAL_DE_CONHECIMENTO) return false;
+        if (!RegrasEspadas.funciona(ElementoJogador.de(p), TipoEspada.ESPADA_DE_RITUAL_DE_CONHECIMENTO)) return false;
         if (!p.getOffhandItem().is(Items.WRITTEN_BOOK)) return false;
         long usada = espada.getOrDefault(Registro.NOITE_USADA, -1L);
         return !com.nikolas.odteste.artefatos.RegrasArtefatos.usadoNestaNoite(usada, Artefatos.noite(p));
     }
 
     public static void sentencaGastou(ServerPlayer p) {
-        if (espadaNaMao(p) == TipoEspada.SENTENCA_SEM_RECURSO) {
+        if (espadaNaMao(p) == TipoEspada.ESPADA_DE_RITUAL_DE_CONHECIMENTO) {
             p.getMainHandItem().set(Registro.NOITE_USADA, Artefatos.noite(p));
         }
     }

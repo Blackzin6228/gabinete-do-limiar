@@ -27,10 +27,10 @@ class RegrasEspadasTest {
         EnumSet<Elemento> vistos = EnumSet.noneOf(Elemento.class);
         for (TipoEspada t : TipoEspada.values()) assertTrue(vistos.add(t.elemento), "elemento repetido: " + t.elemento);
         assertEquals(EnumSet.of(Elemento.SANGUE, Elemento.MORTE, Elemento.CONHECIMENTO, Elemento.ENERGIA), vistos);
-        assertEquals("sede_de_domingo", TipoEspada.SEDE_DE_DOMINGO.id);
-        assertEquals("sabre_do_ultimo_adeus", TipoEspada.SABRE_DO_ULTIMO_ADEUS.id);
-        assertEquals("sentenca_sem_recurso", TipoEspada.SENTENCA_SEM_RECURSO.id);
-        assertEquals("espeto_da_casa_cheia", TipoEspada.ESPETO_DA_CASA_CHEIA.id);
+        assertEquals("facao_de_ritual_de_sangue", TipoEspada.FACAO_DE_RITUAL_DE_SANGUE.id);
+        assertEquals("sabre_de_ritual_de_morte", TipoEspada.SABRE_DE_RITUAL_DE_MORTE.id);
+        assertEquals("espada_de_ritual_de_conhecimento", TipoEspada.ESPADA_DE_RITUAL_DE_CONHECIMENTO.id);
+        assertEquals("espeto_de_ritual_de_energia", TipoEspada.ESPETO_DE_RITUAL_DE_ENERGIA.id);
     }
 
     @Test

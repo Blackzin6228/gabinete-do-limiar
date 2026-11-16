@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "odteste:item/sede_de_domingo"
+    "layer0": "odteste:item/facao_de_ritual_de_sangue"
   }
 }

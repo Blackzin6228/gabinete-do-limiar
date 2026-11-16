@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:oculos_de_velorio",
+  "artefato": "odteste:oculos_de_visao_paranormal",
   "baus": [
     "minecraft:chests/stronghold_crossing",
     "minecraft:chests/ancient_city",

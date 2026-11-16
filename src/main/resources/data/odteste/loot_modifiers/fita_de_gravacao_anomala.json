@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:fita_sem_etiqueta",
+  "artefato": "odteste:fita_de_gravacao_anomala",
   "baus": [
     "minecraft:chests/woodland_mansion",
     "minecraft:chests/shipwreck_map",

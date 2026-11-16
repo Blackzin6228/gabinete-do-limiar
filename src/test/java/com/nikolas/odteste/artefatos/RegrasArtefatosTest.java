@@ -30,7 +30,8 @@ class RegrasArtefatosTest {
     void soCanetaFitaEFusivelFicamParaDepois() {
         Set<TipoArtefato> emBreve = new HashSet<>();
         for (TipoArtefato t : TipoArtefato.values()) if (t.emBreve) emBreve.add(t);
-        assertEquals(Set.of(TipoArtefato.CANETA_SEM_TINTA, TipoArtefato.FITA_SEM_ETIQUETA, TipoArtefato.FUSIVEL_QUEIMADO), emBreve);
+        assertEquals(Set.of(TipoArtefato.CANETA_DE_REGISTRO_APAGADO, TipoArtefato.FITA_DE_GRAVACAO_ANOMALA,
+                TipoArtefato.FUSIVEL_SOBRECARREGADO), emBreve);
     }
 
     @Test

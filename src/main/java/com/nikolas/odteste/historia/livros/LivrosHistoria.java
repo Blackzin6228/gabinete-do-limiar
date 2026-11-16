@@ -120,7 +120,7 @@ public final class LivrosHistoria {
                 .map(g -> (Set<String>) new HashSet<>(g.marcos())).orElse(Set.of());
         int exposicao = DadosJogador.exposicao(leitor);
         Map<String, String> marcadores = marcadores(leitor);
-        // Lupa do Arquivo Morto / Sentença com livro: um degrau a mais. Só cobra se mostrou algo que ele não veria.
+        // Lupa de Investigação Paranormal / Espada de Conhecimento com livro: um degrau a mais. Só cobra se mostrou algo que ele não veria.
         int bonus = Artefatos.bonusLeitura(leitor);
         if (bonus > 0 && !RegrasLivros.montar(l, exposicao, marcos, marcadores, LeitorLivros.MAX_PAGINA)
                 .equals(RegrasLivros.montar(l, exposicao + bonus, marcos, marcadores, LeitorLivros.MAX_PAGINA))) {

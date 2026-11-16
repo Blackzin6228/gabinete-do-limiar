@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:luva_de_acougueiro",
+  "artefato": "odteste:luva_de_abate_ritual",
   "baus": [
     "minecraft:chests/village/village_butcher",
     "minecraft:chests/simple_dungeon",

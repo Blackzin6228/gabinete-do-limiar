@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/radinho_de_pilha"
+    "layer0": "odteste:item/oculos_de_visao_paranormal"
   }
 }

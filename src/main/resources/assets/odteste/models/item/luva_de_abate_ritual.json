@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/lupa_do_arquivo_morto"
+    "layer0": "odteste:item/luva_de_abate_ritual"
   }
 }

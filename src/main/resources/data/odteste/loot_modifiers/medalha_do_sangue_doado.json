@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:medalha_de_doador",
+  "artefato": "odteste:medalha_do_sangue_doado",
   "baus": [
     "minecraft:chests/village/village_temple",
     "minecraft:chests/igloo_chest",

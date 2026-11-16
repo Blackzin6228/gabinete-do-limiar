@@ -8,7 +8,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
 
 /**
- * Contorno do paranormal só nesta tela (Óculos de Velório, Sentença Sem Recurso). Liga a flag de brilho da
+ * Contorno do paranormal só nesta tela (Óculos de Visão Paranormal, Espada de Ritual de Conhecimento). Liga a flag de brilho da
  * entidade aqui no cliente; o servidor não sabe e ninguém mais vê. A flag é reaplicada a cada 10 ticks (o servidor
  * reescreve as flags quando a criatura muda de estado) e apagada quando o tempo acaba. Teto de 32 criaturas.
  */

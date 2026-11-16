@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:radinho_de_pilha",
+  "artefato": "odteste:radio_de_interferencia",
   "baus": [
     "minecraft:chests/village/village_plains_house",
     "minecraft:chests/village/village_taiga_house",

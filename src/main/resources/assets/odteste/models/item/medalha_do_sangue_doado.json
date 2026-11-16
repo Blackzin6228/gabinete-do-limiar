@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/fusivel_queimado"
+    "layer0": "odteste:item/medalha_do_sangue_doado"
   }
 }

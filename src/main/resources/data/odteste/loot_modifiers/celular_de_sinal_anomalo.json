@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:uma_barra_de_sinal",
+  "artefato": "odteste:celular_de_sinal_anomalo",
   "baus": [
     "minecraft:chests/pillager_outpost",
     "minecraft:chests/trial_chambers/supply",

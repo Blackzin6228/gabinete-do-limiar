@@ -52,7 +52,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
  */
 @EventBusSubscriber(modid = OdMod.MODID)
 public final class Artefatos {
-    /** Quem a Moeda de Defunto fez os monstros esquecerem, e até quando (tempo do mundo). Só memória. */
+    /** Quem a Moeda de Óbito fez os monstros esquecerem, e até quando (tempo do mundo). Só memória. */
     private static final Map<UUID, Long> ESQUECIDO_ATE = new HashMap<>();
 
     private Artefatos() {}
@@ -105,7 +105,7 @@ public final class Artefatos {
     }
 
     /**
-     * Recarrega aos poucos itens com bateria (energia do NeoForge) do inventário. Usado pela Barra de Sinal e pelo
+     * Recarrega aos poucos itens com bateria (energia do NeoForge) do inventário. Usado pelo Celular e pelo
      * Espeto. @return quantos itens receberam energia
      */
     public static int recarregarEnergia(Player p, int porItem, int maxItens) {
@@ -125,13 +125,13 @@ public final class Artefatos {
     /** @return true se o artefato fez algo (o clique é consumido). */
     static boolean usar(ServerPlayer p, ItemStack item, TipoArtefato tipo) {
         return switch (tipo) {
-            case SERINGA_VELHA -> seringa(p, item);
-            case UMA_BARRA_DE_SINAL -> pulso(p, item);
+            case SERINGA_DE_COLETA_RITUAL -> seringa(p, item);
+            case CELULAR_DE_SINAL_ANOMALO -> pulso(p, item);
             default -> false;
         };
     }
 
-    /** Seringa Velha: 1 coração por Força de 30 s. Cobra vida e Exposição. */
+    /** Seringa de Coleta Ritual: 1 coração por Força de 30 s. Cobra vida e Exposição. */
     private static boolean seringa(ServerPlayer p, ItemStack item) {
         if (p.getHealth() <= RegrasArtefatos.SERINGA_VIDA + 1f) {
             p.playNotifySound(SoundEvents.BOTTLE_EMPTY, SoundSource.PLAYERS, 0.5f, 0.6f);
@@ -145,7 +145,7 @@ public final class Artefatos {
         return true;
     }
 
-    /** Uma Barra de Sinal: pulso que atordoa criaturas hostis perto. Gasta o aparelho. */
+    /** Celular de Sinal Anômalo: pulso que atordoa criaturas hostis perto. Gasta o aparelho. */
     private static boolean pulso(ServerPlayer p, ItemStack item) {
         List<Mob> alvos = perto(p, Mob.class, RegrasArtefatos.SINAL_RAIO_PULSO, m -> m instanceof Enemy);
         for (Mob m : alvos) {
@@ -168,20 +168,20 @@ public final class Artefatos {
         medalha(p);
         oculos(p);
         vela(p);
-        barraDeSinal(p);
-        radinho(p);
+        celular(p);
+        radio(p);
     }
 
-    /** Medalha de Doador: abaixo de 3 corações regenera aos poucos; cada vez cobra Lucidez. */
+    /** Medalha do Sangue Doado: abaixo de 3 corações regenera aos poucos; cada vez cobra Lucidez. */
     private static void medalha(ServerPlayer p) {
-        if (p.getHealth() >= RegrasArtefatos.MEDALHA_VIDA || !tem(p, TipoArtefato.MEDALHA_DE_DOADOR)) return;
+        if (p.getHealth() >= RegrasArtefatos.MEDALHA_VIDA || !tem(p, TipoArtefato.MEDALHA_DO_SANGUE_DOADO)) return;
         p.addEffect(escondido(MobEffects.REGENERATION, RegrasArtefatos.INTERVALO_TICKS + 20, 0));
         Lucidez.perder(p, RegrasArtefatos.MEDALHA_LUCIDEZ);
     }
 
-    /** Óculos de Velório: contorno do paranormal e dos invisíveis (só nesta tela). Cobra Exposição; visões. */
+    /** Óculos de Visão Paranormal: contorno do paranormal e dos invisíveis (só nesta tela). Cobra Exposição; visões. */
     private static void oculos(ServerPlayer p) {
-        if (!tem(p, TipoArtefato.OCULOS_DE_VELORIO)) return;
+        if (!tem(p, TipoArtefato.OCULOS_DE_VISAO_PARANORMAL)) return;
         List<LivingEntity> vistos = perto(p, LivingEntity.class, RegrasArtefatos.OCULOS_RAIO,
                 c -> !(c instanceof Player) && (c.isInvisible() || c.getType().is(Paranormal.CRIATURA)));
         com.nikolas.odteste.rede.Contorno.mandar(p, vistos, RegrasArtefatos.OCULOS_CONTORNO_TICKS);
@@ -192,9 +192,9 @@ public final class Artefatos {
         }
     }
 
-    /** Vela de Sétimo Dia: acesa (equipada ou na mão), enfraquece mortos-vivos perto. Gasta a vela e cobra Lucidez. */
+    /** Vela de Rito Fúnebre: acesa (equipada ou na mão), enfraquece mortos-vivos perto. Gasta a vela e cobra Lucidez. */
     private static void vela(ServerPlayer p) {
-        ItemStack vela = equipado(p, TipoArtefato.VELA_DE_SETIMO_DIA);
+        ItemStack vela = equipado(p, TipoArtefato.VELA_DE_RITO_FUNEBRE);
         if (vela.isEmpty()) return;
         List<Mob> mortos = perto(p, Mob.class, RegrasArtefatos.VELA_RAIO, m -> m.getType().is(EntityTypeTags.UNDEAD));
         if (mortos.isEmpty()) return;
@@ -204,9 +204,9 @@ public final class Artefatos {
         p.serverLevel().playSound(null, p.blockPosition(), SoundEvents.CANDLE_EXTINGUISH, SoundSource.PLAYERS, 0.4f, 0.6f);
     }
 
-    /** Uma Barra de Sinal: recarrega itens com bateria (gasta o aparelho); de noite, às vezes toca sozinho. */
-    private static void barraDeSinal(ServerPlayer p) {
-        ItemStack sinal = equipado(p, TipoArtefato.UMA_BARRA_DE_SINAL);
+    /** Celular de Sinal Anômalo: recarrega itens com bateria (gasta o aparelho); de noite, às vezes toca sozinho. */
+    private static void celular(ServerPlayer p) {
+        ItemStack sinal = equipado(p, TipoArtefato.CELULAR_DE_SINAL_ANOMALO);
         if (sinal.isEmpty()) return;
         if (recarregarEnergia(p, RegrasArtefatos.SINAL_ENERGIA, RegrasArtefatos.SINAL_ITENS_MAX) > 0) {
             sinal.hurtAndBreak(1, p.serverLevel(), p, i -> {});
@@ -218,42 +218,42 @@ public final class Artefatos {
         }
     }
 
-    /** Radinho de Pilha: chiado mais alto perto de perigo (só som). Em silêncio cobra Lucidez; de noite, vozes. */
-    private static void radinho(ServerPlayer p) {
-        if (!tem(p, TipoArtefato.RADINHO_DE_PILHA)) return;
-        List<Mob> perigo = perto(p, Mob.class, RegrasArtefatos.RADINHO_RAIO, m -> m instanceof Enemy);
+    /** Rádio de Interferência: chiado mais alto perto de perigo (só som). Em silêncio cobra Lucidez; de noite, vozes. */
+    private static void radio(ServerPlayer p) {
+        if (!tem(p, TipoArtefato.RADIO_DE_INTERFERENCIA)) return;
+        List<Mob> perigo = perto(p, Mob.class, RegrasArtefatos.RADIO_RAIO, m -> m instanceof Enemy);
         if (!perigo.isEmpty()) {
-            double d = perigo.stream().mapToDouble(m -> m.distanceTo(p)).min().orElse(RegrasArtefatos.RADINHO_RAIO);
+            double d = perigo.stream().mapToDouble(m -> m.distanceTo(p)).min().orElse(RegrasArtefatos.RADIO_RAIO);
             p.playNotifySound(SoundEvents.FIRE_AMBIENT, SoundSource.PLAYERS, RegrasArtefatos.volumeChiado(d), 1.8f);
             return;
         }
-        if (p.getRandom().nextInt(RegrasArtefatos.RADINHO_SILENCIO_UMA_EM) != 0) return;
-        Lucidez.perder(p, RegrasArtefatos.RADINHO_LUCIDEZ);
+        if (p.getRandom().nextInt(RegrasArtefatos.RADIO_SILENCIO_UMA_EM) != 0) return;
+        Lucidez.perder(p, RegrasArtefatos.RADIO_LUCIDEZ);
         p.playNotifySound(deNoite(p) ? SoundEvents.AMBIENT_CAVE.value() : SoundEvents.FIRE_AMBIENT,
                 SoundSource.PLAYERS, 0.35f, deNoite(p) ? 0.5f : 1.9f);
     }
 
     // ------------------------------------------------------------------ ao bater, morrer e mirar
 
-    /** Luva de Açougueiro: golpes comuns também sangram (nunca em jogador). Cada acerto dá fome. */
+    /** Luva de Abate Ritual: golpes comuns também sangram (nunca em jogador). Cada acerto dá fome. */
     @SubscribeEvent
     public static void aoBater(LivingIncomingDamageEvent e) {
         if (!(e.getSource().getEntity() instanceof ServerPlayer p) || !e.getSource().is(DamageTypes.PLAYER_ATTACK)) return;
         LivingEntity alvo = e.getEntity();
-        if (alvo == p || !tem(p, TipoArtefato.LUVA_DE_ACOUGUEIRO)) return;
+        if (alvo == p || !tem(p, TipoArtefato.LUVA_DE_ABATE_RITUAL)) return;
         p.causeFoodExhaustion(RegrasArtefatos.LUVA_FOME);
         if (alvo instanceof Player || alvo instanceof AbstractGolem) return;
         alvo.addEffect(new MobEffectInstance(Registro.SANGRAMENTO, RegrasArtefatos.LUVA_SANGRAR_TICKS, 0), p);
     }
 
     /**
-     * Moeda de Defunto: 1x por noite, o golpe fatal deixa meio coração e os monstros esquecem o jogador por 5 s.
+     * Moeda de Óbito: 1x por noite, o golpe fatal deixa meio coração e os monstros esquecem o jogador por 5 s.
      * Cobra Lucidez e esfria até a noite seguinte (a noite fica guardada na própria moeda).
      */
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void aoMorrer(LivingDeathEvent e) {
         if (e.isCanceled() || !(e.getEntity() instanceof ServerPlayer p) || p.isSpectator()) return;
-        ItemStack moeda = equipado(p, TipoArtefato.MOEDA_DE_DEFUNTO);
+        ItemStack moeda = equipado(p, TipoArtefato.MOEDA_DE_OBITO);
         if (moeda.isEmpty()) return;
         long noite = noite(p);
         if (RegrasArtefatos.usadoNestaNoite(moeda.getOrDefault(Registro.NOITE_USADA, -1L), noite)) return;
@@ -285,20 +285,21 @@ public final class Artefatos {
         Espadas.esquecer(e.getEntity().getUUID());
     }
 
-    // ------------------------------------------------------------------ leitura (Lupa e Sentença)
+    // ------------------------------------------------------------------ leitura (Lupa e Espada de Conhecimento)
 
     /**
-     * Lupa do Arquivo Morto (e a Sentença Sem Recurso com o livro na outra mão): ao ler um livro do mod, conta como
-     * um degrau a mais de Exposição (aparecem trechos escondidos). Só calcula; quem cobra é {@link #revelou}.
+     * Lupa de Investigação Paranormal (e a Espada de Ritual de Conhecimento com o livro na outra mão): ao ler um livro
+     * do mod, conta como um degrau a mais de Exposição (aparecem trechos escondidos). Só calcula; quem cobra é
+     * {@link #revelou}.
      */
     public static int bonusLeitura(ServerPlayer p) {
-        if (tem(p, TipoArtefato.LUPA_DO_ARQUIVO_MORTO) || Espadas.sentencaLe(p)) return RegrasArtefatos.LEITURA_BONUS;
+        if (tem(p, TipoArtefato.LUPA_DE_INVESTIGACAO_PARANORMAL) || Espadas.sentencaLe(p)) return RegrasArtefatos.LEITURA_BONUS;
         return 0;
     }
 
-    /** O bônus de leitura revelou um trecho: a Lupa cobra Lucidez; a Sentença gasta a vez da noite. */
+    /** O bônus de leitura revelou um trecho: a Lupa cobra Lucidez; a Espada de Conhecimento gasta a vez da noite. */
     public static void revelou(ServerPlayer p) {
-        if (tem(p, TipoArtefato.LUPA_DO_ARQUIVO_MORTO)) {
+        if (tem(p, TipoArtefato.LUPA_DE_INVESTIGACAO_PARANORMAL)) {
             Lucidez.perder(p, RegrasArtefatos.LUPA_LUCIDEZ);
         } else {
             Espadas.sentencaGastou(p);

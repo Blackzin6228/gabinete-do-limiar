@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "odteste:item/espeto_da_casa_cheia"
+    "layer0": "odteste:item/sabre_de_ritual_de_morte"
   }
 }

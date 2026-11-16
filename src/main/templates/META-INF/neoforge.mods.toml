@@ -33,6 +33,6 @@ Horror paranormal do CONGUITOS SMP. Os jogadores são agentes do Gabinete do Lim
     ordering="NONE"
     side="BOTH"
 
-# Contorno do paranormal (Óculos de Velório e Sentença Sem Recurso): o cliente liga o brilho só na tela de quem vê.
+# Contorno do paranormal (Óculos de Visão Paranormal e Espada de Ritual de Conhecimento): o cliente liga o brilho só na tela de quem vê.
 [[accessTransformers]]
     file="META-INF/accesstransformer.cfg"

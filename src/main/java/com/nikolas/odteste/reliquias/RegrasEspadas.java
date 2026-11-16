@@ -10,7 +10,7 @@ public final class RegrasEspadas {
     /** Golpe de quem não é do elemento: vale como um soco (sem dano extra e sem efeito). */
     public static final float DANO_FORA_DO_ELEMENTO = 1f;
 
-    // Sede de Domingo
+    // Facão de Ritual de Sangue
     public static final int SEDE_ACERTOS_PARA_CURAR = 4;
     public static final float SEDE_CURA = 2f;            // 1 coração
     public static final float SEDE_CURA_MAX_JANELA = 4f; // 2 corações...
@@ -19,16 +19,16 @@ public final class RegrasEspadas {
     /** Acertos seguidos no mesmo alvo para começar a sangrar. */
     public static final int SEDE_SEGUIDOS_PARA_SANGRAR = 2;
 
-    // Sabre do Último Adeus
+    // Sabre de Ritual de Morte
     /** "Pouca vida": até 25% da vida máxima. */
     public static final float SABRE_POUCA_VIDA = 0.25f;
     public static final int SABRE_RECARGA_TICKS = 1200; // 60 s
 
-    // Sentença Sem Recurso
+    // Espada de Ritual de Conhecimento
     public static final float SENTENCA_MULTIPLICADOR = 1.5f;
     public static final int CONTORNO_TICKS = 200; // o contorno dura 10 s e é renovado a cada golpe no julgado
 
-    // Espeto da Casa Cheia
+    // Espeto de Ritual de Energia
     public static final int ESPETO_CARGA_CHEIA = 6;
     public static final int ESPETO_ALVOS = 3;
     public static final double ESPETO_RAIO = 4.0;

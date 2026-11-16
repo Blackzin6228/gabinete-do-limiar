@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:moeda_de_defunto",
+  "artefato": "odteste:moeda_de_obito",
   "baus": [
     "minecraft:chests/ruined_portal",
     "minecraft:chests/desert_pyramid",

@@ -1,7 +1,7 @@
 {
   "type": "odteste:artefato_no_bau",
   "conditions": [],
-  "artefato": "odteste:caneta_sem_tinta",
+  "artefato": "odteste:caneta_de_registro_apagado",
   "baus": [
     "minecraft:chests/village/village_cartographer",
     "minecraft:chests/stronghold_library",

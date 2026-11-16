@@ -3,24 +3,24 @@ package com.nikolas.odteste.artefatos;
 import com.nikolas.odteste.elementos.Elemento;
 
 /**
- * Os 12 artefatos de docs/reliquias-v1.md. Java puro (testável). O {@link #id} é o ID do item: nunca muda.
- * Qualquer jogador usa. {@link #emBreve} = o poder depende de algo que ainda não existe (magias, máquinas,
+ * Os 12 artefatos (nomes e IDs em docs/nomes-pacote-1.md). Java puro (testável). O {@link #id} é o ID do item:
+ * nunca muda. Qualquer jogador usa. {@link #emBreve} = o poder depende de algo que ainda não existe (magias, máquinas,
  * verdades): o item existe, a descrição diz "em breve" e o efeito não roda.
- * {@link #durabilidade} > 0 = o artefato se gasta (Vela, Barra de Sinal).
+ * {@link #durabilidade} > 0 = o artefato se gasta (Vela, Celular).
  */
 public enum TipoArtefato {
-    SERINGA_VELHA("seringa_velha", Elemento.SANGUE, false, 0),
-    LUVA_DE_ACOUGUEIRO("luva_de_acougueiro", Elemento.SANGUE, false, 0),
-    MEDALHA_DE_DOADOR("medalha_de_doador", Elemento.SANGUE, false, 0),
-    OCULOS_DE_VELORIO("oculos_de_velorio", Elemento.MORTE, false, 0),
-    MOEDA_DE_DEFUNTO("moeda_de_defunto", Elemento.MORTE, false, 0),
-    VELA_DE_SETIMO_DIA("vela_de_setimo_dia", Elemento.MORTE, false, 240),
-    LUPA_DO_ARQUIVO_MORTO("lupa_do_arquivo_morto", Elemento.CONHECIMENTO, false, 0),
-    CANETA_SEM_TINTA("caneta_sem_tinta", Elemento.CONHECIMENTO, true, 0),
-    FITA_SEM_ETIQUETA("fita_sem_etiqueta", Elemento.CONHECIMENTO, true, 0),
-    UMA_BARRA_DE_SINAL("uma_barra_de_sinal", Elemento.ENERGIA, false, 320),
-    FUSIVEL_QUEIMADO("fusivel_queimado", Elemento.ENERGIA, true, 0),
-    RADINHO_DE_PILHA("radinho_de_pilha", Elemento.ENERGIA, false, 0);
+    SERINGA_DE_COLETA_RITUAL("seringa_de_coleta_ritual", Elemento.SANGUE, false, 0),
+    LUVA_DE_ABATE_RITUAL("luva_de_abate_ritual", Elemento.SANGUE, false, 0),
+    MEDALHA_DO_SANGUE_DOADO("medalha_do_sangue_doado", Elemento.SANGUE, false, 0),
+    OCULOS_DE_VISAO_PARANORMAL("oculos_de_visao_paranormal", Elemento.MORTE, false, 0),
+    MOEDA_DE_OBITO("moeda_de_obito", Elemento.MORTE, false, 0),
+    VELA_DE_RITO_FUNEBRE("vela_de_rito_funebre", Elemento.MORTE, false, 240),
+    LUPA_DE_INVESTIGACAO_PARANORMAL("lupa_de_investigacao_paranormal", Elemento.CONHECIMENTO, false, 0),
+    CANETA_DE_REGISTRO_APAGADO("caneta_de_registro_apagado", Elemento.CONHECIMENTO, true, 0),
+    FITA_DE_GRAVACAO_ANOMALA("fita_de_gravacao_anomala", Elemento.CONHECIMENTO, true, 0),
+    CELULAR_DE_SINAL_ANOMALO("celular_de_sinal_anomalo", Elemento.ENERGIA, false, 320),
+    FUSIVEL_SOBRECARREGADO("fusivel_sobrecarregado", Elemento.ENERGIA, true, 0),
+    RADIO_DE_INTERFERENCIA("radio_de_interferencia", Elemento.ENERGIA, false, 0);
 
     public final String id;
     public final Elemento elemento;

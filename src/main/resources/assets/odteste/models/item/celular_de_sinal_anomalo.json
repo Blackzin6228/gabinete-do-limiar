@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/seringa_velha"
+    "layer0": "odteste:item/celular_de_sinal_anomalo"
   }
 }

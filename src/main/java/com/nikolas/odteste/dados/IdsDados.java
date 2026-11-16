@@ -69,7 +69,7 @@ public final class IdsDados {
     public static final String ABA_CRIATIVA = "gabinete";
     /** Efeito de sangramento (só em criaturas, nunca em jogador). O ID do mod antigo volta. */
     public static final String EFEITO_SANGRAMENTO = "sangramento";
-    /** Componente do item: número da noite em que o poder "1x por noite" foi usado (Moeda, Sentença). */
+    /** Componente do item: número da noite em que o poder "1x por noite" foi usado (Moeda, Espada de Conhecimento). */
     public static final String COMPONENTE_NOITE_USADA = "noite_usada";
     /** Tipo de loot modifier que põe um artefato em baús (data/odteste/loot_modifiers/<artefato>.json). */
     public static final String LOOT_ARTEFATO_NO_BAU = "artefato_no_bau";

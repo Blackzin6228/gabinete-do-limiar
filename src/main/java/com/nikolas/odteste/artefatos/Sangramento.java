@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 /**
- * Sangramento: dano leve a cada segundo. Só em criaturas (a Sede de Domingo e a Luva nunca põem em jogador; se um
+ * Sangramento: dano leve a cada segundo. Só em criaturas (o Facão de Ritual de Sangue e a Luva nunca põem em jogador; se um
  * comando puser, não faz nada). Sem ícone: nunca aparece na tela de um jogador.
  */
 public final class Sangramento extends MobEffect {

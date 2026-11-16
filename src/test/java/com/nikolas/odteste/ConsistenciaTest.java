@@ -72,9 +72,17 @@ class ConsistenciaTest {
             assertTrue(pt.contains("item.odteste." + id), "falta o nome de " + id);
             assertTrue(pt.contains("item.odteste." + id + ".desc"), "falta a descrição de " + id);
         }
-        for (var t : com.nikolas.odteste.artefatos.TipoArtefato.values()) {
-            assertTrue(pt.contains("item.odteste." + t.id + ".preco"), "falta o preço (debuff) de " + t.id);
+        for (String id : ids) {
+            assertTrue(pt.contains("item.odteste." + id + ".preco"), "falta a segunda linha (preço) de " + id);
         }
+    }
+
+    /** O Fusível protege da falha das máquinas pela tag (a máquina lê a tag; o item é nosso). */
+    @Test
+    void fusivelEstaNaTagQueReduzFalha() throws Exception {
+        String tag = Files.readString(Path.of("src/main/resources/data/odteste/tags/item/reduz_falha_maquina.json"));
+        assertTrue(tag.contains("\"odteste:" + com.nikolas.odteste.artefatos.TipoArtefato.FUSIVEL_SOBRECARREGADO.id + "\""),
+                "o Fusível Sobrecarregado precisa estar na tag odteste:reduz_falha_maquina");
     }
 
     private static java.util.Set<String> chaves(String json) {

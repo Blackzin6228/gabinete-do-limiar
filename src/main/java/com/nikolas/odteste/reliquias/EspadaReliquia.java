@@ -31,9 +31,8 @@ public final class EspadaReliquia extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack item, TooltipContext contexto, List<Component> linhas, TooltipFlag flag) {
-        linhas.add(Component.translatable("item.odteste." + tipo.id + ".desc").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-        linhas.add(Component.translatable("odteste.espada.so_do_elemento",
-                        Component.translatable(tipo.elemento.chaveTraducao()))
-                .withStyle(ChatFormatting.DARK_GRAY));
+        // Linha 1 já diz de qual elemento ela é ("Só responde a quem é de ..."); linha 2 é o preço/limite.
+        linhas.add(Component.translatable("item.odteste." + tipo.id + ".desc").withStyle(ChatFormatting.GRAY));
+        linhas.add(Component.translatable("item.odteste." + tipo.id + ".preco").withStyle(ChatFormatting.DARK_RED));
     }
 }

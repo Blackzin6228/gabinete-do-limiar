@@ -16,7 +16,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 /**
  * Servidor → só o próprio jogador: estas criaturas ficam com contorno na tela dele por {@code ticks}
- * (Óculos de Velório, Sentença Sem Recurso). Ninguém mais vê. Teto de {@link #TETO} criaturas por pacote.
+ * (Óculos de Visão Paranormal, Espada de Ritual de Conhecimento). Ninguém mais vê. Teto de {@link #TETO} criaturas por pacote.
  */
 public record Contorno(List<Integer> ids, int ticks) implements CustomPacketPayload {
     public static final int TETO = 16;

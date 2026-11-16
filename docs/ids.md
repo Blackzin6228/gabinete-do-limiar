@@ -38,7 +38,8 @@ Os testes conferem esta lista.
 | `odteste:sangramento` | efeito (volta do mod antigo) | dano leve por segundo; só em criaturas, nunca em jogador |
 | `odteste:noite_usada` | componente de dados do item (número da noite) | poder "1x por noite" da Moeda de Óbito e da Espada de Ritual de Conhecimento |
 | `odteste:artefato_no_bau` | tipo de loot modifier | arquivos `odteste:<artefato>` em `data/odteste/loot_modifiers/` (um por artefato, lista de baús vanilla), listados em `data/neoforge/loot_modifiers/global_loot_modifiers.json` |
-| `odteste:contorno` | pacote servidor → jogador | ids de criaturas + tempo: contorno só na tela dele (Óculos, Sentença) |
+| `odteste:contorno` | pacote servidor → jogador | ids de criaturas + tempo: contorno só na tela dele (Óculos, Espada de Conhecimento) |
+| `odteste:reduz_falha_maquina` | tag de item (`"replace": false`) | hoje só o `odteste:fusivel_sobrecarregado`; quem leva um item dela tem menos chance de a máquina falhar (a regra da máquina é da `pacote-1/sistemas`) |
 | `odteste-artefatos-server.toml` / `chance_bau` | config do servidor (`serverconfig/`, seção `[artefatos]`; 0–1, padrão 0.02) | chance de um artefato num baú que combina |
 | `efeitos_fortes` | config do cliente (`config/odteste-client.toml`: `LIGADO`, `SUAVE`, `DESLIGADO`) | diminui, não desliga (`DESLIGADO` vale como Mínimo) |
 | `intensidade` | config do cliente (mesmo arquivo; 50–100, padrão 100) | intensidade da camada de horror |

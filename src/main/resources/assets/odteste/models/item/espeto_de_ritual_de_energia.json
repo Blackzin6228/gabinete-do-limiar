@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "odteste:item/sentenca_sem_recurso"
+    "layer0": "odteste:item/espeto_de_ritual_de_energia"
   }
 }

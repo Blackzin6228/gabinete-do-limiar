@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "odteste:item/moeda_de_defunto"
+    "layer0": "odteste:item/seringa_de_coleta_ritual"
   }
 }
