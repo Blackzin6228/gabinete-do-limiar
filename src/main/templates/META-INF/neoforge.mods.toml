@@ -24,3 +24,18 @@ Horror paranormal do CONGUITOS SMP. Os jogadores são agentes do Gabinete do Lim
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+# Integrações opcionais (só por reflexão em compat/): o mod abre sem elas.
+[[dependencies.${mod_id}]]
+    modId="mekanism"
+    type="optional"
+    versionRange="[10,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="avaritia"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

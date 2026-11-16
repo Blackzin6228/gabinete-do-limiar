@@ -8,8 +8,8 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
  * Nenhum valor do jogador vai para o cliente hoje (nenhum efeito de cliente usa Exposição ou Lucidez).
  */
 public final class Rede {
-    /** Versão do protocolo. Mudou o formato de algum pacote? Suba o número. 9 = Gabinete do Limiar. */
-    private static final String VERSAO = "9";
+    /** Versão do protocolo. Mudou o formato de algum pacote? Suba o número. 9 = Gabinete do Limiar, 10 = giz e sigilos. */
+    private static final String VERSAO = "10";
 
     private Rede() {}
 
@@ -20,6 +20,8 @@ public final class Rede {
     private static void registrarPacotes(RegisterPayloadHandlersEvent evento) {
         evento.registrar(VERSAO)
                 .playToClient(AreaHorror.TIPO, AreaHorror.CODEC, AreaHorror::receber)
-                .playToClient(Susto.TIPO, Susto.CODEC, Susto::receber);
+                .playToClient(Susto.TIPO, Susto.CODEC, Susto::receber)
+                .playToClient(AbrirTelaSigilo.TIPO, AbrirTelaSigilo.CODEC, AbrirTelaSigilo::receber)
+                .playToServer(DesenharSigilo.TIPO, DesenharSigilo.CODEC, DesenharSigilo::receber);
     }
 }

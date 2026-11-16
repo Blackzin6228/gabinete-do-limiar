@@ -55,6 +55,7 @@ public final class ComandosHistoria {
                 .then(grupo())
                 .then(ComandosLivros.livro())
                 .then(ComandosKit.kit())
+                .then(ComandosSigilo.sigilo())
                 .then(ComandosElemento.elemento()));
     }
 

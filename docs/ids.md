@@ -38,6 +38,27 @@ Os testes conferem esta lista.
 | `mestre.ouvir_padrao` | config do servidor (mesmo arquivo) | mestre em espectador vê os sustos de quem assiste |
 | `mestre.pular_cenas` | config do servidor (mesmo arquivo) | sem uso hoje (as cenas ficaram no mod antigo); fica para não sumir do arquivo |
 
+### Giz e sigilos (pacote 1)
+
+| ID | Tipo | Observação |
+|---|---|---|
+| `odteste:giz` | item (durabilidade 64) | giz único; sem aba criativa; botão direito no chão abre a tela dos sigilos aprendidos |
+| `odteste:sigilo` | bloco (sem item, sem drop) | desenho riscado no chão, fino, sem colisão, quebra num golpe, luz 3; sem block entity |
+| `simbolo` | propriedade do bloco `odteste:sigilo` | **42 nomes, para sempre**: `letra_a` a `letra_z`, `digito_0` a `digito_9`, `elemento_sangue`, `elemento_morte`, `elemento_conhecimento`, `elemento_energia`, `elemento_medo`, `ritual_poder` (arte v1 da Modelador) |
+| `giro` | propriedade do bloco `odteste:sigilo` | 0 a 3 (quartos de volta) |
+| `odteste:sigilos_conhecidos` | dado do jogador (lista de nomes de `simbolo`) | sigilos aprendidos; sobrevive à morte; nome desconhecido ou repetido some ao ler; **nunca vai para o cliente** (a tela recebe só a lista ao abrir) |
+| `odteste:abrir_tela_sigilo` | pacote servidor → jogador | posição do bloco clicado e os sigilos aprendidos |
+| `odteste:desenhar_sigilo` | pacote jogador → servidor | posição, sigilo e giro; o servidor confere giz, sigilo aprendido, distância (6 blocos), espaço livre e 1 pedido por segundo |
+| `/odteste sigilo ensinar\|esquecer <jogador> <sigilo\|todos>` · `lista <jogador>` | comando de admin (permissão 2) | ensina/tira sigilo; método para eventos do mundo: `Sigilos.aprender(jogador, nome)` |
+
+### Máquinas que falham (pacote 1)
+
+| ID | Tipo | Observação |
+|---|---|---|
+| `odteste:reduz_falha_maquina` | tag de item (`"replace": false`, hoje vazia) | quem leva um item dela no inventário tem a chance de falha multiplicada por `fator_protecao_percentual`; a Dev põe o `fusivel_queimado` aqui. Outra forma de proteger (acessório): `FalhaMaquinas.registrarReducao(jogador -> fator)` |
+| `odteste-maquinas-server.toml` | config do servidor (seção `[maquinas]`) | `ligado`, `chance_percentual` (4), `intervalo_maquina_s` (60), `espera_jogador_s` (600), `raio` (12), `chance_susto_percentual` (35), `fator_protecao_percentual` (50) |
+| `mekanism`, `avaritia` | integrações opcionais (`Compat.Integracao`) | só por reflexão, em `compat/mekanism/` e `compat/reavaritia/`; o mod abre sem eles |
+
 Marcos de grupo que o mundo já tem (salvos em `odteste_historia`): `primeiro_sinal`, `enigma_sino`, `vila_calada`, `dobre`.
 
 ## Guardados do mod antigo (registrados só para não serem apagados)

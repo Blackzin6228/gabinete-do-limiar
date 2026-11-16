@@ -3,6 +3,8 @@ package com.nikolas.odteste.cliente;
 import com.nikolas.odteste.OdMod;
 import com.nikolas.odteste.cracha.CrachaItem;
 import com.nikolas.odteste.horror.IdsHorror;
+import com.nikolas.odteste.rede.AbrirTelaSigilo;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -36,6 +38,9 @@ public final class OdModCliente {
 
         // Crachá: o item (código comum) abre a tela por este gancho.
         CrachaItem.abrirTela = CrachaCliente::abrir;
+
+        // Giz: o servidor manda abrir a tela com os sigilos que o jogador aprendeu.
+        AbrirTelaSigilo.definirReceptor(m -> Minecraft.getInstance().setScreen(new TelaSigilo(m.pos(), m.sigilos())));
 
         // Camada de horror: céu cinza e névoa de dia, noite escura, música cortada e sustos grandes.
         CamadaHorrorCliente.iniciar(barramento);

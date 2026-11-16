@@ -3,6 +3,7 @@ package com.nikolas.odteste.dados;
 import com.mojang.serialization.Codec;
 import com.nikolas.odteste.elementos.Elemento;
 import com.nikolas.odteste.registro.Registro;
+import com.nikolas.odteste.sigilos.RegrasSigilos;
 import com.nikolas.odteste.sistemas.Reacoes;
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -80,7 +81,26 @@ public final class DadosJogador {
                     .copyOnDeath()
                     .build());
 
+    /**
+     * Sigilos que o jogador já aprendeu (nomes). Nome desconhecido ou repetido some ao ler. Morrer não apaga.
+     * Quem mexe é {@code sigilos.Sigilos}. O cliente só recebe a lista ao abrir a tela do giz.
+     */
+    public static final Supplier<AttachmentType<List<String>>> SIGILOS_CONHECIDOS = Registro.DADOS.register(
+            IdsDados.SIGILOS_CONHECIDOS,
+            () -> AttachmentType.<List<String>>builder(() -> List.of())
+                    .serialize(Codec.STRING.listOf().xmap(RegrasSigilos::limpar, l -> l))
+                    .copyOnDeath()
+                    .build());
+
     private DadosJogador() {}
+
+    public static List<String> sigilos(Player p) {
+        return p.getData(SIGILOS_CONHECIDOS);
+    }
+
+    public static void definirSigilos(Player p, List<String> lista) {
+        p.setData(SIGILOS_CONHECIDOS, RegrasSigilos.limpar(lista));
+    }
 
     public static boolean recebeuKit(Player p) {
         return p.getData(RECEBEU_KIT);

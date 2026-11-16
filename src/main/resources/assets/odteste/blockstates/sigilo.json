@@ -1,0 +1,634 @@
+{
+  "variants": {
+    "simbolo=letra_a,giro=0": {
+      "model": "odteste:block/sigilo_letra_a"
+    },
+    "simbolo=letra_a,giro=1": {
+      "model": "odteste:block/sigilo_letra_a",
+      "y": 90
+    },
+    "simbolo=letra_a,giro=2": {
+      "model": "odteste:block/sigilo_letra_a",
+      "y": 180
+    },
+    "simbolo=letra_a,giro=3": {
+      "model": "odteste:block/sigilo_letra_a",
+      "y": 270
+    },
+    "simbolo=letra_b,giro=0": {
+      "model": "odteste:block/sigilo_letra_b"
+    },
+    "simbolo=letra_b,giro=1": {
+      "model": "odteste:block/sigilo_letra_b",
+      "y": 90
+    },
+    "simbolo=letra_b,giro=2": {
+      "model": "odteste:block/sigilo_letra_b",
+      "y": 180
+    },
+    "simbolo=letra_b,giro=3": {
+      "model": "odteste:block/sigilo_letra_b",
+      "y": 270
+    },
+    "simbolo=letra_c,giro=0": {
+      "model": "odteste:block/sigilo_letra_c"
+    },
+    "simbolo=letra_c,giro=1": {
+      "model": "odteste:block/sigilo_letra_c",
+      "y": 90
+    },
+    "simbolo=letra_c,giro=2": {
+      "model": "odteste:block/sigilo_letra_c",
+      "y": 180
+    },
+    "simbolo=letra_c,giro=3": {
+      "model": "odteste:block/sigilo_letra_c",
+      "y": 270
+    },
+    "simbolo=letra_d,giro=0": {
+      "model": "odteste:block/sigilo_letra_d"
+    },
+    "simbolo=letra_d,giro=1": {
+      "model": "odteste:block/sigilo_letra_d",
+      "y": 90
+    },
+    "simbolo=letra_d,giro=2": {
+      "model": "odteste:block/sigilo_letra_d",
+      "y": 180
+    },
+    "simbolo=letra_d,giro=3": {
+      "model": "odteste:block/sigilo_letra_d",
+      "y": 270
+    },
+    "simbolo=letra_e,giro=0": {
+      "model": "odteste:block/sigilo_letra_e"
+    },
+    "simbolo=letra_e,giro=1": {
+      "model": "odteste:block/sigilo_letra_e",
+      "y": 90
+    },
+    "simbolo=letra_e,giro=2": {
+      "model": "odteste:block/sigilo_letra_e",
+      "y": 180
+    },
+    "simbolo=letra_e,giro=3": {
+      "model": "odteste:block/sigilo_letra_e",
+      "y": 270
+    },
+    "simbolo=letra_f,giro=0": {
+      "model": "odteste:block/sigilo_letra_f"
+    },
+    "simbolo=letra_f,giro=1": {
+      "model": "odteste:block/sigilo_letra_f",
+      "y": 90
+    },
+    "simbolo=letra_f,giro=2": {
+      "model": "odteste:block/sigilo_letra_f",
+      "y": 180
+    },
+    "simbolo=letra_f,giro=3": {
+      "model": "odteste:block/sigilo_letra_f",
+      "y": 270
+    },
+    "simbolo=letra_g,giro=0": {
+      "model": "odteste:block/sigilo_letra_g"
+    },
+    "simbolo=letra_g,giro=1": {
+      "model": "odteste:block/sigilo_letra_g",
+      "y": 90
+    },
+    "simbolo=letra_g,giro=2": {
+      "model": "odteste:block/sigilo_letra_g",
+      "y": 180
+    },
+    "simbolo=letra_g,giro=3": {
+      "model": "odteste:block/sigilo_letra_g",
+      "y": 270
+    },
+    "simbolo=letra_h,giro=0": {
+      "model": "odteste:block/sigilo_letra_h"
+    },
+    "simbolo=letra_h,giro=1": {
+      "model": "odteste:block/sigilo_letra_h",
+      "y": 90
+    },
+    "simbolo=letra_h,giro=2": {
+      "model": "odteste:block/sigilo_letra_h",
+      "y": 180
+    },
+    "simbolo=letra_h,giro=3": {
+      "model": "odteste:block/sigilo_letra_h",
+      "y": 270
+    },
+    "simbolo=letra_i,giro=0": {
+      "model": "odteste:block/sigilo_letra_i"
+    },
+    "simbolo=letra_i,giro=1": {
+      "model": "odteste:block/sigilo_letra_i",
+      "y": 90
+    },
+    "simbolo=letra_i,giro=2": {
+      "model": "odteste:block/sigilo_letra_i",
+      "y": 180
+    },
+    "simbolo=letra_i,giro=3": {
+      "model": "odteste:block/sigilo_letra_i",
+      "y": 270
+    },
+    "simbolo=letra_j,giro=0": {
+      "model": "odteste:block/sigilo_letra_j"
+    },
+    "simbolo=letra_j,giro=1": {
+      "model": "odteste:block/sigilo_letra_j",
+      "y": 90
+    },
+    "simbolo=letra_j,giro=2": {
+      "model": "odteste:block/sigilo_letra_j",
+      "y": 180
+    },
+    "simbolo=letra_j,giro=3": {
+      "model": "odteste:block/sigilo_letra_j",
+      "y": 270
+    },
+    "simbolo=letra_k,giro=0": {
+      "model": "odteste:block/sigilo_letra_k"
+    },
+    "simbolo=letra_k,giro=1": {
+      "model": "odteste:block/sigilo_letra_k",
+      "y": 90
+    },
+    "simbolo=letra_k,giro=2": {
+      "model": "odteste:block/sigilo_letra_k",
+      "y": 180
+    },
+    "simbolo=letra_k,giro=3": {
+      "model": "odteste:block/sigilo_letra_k",
+      "y": 270
+    },
+    "simbolo=letra_l,giro=0": {
+      "model": "odteste:block/sigilo_letra_l"
+    },
+    "simbolo=letra_l,giro=1": {
+      "model": "odteste:block/sigilo_letra_l",
+      "y": 90
+    },
+    "simbolo=letra_l,giro=2": {
+      "model": "odteste:block/sigilo_letra_l",
+      "y": 180
+    },
+    "simbolo=letra_l,giro=3": {
+      "model": "odteste:block/sigilo_letra_l",
+      "y": 270
+    },
+    "simbolo=letra_m,giro=0": {
+      "model": "odteste:block/sigilo_letra_m"
+    },
+    "simbolo=letra_m,giro=1": {
+      "model": "odteste:block/sigilo_letra_m",
+      "y": 90
+    },
+    "simbolo=letra_m,giro=2": {
+      "model": "odteste:block/sigilo_letra_m",
+      "y": 180
+    },
+    "simbolo=letra_m,giro=3": {
+      "model": "odteste:block/sigilo_letra_m",
+      "y": 270
+    },
+    "simbolo=letra_n,giro=0": {
+      "model": "odteste:block/sigilo_letra_n"
+    },
+    "simbolo=letra_n,giro=1": {
+      "model": "odteste:block/sigilo_letra_n",
+      "y": 90
+    },
+    "simbolo=letra_n,giro=2": {
+      "model": "odteste:block/sigilo_letra_n",
+      "y": 180
+    },
+    "simbolo=letra_n,giro=3": {
+      "model": "odteste:block/sigilo_letra_n",
+      "y": 270
+    },
+    "simbolo=letra_o,giro=0": {
+      "model": "odteste:block/sigilo_letra_o"
+    },
+    "simbolo=letra_o,giro=1": {
+      "model": "odteste:block/sigilo_letra_o",
+      "y": 90
+    },
+    "simbolo=letra_o,giro=2": {
+      "model": "odteste:block/sigilo_letra_o",
+      "y": 180
+    },
+    "simbolo=letra_o,giro=3": {
+      "model": "odteste:block/sigilo_letra_o",
+      "y": 270
+    },
+    "simbolo=letra_p,giro=0": {
+      "model": "odteste:block/sigilo_letra_p"
+    },
+    "simbolo=letra_p,giro=1": {
+      "model": "odteste:block/sigilo_letra_p",
+      "y": 90
+    },
+    "simbolo=letra_p,giro=2": {
+      "model": "odteste:block/sigilo_letra_p",
+      "y": 180
+    },
+    "simbolo=letra_p,giro=3": {
+      "model": "odteste:block/sigilo_letra_p",
+      "y": 270
+    },
+    "simbolo=letra_q,giro=0": {
+      "model": "odteste:block/sigilo_letra_q"
+    },
+    "simbolo=letra_q,giro=1": {
+      "model": "odteste:block/sigilo_letra_q",
+      "y": 90
+    },
+    "simbolo=letra_q,giro=2": {
+      "model": "odteste:block/sigilo_letra_q",
+      "y": 180
+    },
+    "simbolo=letra_q,giro=3": {
+      "model": "odteste:block/sigilo_letra_q",
+      "y": 270
+    },
+    "simbolo=letra_r,giro=0": {
+      "model": "odteste:block/sigilo_letra_r"
+    },
+    "simbolo=letra_r,giro=1": {
+      "model": "odteste:block/sigilo_letra_r",
+      "y": 90
+    },
+    "simbolo=letra_r,giro=2": {
+      "model": "odteste:block/sigilo_letra_r",
+      "y": 180
+    },
+    "simbolo=letra_r,giro=3": {
+      "model": "odteste:block/sigilo_letra_r",
+      "y": 270
+    },
+    "simbolo=letra_s,giro=0": {
+      "model": "odteste:block/sigilo_letra_s"
+    },
+    "simbolo=letra_s,giro=1": {
+      "model": "odteste:block/sigilo_letra_s",
+      "y": 90
+    },
+    "simbolo=letra_s,giro=2": {
+      "model": "odteste:block/sigilo_letra_s",
+      "y": 180
+    },
+    "simbolo=letra_s,giro=3": {
+      "model": "odteste:block/sigilo_letra_s",
+      "y": 270
+    },
+    "simbolo=letra_t,giro=0": {
+      "model": "odteste:block/sigilo_letra_t"
+    },
+    "simbolo=letra_t,giro=1": {
+      "model": "odteste:block/sigilo_letra_t",
+      "y": 90
+    },
+    "simbolo=letra_t,giro=2": {
+      "model": "odteste:block/sigilo_letra_t",
+      "y": 180
+    },
+    "simbolo=letra_t,giro=3": {
+      "model": "odteste:block/sigilo_letra_t",
+      "y": 270
+    },
+    "simbolo=letra_u,giro=0": {
+      "model": "odteste:block/sigilo_letra_u"
+    },
+    "simbolo=letra_u,giro=1": {
+      "model": "odteste:block/sigilo_letra_u",
+      "y": 90
+    },
+    "simbolo=letra_u,giro=2": {
+      "model": "odteste:block/sigilo_letra_u",
+      "y": 180
+    },
+    "simbolo=letra_u,giro=3": {
+      "model": "odteste:block/sigilo_letra_u",
+      "y": 270
+    },
+    "simbolo=letra_v,giro=0": {
+      "model": "odteste:block/sigilo_letra_v"
+    },
+    "simbolo=letra_v,giro=1": {
+      "model": "odteste:block/sigilo_letra_v",
+      "y": 90
+    },
+    "simbolo=letra_v,giro=2": {
+      "model": "odteste:block/sigilo_letra_v",
+      "y": 180
+    },
+    "simbolo=letra_v,giro=3": {
+      "model": "odteste:block/sigilo_letra_v",
+      "y": 270
+    },
+    "simbolo=letra_w,giro=0": {
+      "model": "odteste:block/sigilo_letra_w"
+    },
+    "simbolo=letra_w,giro=1": {
+      "model": "odteste:block/sigilo_letra_w",
+      "y": 90
+    },
+    "simbolo=letra_w,giro=2": {
+      "model": "odteste:block/sigilo_letra_w",
+      "y": 180
+    },
+    "simbolo=letra_w,giro=3": {
+      "model": "odteste:block/sigilo_letra_w",
+      "y": 270
+    },
+    "simbolo=letra_x,giro=0": {
+      "model": "odteste:block/sigilo_letra_x"
+    },
+    "simbolo=letra_x,giro=1": {
+      "model": "odteste:block/sigilo_letra_x",
+      "y": 90
+    },
+    "simbolo=letra_x,giro=2": {
+      "model": "odteste:block/sigilo_letra_x",
+      "y": 180
+    },
+    "simbolo=letra_x,giro=3": {
+      "model": "odteste:block/sigilo_letra_x",
+      "y": 270
+    },
+    "simbolo=letra_y,giro=0": {
+      "model": "odteste:block/sigilo_letra_y"
+    },
+    "simbolo=letra_y,giro=1": {
+      "model": "odteste:block/sigilo_letra_y",
+      "y": 90
+    },
+    "simbolo=letra_y,giro=2": {
+      "model": "odteste:block/sigilo_letra_y",
+      "y": 180
+    },
+    "simbolo=letra_y,giro=3": {
+      "model": "odteste:block/sigilo_letra_y",
+      "y": 270
+    },
+    "simbolo=letra_z,giro=0": {
+      "model": "odteste:block/sigilo_letra_z"
+    },
+    "simbolo=letra_z,giro=1": {
+      "model": "odteste:block/sigilo_letra_z",
+      "y": 90
+    },
+    "simbolo=letra_z,giro=2": {
+      "model": "odteste:block/sigilo_letra_z",
+      "y": 180
+    },
+    "simbolo=letra_z,giro=3": {
+      "model": "odteste:block/sigilo_letra_z",
+      "y": 270
+    },
+    "simbolo=digito_0,giro=0": {
+      "model": "odteste:block/sigilo_digito_0"
+    },
+    "simbolo=digito_0,giro=1": {
+      "model": "odteste:block/sigilo_digito_0",
+      "y": 90
+    },
+    "simbolo=digito_0,giro=2": {
+      "model": "odteste:block/sigilo_digito_0",
+      "y": 180
+    },
+    "simbolo=digito_0,giro=3": {
+      "model": "odteste:block/sigilo_digito_0",
+      "y": 270
+    },
+    "simbolo=digito_1,giro=0": {
+      "model": "odteste:block/sigilo_digito_1"
+    },
+    "simbolo=digito_1,giro=1": {
+      "model": "odteste:block/sigilo_digito_1",
+      "y": 90
+    },
+    "simbolo=digito_1,giro=2": {
+      "model": "odteste:block/sigilo_digito_1",
+      "y": 180
+    },
+    "simbolo=digito_1,giro=3": {
+      "model": "odteste:block/sigilo_digito_1",
+      "y": 270
+    },
+    "simbolo=digito_2,giro=0": {
+      "model": "odteste:block/sigilo_digito_2"
+    },
+    "simbolo=digito_2,giro=1": {
+      "model": "odteste:block/sigilo_digito_2",
+      "y": 90
+    },
+    "simbolo=digito_2,giro=2": {
+      "model": "odteste:block/sigilo_digito_2",
+      "y": 180
+    },
+    "simbolo=digito_2,giro=3": {
+      "model": "odteste:block/sigilo_digito_2",
+      "y": 270
+    },
+    "simbolo=digito_3,giro=0": {
+      "model": "odteste:block/sigilo_digito_3"
+    },
+    "simbolo=digito_3,giro=1": {
+      "model": "odteste:block/sigilo_digito_3",
+      "y": 90
+    },
+    "simbolo=digito_3,giro=2": {
+      "model": "odteste:block/sigilo_digito_3",
+      "y": 180
+    },
+    "simbolo=digito_3,giro=3": {
+      "model": "odteste:block/sigilo_digito_3",
+      "y": 270
+    },
+    "simbolo=digito_4,giro=0": {
+      "model": "odteste:block/sigilo_digito_4"
+    },
+    "simbolo=digito_4,giro=1": {
+      "model": "odteste:block/sigilo_digito_4",
+      "y": 90
+    },
+    "simbolo=digito_4,giro=2": {
+      "model": "odteste:block/sigilo_digito_4",
+      "y": 180
+    },
+    "simbolo=digito_4,giro=3": {
+      "model": "odteste:block/sigilo_digito_4",
+      "y": 270
+    },
+    "simbolo=digito_5,giro=0": {
+      "model": "odteste:block/sigilo_digito_5"
+    },
+    "simbolo=digito_5,giro=1": {
+      "model": "odteste:block/sigilo_digito_5",
+      "y": 90
+    },
+    "simbolo=digito_5,giro=2": {
+      "model": "odteste:block/sigilo_digito_5",
+      "y": 180
+    },
+    "simbolo=digito_5,giro=3": {
+      "model": "odteste:block/sigilo_digito_5",
+      "y": 270
+    },
+    "simbolo=digito_6,giro=0": {
+      "model": "odteste:block/sigilo_digito_6"
+    },
+    "simbolo=digito_6,giro=1": {
+      "model": "odteste:block/sigilo_digito_6",
+      "y": 90
+    },
+    "simbolo=digito_6,giro=2": {
+      "model": "odteste:block/sigilo_digito_6",
+      "y": 180
+    },
+    "simbolo=digito_6,giro=3": {
+      "model": "odteste:block/sigilo_digito_6",
+      "y": 270
+    },
+    "simbolo=digito_7,giro=0": {
+      "model": "odteste:block/sigilo_digito_7"
+    },
+    "simbolo=digito_7,giro=1": {
+      "model": "odteste:block/sigilo_digito_7",
+      "y": 90
+    },
+    "simbolo=digito_7,giro=2": {
+      "model": "odteste:block/sigilo_digito_7",
+      "y": 180
+    },
+    "simbolo=digito_7,giro=3": {
+      "model": "odteste:block/sigilo_digito_7",
+      "y": 270
+    },
+    "simbolo=digito_8,giro=0": {
+      "model": "odteste:block/sigilo_digito_8"
+    },
+    "simbolo=digito_8,giro=1": {
+      "model": "odteste:block/sigilo_digito_8",
+      "y": 90
+    },
+    "simbolo=digito_8,giro=2": {
+      "model": "odteste:block/sigilo_digito_8",
+      "y": 180
+    },
+    "simbolo=digito_8,giro=3": {
+      "model": "odteste:block/sigilo_digito_8",
+      "y": 270
+    },
+    "simbolo=digito_9,giro=0": {
+      "model": "odteste:block/sigilo_digito_9"
+    },
+    "simbolo=digito_9,giro=1": {
+      "model": "odteste:block/sigilo_digito_9",
+      "y": 90
+    },
+    "simbolo=digito_9,giro=2": {
+      "model": "odteste:block/sigilo_digito_9",
+      "y": 180
+    },
+    "simbolo=digito_9,giro=3": {
+      "model": "odteste:block/sigilo_digito_9",
+      "y": 270
+    },
+    "simbolo=elemento_sangue,giro=0": {
+      "model": "odteste:block/sigilo_elemento_sangue"
+    },
+    "simbolo=elemento_sangue,giro=1": {
+      "model": "odteste:block/sigilo_elemento_sangue",
+      "y": 90
+    },
+    "simbolo=elemento_sangue,giro=2": {
+      "model": "odteste:block/sigilo_elemento_sangue",
+      "y": 180
+    },
+    "simbolo=elemento_sangue,giro=3": {
+      "model": "odteste:block/sigilo_elemento_sangue",
+      "y": 270
+    },
+    "simbolo=elemento_morte,giro=0": {
+      "model": "odteste:block/sigilo_elemento_morte"
+    },
+    "simbolo=elemento_morte,giro=1": {
+      "model": "odteste:block/sigilo_elemento_morte",
+      "y": 90
+    },
+    "simbolo=elemento_morte,giro=2": {
+      "model": "odteste:block/sigilo_elemento_morte",
+      "y": 180
+    },
+    "simbolo=elemento_morte,giro=3": {
+      "model": "odteste:block/sigilo_elemento_morte",
+      "y": 270
+    },
+    "simbolo=elemento_conhecimento,giro=0": {
+      "model": "odteste:block/sigilo_elemento_conhecimento"
+    },
+    "simbolo=elemento_conhecimento,giro=1": {
+      "model": "odteste:block/sigilo_elemento_conhecimento",
+      "y": 90
+    },
+    "simbolo=elemento_conhecimento,giro=2": {
+      "model": "odteste:block/sigilo_elemento_conhecimento",
+      "y": 180
+    },
+    "simbolo=elemento_conhecimento,giro=3": {
+      "model": "odteste:block/sigilo_elemento_conhecimento",
+      "y": 270
+    },
+    "simbolo=elemento_energia,giro=0": {
+      "model": "odteste:block/sigilo_elemento_energia"
+    },
+    "simbolo=elemento_energia,giro=1": {
+      "model": "odteste:block/sigilo_elemento_energia",
+      "y": 90
+    },
+    "simbolo=elemento_energia,giro=2": {
+      "model": "odteste:block/sigilo_elemento_energia",
+      "y": 180
+    },
+    "simbolo=elemento_energia,giro=3": {
+      "model": "odteste:block/sigilo_elemento_energia",
+      "y": 270
+    },
+    "simbolo=elemento_medo,giro=0": {
+      "model": "odteste:block/sigilo_elemento_medo"
+    },
+    "simbolo=elemento_medo,giro=1": {
+      "model": "odteste:block/sigilo_elemento_medo",
+      "y": 90
+    },
+    "simbolo=elemento_medo,giro=2": {
+      "model": "odteste:block/sigilo_elemento_medo",
+      "y": 180
+    },
+    "simbolo=elemento_medo,giro=3": {
+      "model": "odteste:block/sigilo_elemento_medo",
+      "y": 270
+    },
+    "simbolo=ritual_poder,giro=0": {
+      "model": "odteste:block/sigilo_ritual_poder"
+    },
+    "simbolo=ritual_poder,giro=1": {
+      "model": "odteste:block/sigilo_ritual_poder",
+      "y": 90
+    },
+    "simbolo=ritual_poder,giro=2": {
+      "model": "odteste:block/sigilo_ritual_poder",
+      "y": 180
+    },
+    "simbolo=ritual_poder,giro=3": {
+      "model": "odteste:block/sigilo_ritual_poder",
+      "y": 270
+    }
+  }
+}

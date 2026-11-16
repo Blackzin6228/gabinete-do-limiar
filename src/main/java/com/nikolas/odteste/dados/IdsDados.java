@@ -24,10 +24,13 @@ public final class IdsDados {
     /** O jogador já recebeu o kit (crachá e dossiê) na primeira entrada? */
     public static final String RECEBEU_KIT = "recebeu_kit";
 
+    /** Sigilos que o jogador já aprendeu (lista de nomes; ver sigilos/IdsSigilos). */
+    public static final String SIGILOS_CONHECIDOS = "sigilos_conhecidos";
+
     /** Dados em uso. */
     public static final List<String> TODOS = List.of(
             EXPOSICAO, LUCIDEZ, LUCIDEZ_MAX, EXPOSICAO_RESTO, CONTATO_ELEMENTO, EXPOSICAO_REPETICAO,
-            ELEMENTO, ELEMENTO_REVELADO, RECEBEU_KIT);
+            ELEMENTO, ELEMENTO_REVELADO, RECEBEU_KIT, SIGILOS_CONHECIDOS);
 
     // ---------- guardados do mod antigo (DadosGuardados: registrados só para não apagar) ----------
 

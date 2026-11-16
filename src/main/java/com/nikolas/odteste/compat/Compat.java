@@ -1,5 +1,8 @@
 package com.nikolas.odteste.compat;
 
+import com.nikolas.odteste.compat.mekanism.MekanismFalhas;
+import com.nikolas.odteste.compat.reavaritia.ReAvaritiaFalhas;
+import com.nikolas.odteste.maquinas.FalhaMaquinas;
 import java.util.ArrayList;
 import java.util.List;
 import net.neoforged.bus.api.IEventBus;
@@ -13,7 +16,11 @@ import net.neoforged.fml.ModList;
 public final class Compat {
     public enum Integracao {
         /** Shader pack. Só cliente: só perguntamos (por reflexão, em compat/iris/) se há um pack ligado. */
-        IRIS("iris");
+        IRIS("iris"),
+        /** Máquinas que falham (compat/mekanism/). Só por reflexão: não há dependência de compilação. */
+        MEKANISM("mekanism"),
+        /** Máquinas que falham (compat/reavaritia/). Mod id do Re:Avaritia: avaritia. Só por reflexão. */
+        REAVARITIA("avaritia");
 
         public final String modid;
 
@@ -30,7 +37,10 @@ public final class Compat {
 
     /** Cada integração de servidor entra aqui quando tiver conteúdo, sempre atrás do if (a classe compat só é lida se o mod existir). */
     public static void iniciar(IEventBus barramento) {
-        // Nenhuma hoje: o Iris é só do cliente (cliente/ chama compat/iris/ atrás de IRIS.ligada()).
+        // O Iris é só do cliente (cliente/ chama compat/iris/ atrás de IRIS.ligada()).
+        FalhaMaquinas.iniciar();
+        if (Integracao.MEKANISM.ligada()) MekanismFalhas.iniciar();
+        if (Integracao.REAVARITIA.ligada()) ReAvaritiaFalhas.iniciar();
     }
 
     public static List<String> ligadas() {

@@ -9,7 +9,9 @@ import com.nikolas.odteste.dados.DadosGuardados;
 import com.nikolas.odteste.dados.DadosJogador;
 import com.nikolas.odteste.historia.mestre.Mestre;
 import com.nikolas.odteste.horror.CamadaHorror;
+import com.nikolas.odteste.maquinas.ConfigMaquinas;
 import com.nikolas.odteste.rede.Rede;
+import com.nikolas.odteste.sigilos.Sigilos;
 import com.nikolas.odteste.registro.Registro;
 import com.nikolas.odteste.sistemas.Vigia;
 import net.neoforged.bus.api.IEventBus;
@@ -38,6 +40,8 @@ public final class OdMod {
         Kit.iniciar();
         Vigia.iniciar();
         CamadaHorror.iniciar();
+        ConfigMaquinas.registrar(container);
+        Sigilos.iniciar();
         Compat.iniciar(barramento);
         LOGGER.info("{} carregado. Integrações ligadas: {}", MODID, Compat.ligadas());
     }
