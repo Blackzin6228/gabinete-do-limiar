@@ -46,6 +46,14 @@ Em `docs/reliquias-v1.md`. Nenhum código nem ID novo ainda.
 - Em breve (TODO): afinidade (magias), Caneta, Fita, Fusível, mapa da Sentença, visões na tela (precisam de prévia).
 - Não testado no jogo: os efeitos, o contorno e o slot do Curios.
 
+## Pacote 1, etapa 2: reforma de estilo (mesa Dev, mesma branch)
+- Espadas e artefatos com os IDs e textos de `docs/nomes-pacote-1.md` (IDs antigos sumiram, sem migração). Espada
+  agora tem `.desc` + `.preco` como os artefatos. Na tela, Lucidez virou "Sanidade" (só o lang). Efeitos iguais.
+- Tag `odteste:reduz_falha_maquina` com o Fusível: no merge com `pacote-1/sistemas` dá conflito (arquivo e linha do
+  `ids.md`): fique com a versão que tem o Fusível.
+- **Texturas da mesa Modelador (PR #13) ainda têm os nomes antigos**: renomear para os IDs novos antes de juntar.
+- Build local não rodou (createMinecraftArtifacts quebrou; limpar o cache foi barrado): provar no Actions.
+
 ## Rituais e sigilos
 - Plano técnico em `docs/rituais.md` (mesa Dev). O PR #8 está sendo atualizado pela mesa Dev. Giz único; sigilos
   aprendidos aos poucos em eventos pelo mundo.
